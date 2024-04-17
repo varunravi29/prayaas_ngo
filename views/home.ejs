@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard/home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      background-image: url("https://i.pinimg.com/564x/c2/b0/6d/c2b06d47a1a66f123f71a75c6bcfcfd0.jpg");
+      background-size: cover;
+      backdrop-filter: blur(8px);
+      font-family: "Poppins", sans-serif;
+    }
+
+    .infomationContainer {
+      background-image: url("https://i.pinimg.com/564x/a8/71/81/a871818d46d18745d0a21f6c7dc4c795.jpg");
+      background-size: cover;
+      backdrop-filter: blur(8px);
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Additional CSS for form */
+    .hidden {
+      display: none;
+    }
+
+    .generate-request {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .generate-request form {
+      width: 300px;
+      margin: auto;
+    }
+
+    .generate-request form input[type="text"],
+    .generate-request form input[type="datetime-local"],
+    .generate-request form textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .generate-request form button {
+      width: 100%;
+      padding: 8px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="w-screen h-screen p-0 m-0 overflow-x-hidden bg-slate-500">
+  <!-- Main-Window -->
+  <div class="w-screen h-fit flex flex-col">
+    <!-- Header-Nav-Bar -->
+    <div class="h-14 md:p-2 flex md:justify-center md:items-center w-full">
+      <div class="md:w-11/12 w-full h-14 flex justify-between items-center">
+
+        <!-- Navigation-Bar-Site-Heading -->
+        <div>
+          <h1 class="text-2xl text-slate-900 font-base -tracking-tight p-4 text-black">
+            Prayaas
+          </h1>
+        </div>
+        <!-- Navigation-Bar-Site-Heading -->
+
+        <!-- Navigation-Bar-icon-tray-container -->
+        <div class="hidden md:block mr-10">
+          <ul class="flex gap-4 text-xs text-black font-base">
+            <li><a href="http://localhost:8000/prayaas/home">
+                <h1 class="text-xs font-semibold cursor-pointer">Home</h1>
+              </a></li>
+            <li><a class="text-xs font-semibold cursor-pointer" href="#">Dashboard</a></li>
+            <li><a class="text-xs font-semibold cursor-pointer" href="#">Contributions</a></li>
+            <li><a class="text-xs font-semibold cursor-pointer" href="#">Blogs</a></li>
+          </ul>
+        </div>
+        <!-- Navigation-Bar-icon-tray-container -->
+
+      </div>
+    </div>
+    <!-- Header-Nav-Bar -->
+  </div>
+
+  <!-- Main-content-area -->
+  <div class="w-full h-full flex justify-center md:pl-2 md:pr-2 items-start">
+    <div class="md:w-11/12 w-full h-screen flex flex-row items-start">
+      <div class="hidden md:flex md:w-3/12 h-full flex flex-col justify-start items-start">
+
+        <!-- Dashboard-container -->
+        <div class="w-full h-full flex flex-col justify-start items-center">
+          <div
+            class="md:w-11/12 w-full md:h-fit md:mt-10 h-full md:p-2 bg-zinc-100 text-slate-800 border border-slate-200 md:m-2 rounded-md">
+            <h1 class="text-sm font-semibold tracking-tight">Dashboard</h1>
+          </div>
+          <!-- Dashboard-container -->
+
+          <!-- User-Information-Card -->
+          <div class="w-11/12 p-2 h-fit bg-zinc-100 text-slate-800 border border-slate-200 m-2 rounded-md">
+            <h1 class="text-xs pd-1 font-semibold cursor-pointer">
+              Donor-ID:
+              <span class="pl-3 text-slate-600">
+                <%=donor_id %>
+              </span>
+            </h1>
+            <h1 class="text-xs pd-1 font-semibold cursor-pointer">Name:
+              <span class="text-slate-600 pl-7">
+                <%=name %>
+            </h1>
+            </span>
+            <h1 class="text-xs pd-1 font-semibold cursor-pointer">
+              Email-ID:
+              <span class="pl-3 text-slate-600">
+                <%=email_id %>
+              </span>
+            </h1>
+            <h1 class="text-xs pd-1 font-semibold cursor-pointer">
+              Contact:
+              <span class="text-slate-600 pl-4">
+                <%=mobile_no%>
+              </span>
+            </h1>
+          </div>
+          <!-- User-Information-Card -->
+
+          <!-- Navigation Menu -->
+          <div class="w-11/12 mt-10">
+            <div class="w-full bg-zinc-200 mt-10 mb-2 rounded-md h-fit p-2 text-slate-800">
+              <a href="http://localhost:8000/prayaas/user/home">
+                <h1 class="text-xs font-semibold cursor-pointer">Home</h1>
+              </a>
+            </div>
+            <div
+              class="w-full hover:bg-zinc-200 mb-2 rounded-md h-fit p-2 text-slate-800 border-b border-gray-400 Show-Generate-Request-Button">
+              <a href="http://localhost:8000/prayaas/user/request">
+                <h1 class="text-xs font-semibold cursor-pointer">Generate Request</h1>
+              </a>
+            </div>
+            <div class="w-full hover:bg-zinc-200 h-fit mb-2 rounded-md p-2 text-slate-800 border-b border-gray-400">
+              <a href="http://localhost:8000/prayaas/user/payment_history">
+
+                <h1 class="text-xs font-semibold cursor-pointer">
+                  Payment History
+                </h1>
+              </a>
+            </div>
+            <div class="w-full hover:bg-zinc-200 h-fit mb-2 rounded-md p-2 text-slate-800 border-b border-gray-400">
+              <a href="http://localhost:8000/prayaas/user/donate">
+
+                <h1 class="text-xs font-semibold cursor-pointer">
+                  Donate
+                </h1>
+              </a>
+            </div>
+          </div>
+          <!-- Navigation Menu -->
+
+          <!-- log-functions -->
+          <div class="w-11/12 mt-36 ">
+            <div class="w-full bg-slate-700 text-white hover:bg-slate-600 mb-2 rounded-md h-fit p-2 text-slate-800 ">
+              <h1 class="text-xs font-semibold">Logout</h1>
+            </div>
+            <div class="w-full bg-slate-700 text-white hover:bg-slate-600 h-fit mb-2 rounded-md p-2 text-slate-800 border-b border-gray-400">
+              <h1 class="text-xs font-semibold">Help & Support</h1>
+            </div>
+          </div>
+          <!-- log-functions -->
+
+        </div>
+      </div>
+
+
+      <!-- Right Section -->
+      <div class="md:w-9/12 w-full h-full flex flex-col justify-start items-start overflow-scroll">
+        <div class="w-full h-fit pl-10 md:text-sm font-semibold">
+          <h1 class="pt-10 md:text-3xl text-2xl text-slate-800 ">Home,</h1>
+          <h1 class="font-semibold text-indigo-400">Welcome User</h1>
+          <h1 class="text-xs font-normal text-slate-800 text-balance font-semibold">Welcome to Prayaas, where every
+            action counts towards creating a better world!
+            At Prayaas, we are dedicated to making a meaningful impact on the lives of individuals and communities in
+            need. With a passion for humanitarianism and a commitment to social justice, we strive to address pressing
+            issues and promote positive change across the globe.
+          </h1>
+        </div>
+
+        <!-- Data-Analytics -->
+        <div class="w-full h-full md:mb-0 mt-20 md:mt-5">
+          <h1 class="px-10 py-5 font-semibold text-sm font-semibold underline">Donations Statistics</h1>
+          <div class="w-full h-36 flex p-2 justify-center gap-10 items-center">
+            <div class="w-4/12 rounded-md h-full border border-slate-300">
+              <h1 class="text-sm font-bold text-center py-4 text-slate-700 bg-zinc-300 border-b border-gray-400">Amount Donated</h1>
+              <h1 class="text-3xl text-center font-semibold px-3 py-3 text-slate-700">$234 /</h1>
+            </div>
+            <div class="w-4/12 rounded-md h-full border border-slate-300">
+              <h1 class="text-sm font-bold text-center py-4 text-slate-700 bg-zinc-300 border-b border-gray-400">Items Donated</h1>
+              <h1 class="text-xs font-semibold px-3 pb-1 pt-2 text-slate-700">1. Food <span class="pl-5">: 9</span></h1>
+              <h1 class="text-xs font-semibold px-3 pb-1 text-slate-700">2. Clothes <span class="pl-0">: 20</span></h1>
+              <h1 class="text-xs font-semibold px-3 pb-1 text-slate-700">3. Books <span class="pl-3">: 25</span></h1>
+
+          </div>
+          <!-- <div class="w-full h-60 flex gap-5 p-2 justify-center items-center">
+            <div class="w-5/12 rounded-md h-full border border-slate-300 bg-slate-100">s</div>
+            <div class="w-5/12 rounded-md h-full border border-slate-300 bg-slate-100">s</div>
+          </div> -->
+        </div>
+        <!-- Data-Analytics -->
+
+        <!-- Data-Analytics -->
+        <div class="w-full h-full md:mb-20 mt-20 md:mt-5">
+          <h1 class="px-10 py-5 font-semibold">Graph Visualization</h1>
+          <div class="w-full h-60 flex gap-5 p-2 justify-center items-center">
+            <div class="w-5/12 rounded-md h-full border border-slate-300 bg-slate-100">s</div>
+            <div class="w-5/12 rounded-md h-full border border-slate-300 bg-slate-100">s</div>
+          </div>
+          <div class="w-full h-60 flex gap-5 p-2 justify-center items-center">
+            <div class="w-5/12 rounded-md h-full border border-slate-300 bg-slate-100">s</div>
+            <div class="w-5/12 rounded-md h-full border border-slate-300 bg-slate-100">s</div>
+          </div>
+        </div>
+        <!-- Data-Analytics -->
+
+      </div>
+      <!-- Right Section -->
+
+    </div>
+  </div>
+  </div>
+  </div>
+  <!-- Main-content-are -->
+
+  <!-- footer -->
+  <div class="w-full h-fit flex justify-center items-end md:pl-2 md:pr-2">
+    <div class="md:w-11/12 w-full h-fit pt-10 pb-10 flex justify-center items-center bg-gray-800">
+      <div class="text-slate-200">
+        <h1 class="text-xs font-semibold cursor-pointer">
+          Prayaas@-NGO (Non-Governmental Organization)
+        </h1>
+        <h1 class="text-xs font-semibold text-center cursor-pointer">
+          Copyright@2024.prayaas
+        </h1>
+        <h1 class="text-xs font-semibold text-center cursor-pointer">
+          All Rights Reserved
+        </h1>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+
+  <!-- Main-Window -->
+</body>
+
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prayas-NGO'S</title>
+  <!-- <link rel="stylesheet" href="/src/output.css" /> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <style>
+    .slider-container {
+      width: 50%;
+      overflow: hidden;
+    }
+
+    /* Center the modal vertically */
+    #donationModal .align-bottom {
+      top: 50%;
+      transform: translateY(50%);
+    }
+
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      /* Adjust width as needed */
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    .divback {
+      background-image: url("https://i.pinimg.com/564x/33/3e/a3/333ea30148468007a59f02b224f7fb1b.jpg");
+      background-size: cover;
+      backdrop-filter: blur(8px);
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Additional CSS for form */
+    .hidden {
+      display: none;
+    }
+
+    .generate-request {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .generate-request form {
+      width: 300px;
+      margin: auto;
+    }
+
+    .generate-request form input[type="text"],
+    .generate-request form input[type="datetime-local"],
+    .generate-request form textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .generate-request form button {
+      width: 100%;
+      padding: 8px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .description-container {
+      width: 100%; /* Adjust as needed */
+      max-height: 300px; /* Adjust to set maximum height */
+      overflow-y: auto; /* Enable vertical scrolling if needed */
+      padding: 10px; /* Add padding for better readability */
+      border: 1px solid #ccc; /* Optional: Add border for visual separation */
+    }
+    
+    #submittedDescription {
+      white-space: pre-wrap; /* Preserve line breaks and spacing */
+      margin: 0; /* Remove default margin for <pre> element */
+    }
+      </style>
+</head>
+
+<body class="w-screen h-screen p-0 m-0 overflow-x-hidden">
+  <!-- Main-Window -->
+  <div class="w-screen h-fit flex flex-col">
+    <!-- Header-Nav-Bar -->
+    <div class="shadow-sm h-14 p-2 flex md:justify-center md:items-center w-full">
+      <div class="md:w-11/12 w-full h-14 flex justify-between items-center bg-black">
+        <!-- Navigation-Bar-Site-Heading -->
+        <div>
+          <h1 class="text-2xl text-slate-900 font-base -tracking-tight p-4 text-white">
+            Prayaas
+          </h1>
+        </div>
+        <!-- Navigation-Bar-icon-tray-container -->
+        <div class="hidden md:block mr-10">
+          <ul class="flex gap-4 text-xs text-white font-base">
+            <li><a href="http://localhost:8000/prayaas/home">
+                <h1 class="text-xs font-semibold cursor-pointer">Home</h1>
+              </a></li>
+            <li><a class="" href="#">Dashboard</a></li>
+            <li><a class="" href="#">Contributions</a></li>
+            <li><a class="" href="#">Blogs</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Header-Nav-Bar -->
+  </div>
+
+  <!-- Main-content-are -->
+  <div class="w-full h-full flex justify-center pl-2 pr-2 items-start">
+    <div class="w-11/12 h-full flex flex-row items-start bg-zinc-50 border border-blue-200">
+      <div class="w-3/12 border-r border-gray-300 h-full flex flex-col justify-start items-start">
+        <!-- User-Card -->
+        <div class="w-full h-full flex flex-col justify-start items-center">
+          <div class="w-11/12 h-fit p-2 m-2 bg-zinc-100 text-slate-800 border border-blue-200 m-2 rounded-md">
+            <h1 class="text-sm font-semibold tracking-tight">Dashboard</h1>
+          </div>
+          <div class="w-11/12 p-2 h-fit bg-zinc-100 text-slate-800 border border-blue-200 m-2 rounded-md">
+            <h1 class="text-xs pd-1 font-semibold cursor-pointer">
+              Donor-ID:
+              <span class="pl-3 text-slate-600">
+                <%=donor_id %>
+              </span>
+            </h1>
+            <h1 class="text-xs pd-1 font-semibold cursor-pointer">Name:
+              <span class="text-slate-600 pl-7">
+                <%=name %>
+              </span>
+            </h1>
+            <h1 class="text-xs pd-1 font-semibold cursor-pointer">
+              Email-ID:
+              <span class="pl-3 text-slate-600">
+                <%=email_id %>
+              </span>
+            </h1>
+            <h1 class="text-xs pd-1 font-semibold cursor-pointer">
+              Contact:
+              <span class="text-slate-600 pl-4">
+                <%=mobile_no%>
+              </span>
+            </h1>
+          </div>
+          <!-- User-Card -->
+          <!-- Navigation Menu -->
+          <div class="w-11/12 mt-10">
+            <div
+              class="w-full hover:bg-zinc-200 mt-10 mb-2 rounded-md h-fit p-2 text-slate-800 border-b border-gray-400">
+              <a href="http://localhost:8000/prayaas/user/home">
+                <h1 class="text-xs font-semibold cursor-pointer">Home</h1>
+              </a>
+            </div>
+            <div
+              class="w-full hover:bg-zinc-200 mb-2 rounded-md h-fit p-2 text-slate-800 border-b border-gray-400 Show-Generate-Request-Button">
+              <a href="http://localhost:8000/prayaas/user/request">
+                <h1 class="text-xs font-semibold cursor-pointer">Generate Request</h1>
+              </a>
+            </div>
+            <div class="w-full bg-zinc-200 h-fit mb-2 rounded-md p-2 text-slate-800 border-b border-gray-400">
+              <a href="http://localhost:8000/prayaas/user/payment_history">
+
+                <h1 class="text-xs font-semibold cursor-pointer">
+                  Payment History
+                </h1>
+              </a>
+            </div>
+            <div class="w-full hover:bg-zinc-200 h-fit mb-2 rounded-md p-2 text-slate-800 border-b border-gray-400">
+              <a href="http://localhost:8000/prayaas/user/donate">
+
+                <h1 class="text-xs font-semibold cursor-pointer">
+                  Donate
+                </h1>
+              </a>
+            </div>
+          </div>
+          <!-- Navigation Menu -->
+          <!-- log-functions -->
+          <div class="w-11/12 mt-36">
+            <div
+              class="w-full bg-slate-700 text-white hover:bg-slate-600 mb-2 rounded-md h-fit p-2 text-slate-800 border-b border-gray-400">
+              <a href="http://localhost:8000/prayaas/home">
+                <h1 class="text-xs font-semibold">Logout</h1>
+              </a>
+            </div>
+            <div
+              class="w-full bg-slate-700 text-white hover:bg-slate-600 h-fit mb-2 rounded-md p-2 text-slate-800 border-b border-gray-400">
+              <h1 class="text-xs font-semibold">Help & Support</h1>
+            </div>
+          </div>
+          <!-- log-functions -->
+        </div>
+      </div>
+      <!-- Right Section - Form -->
+      <div class="w-9/12 h-full flex flex-col justify-start items-start overflow-scroll overflow-x-hidden">
+        <div class="w-full h-28 flex justify-center mt-5 items-center">
+
+          <div class="w-full h-full">
+            <h1 class="px-10 py-5 font-bold">History</h1>
+            <div
+              class="w-11/12 h-1/2 p-2 flex gap-5 underline text-red-500 justify-center items-center text-xs font-bold">
+              We Assure Your Donation History Window With
+            </div>
+            <div class="w-11/12 h-1/2 p-2 flex gap-5 justify-center items-center">
+              <div
+                class="w-3/12 bg-zinc-200 h-full rounded-lg flex justify-center items-center border border-slate-200 text-xs font-semibold">
+                Confidentiality</div>
+              <div
+                class="w-3/12 bg-zinc-200 h-full rounded-lg flex justify-center items-center border border-slate-200 text-xs font-semibold">
+                Integrity</div>
+              <div
+                class="w-3/12 bg-zinc-200 h-full rounded-lg flex justify-center items-center border border-slate-200 text-xs font-semibold">
+                Authentication</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full h-full py-10 ml-10 mt-10 flex justify-start items-center">
+
+          <div class="w-11/12 h-full mt-20 mb-20">
+
+            <div class="w-full h-full mt-36">
+              <h1 class="mx-5 w-fit font-semibold mb-10 text-sm border-b border-slate-500">Amount Payments Donations
+              </h1>
+              <div>
+                <div
+                  class="flex justify-between text-xs mb-5 font-bold items-center pl-2 pr-2 w-full h-8 bg-zinc-300 mb-1 border border-zinc-400 rounded-md">
+                  <div class="w-1/12 h-full flex border-r border-gray-400 justify-center items-center">Sr.No</div>
+                  <div class="w-2/12 h-full flex border-r border-gray-400 justify-center items-center ">Donation_ID
+                  </div>
+                  <div class="w-2/12 h-full flex border-r border-gray-400 justify-center items-center ">Date</div>
+                  <div class="w-1/12 h-full flex border-r border-gray-400 justify-center items-center ">Amount</div>
+                  <div class="w-6/12 h-full flex border-l border-gray-300 justify-center items-center overflow-hidden"
+                    style="cursor: pointer;">Description</div>
+                </div>
+              </div>
+
+              <% donate_money.forEach(function(donation, index) { %>
+                <% if (donation.request_type==="Amount" && donation.donor_id===donor_id) { %>
+                  <div
+                    class="flex justify-between flex-row w-full rounded-md cursor-pointer text-xs font-semibold text-slate-800 items-center pl-2 pr-2 w-full h-28 bg-white mb-0.5 border border-3 border-zinc-400 ">
+                    <div class="w-1/12 h-full flex border-r border-slate-400 justify-center items-center">
+                      <%= index + 1 %>
+                    </div>
+                    <div
+                      class="w-2/12 h-full flex border-r border-slate-400 text-black font-bold justify-center items-center ">
+                      <%= donation.donation_id %>
+                    </div>
+                    <div class="w-2/12 h-full flex border-r border-slate-400 justify-center items-center ">
+                      <%= donation.date %>
+                    </div>
+                    <div
+                      class="w-1/12 h-full flex text-red-500 font-bold border-r border-slate-400 justify-center items-center">
+                      <%= donation.amount %>
+                    </div>
+                    <div class="w-6/12 h-full whitespace-pre-wrap pl-2 pr-2 flex justify-center items-center overflow-hidden donation-details donation-entry" style="cursor: pointer;">
+                      <h1 class="text-center w-full">
+                        <%= donation.description %>
+                      </h1>
+                    </div>
+                    
+                  </div>
+                  <% } %>
+                    <% }); %>
+            </div>
+
+            <div class="w-full h-full mt-60">
+              <h1 class="mx-5 w-fit font-semibold mb-10 text-sm border-b border-slate-500">Other Donations
+              </h1>
+              <div>
+                <div
+                  class="flex justify-between text-xs mb-5 font-bold items-center pl-2 pr-2 w-full h-8 bg-zinc-300 rounded-md mb-1 border border-zinc-400">
+                  <div class="w-1/12 h-full flex border-r border-gray-400 justify-center items-center">Sr.No</div>
+                  <div class="w-2/12 h-full flex border-r border-gray-400 justify-center items-center ">Donation_ID
+                  </div>
+                  <div class="w-2/12 h-full flex border-r border-gray-400 justify-center items-center ">Date</div>
+                  <div class="w-2/12 h-full flex border-r border-gray-400 justify-center items-center ">Items</div>
+                  <div class="w-5/12 h-full flex border-l border-gray-300 justify-center items-center overflow-hidden"
+                    style="cursor: pointer;">Description</div>
+                </div>
+              </div>
+
+              <% donate_items.forEach(function(donation, index) { %>
+                <% if (donation.request_type==="Items" && donation.donor_id===donor_id) { %>
+                  <div
+                    class="flex justify-between flex-row w-full cursor-pointer text-xs font-semibold text-slate-800 items-center pl-2 pr-2 w-full h-28 bg-white mb-0.5 rounded-md border border-3 border-zinc-400 ">
+                    <div class="w-1/12 h-full flex border-r border-slate-400 justify-center items-center">
+                      <%= index + 1 %>
+                    </div>
+                    <div
+                      class="w-2/12 h-full flex border-r border-slate-400 text-black font-bold justify-center items-center ">
+                      <%= donation.donation_id %>
+                    </div>
+                    <div class="w-2/12 h-full flex border-r border-slate-400 justify-center items-center ">
+                      <%= donation.date %>
+                    </div>
+                    <div
+                      class="w-2/12 h-full flex text-red-500 font-bold border-r border-slate-400 justify-center items-center">
+                      <%= donation.donate_type %>
+                    </div>
+                    <div
+                      class="w-5/12 h-full pl-2 pr-2 flex justify-center items-center overflow-hidden donation-details donation-entry"
+                      style="cursor: pointer;">
+                      <h1 class="w-full h-full flex text-xs justify-center items-center">
+                          <%= donation.description %>
+                      </h1>
+                    </div>
+                  </div>
+                  <% } %>
+                    <% }); %>
+            </div>
+          </div>
+
+
+        </div>
+        <!-- <img src="https://i.pinimg.com/564x/ef/01/75/ef0175e228299f5fc0345db40cb8457b.jpg" alt=""> -->
+        <div class="w-1/12 h-fit mt-20 bg-zinc-200">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Right Section - Form -->
+  </div>
+  </div>
+  <!-- Main-content-are -->
+
+  <!-- footer -->
+  <div class="w-full h-fit flex justify-center items-end pl-2 pr-2">
+    <div class="w-11/12 h-fit pt-10 pb-10 flex justify-center items-center bg-gray-800">
+      <div class="text-slate-200">
+        <h1 class="text-xs font-semibold cursor-pointer">
+          Prayaas@-NGO (Non-Governmental Organization)
+        </h1>
+        <h1 class="text-xs font-semibold text-center cursor-pointer">
+          Copyright@2024.prayaas
+        </h1>
+        <h1 class="text-xs font-semibold text-center cursor-pointer">
+          All Rights Reserved
+        </h1>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+
+  <!-- Main-Window -->
+
+  <!-- Donation Details Modal -->
+  <div id="donationModal" class="hidden fixed inset-0 z-10 overflow-y-auto">
+    <div class="w-full flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <!-- Background overlay -->
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-zinc-800 opacity-75"></div>
+      </div>
+
+      <!-- Modal content -->
+      <div
+        class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <div class="p-6">
+          <div class="flex justify-between items-center">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">Donation Descriptions</h3>
+            <!-- Close button -->
+            <button class="text-white bg-blue-500 px-2 py-1 hover:text-slate-100 rounded-md focus:outline-none" onclick="closeModal()">Close</button>
+          </div>
+          <div class="text-xs text-gray-500 font-semibold mb-4"># prayaasngo@gmail.com
+          </div>
+          <div class="bg-gray-100 border border-gray-400 p-4 rounded-md">
+            <div class="donation-details-content text-xs"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Donation Details Modal -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const donationEntries = document.querySelectorAll('.donation-entry');
+
+      donationEntries.forEach(function (entry) {
+        entry.addEventListener('click', function () {
+          const modal = document.getElementById('donationModal');
+          const modalContent = modal.querySelector('.donation-details-content');
+          // Clear existing content
+          modalContent.innerHTML = '';
+          // Get the donation details
+          const donationDetails = this.innerHTML;
+          // Display the donation details in the modal
+          modalContent.innerHTML = donationDetails;
+          // Show the modal
+          modal.classList.remove('hidden');
+        });
+      });
+
+      // Close modal when clicking outside of it
+      const modal = document.getElementById('donationModal');
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    });
+
+    function closeModal() {
+      const modal = document.getElementById('donationModal');
+      modal.classList.add('hidden');
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const donationEntries = document.querySelectorAll('.donation-entry');
+      const modal = document.getElementById('donationModal');
+
+      donationEntries.forEach(function (entry) {
+        entry.addEventListener('click', function () {
+          const modalContent = modal.querySelector('.donation-details-content');
+          // Clear existing content
+          modalContent.innerHTML = '';
+          // Get the donation details
+          const donationDetails = this.innerHTML;
+          // Display the donation details in the modal
+          modalContent.innerHTML = donationDetails;
+          // Show the modal
+          modal.classList.remove('hidden');
+        });
+      });
+
+      // Close modal when clicking outside of it
+      window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

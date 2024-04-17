@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prayas-NGO'S</title>
+    <!-- <link rel="stylesheet" href="/src/output.css" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .slider-container {
+        width: 50%;
+        overflow: hidden;
+      }
+
+      .slider {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .slide {
+        flex: 0 0 100%; /* Adjust width as needed */
+      }
+
+      .slide img {
+        width: 100%;
+        height: auto;
+      }
+
+      body {
+        background-image: url("https://i.pinimg.com/564x/c2/b0/6d/c2b06d47a1a66f123f71a75c6bcfcfd0.jpg");
+        background-size: cover;
+        backdrop-filter: blur(8px);
+        font-family: "Poppins", sans-serif;
+      }
+      .infomationContainer {
+        background-image: url("https://www.vecteezy.com/photo/26899960-photo-of-emotional-dynamic-pose-indian-kid-in-school-ai-generative");
+        background-size: cover;
+        backdrop-filter: blur(8px);
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="w-screen h-screen p-0 m-0 overflow-x-hidden">
+    <!-- Main-Window -->
+    <div class="w-screen h-screen flex flex-col">
+      <!-- Header-Nav-Bar -->
+      <div
+        class="shadow-sm h-14 p-2 flex md:justify-center md:items-center w-full"
+      >
+        <div
+          class="md:w-11/12 w-full h-14 flex justify-between items-center bg-white"
+        >
+          <!-- Navigation-Bar-Site-Heading -->
+          <div>
+            <h1
+              class="text-2xl text-slate-900 font-base -tracking-tight p-4 text-black"
+            >
+              Prayaas
+            </h1>
+          </div>
+          <!-- Navigation-Bar-icon-tray-container -->
+          <div class="hidden md:block">
+            <ul class="flex gap-4 text-sm text-black font-semibold">
+              <li><a class="hover:bg-slate-100 px-1 py-1 hover:rounded-md" href="http://localhost:8000/prayaas/home">Home</a></li>
+              <li><a class="hover:bg-slate-100 px-1 py-1 hover:rounded-md" href="http://localhost:8000/prayaas/user/home">Dashboard</a></li>
+              <li><a class="hover:bg-slate-100 px-1 py-1 hover:rounded-md" href="#">Contributions</a></li>
+              <li><a class="hover:bg-slate-100 px-1 py-1 hover:rounded-md" href="#">Blogs</a></li>
+            </ul>
+          </div>
+          <!-- Navigation-Bar-icon-tray-container -->
+          <!-- (Navigation-Bar-buttons) -->
+          <div class="pr-4">
+            <a href="http://localhost:8000/prayaas/login">
+              <button class="font-semibold text-sm hover:bg-zinc-200 rounded-sm bg-zinc-100 px-3 py-0.5 mr-2">
+                Donate
+              </button>
+            </a>
+            <div class="pr-4 inline-block">
+              <div class="relative">
+                <button
+                  id="donateBtn"
+                  class="font-semibold text-sm bg-zinc-100 rounded-sm hover:bg-zinc-200 px-3 py-0.5 mr-2 relative z-10"
+                >
+                  Register
+                </button>
+                <div
+                  id="dropdownMenu"
+                  class="hidden absolute right-0 top-full mt-6 ml-3 bg-opacity-90 bg-white shadow-lg z-20"
+                >
+                  <ul class="px-2 py-2 font-semibold">
+                    <li class="text-black px-3 py-1 w-full bg-slate-100 text-center mb-1 hover:bg-zinc-400">
+                      <a href="http://localhost:8000/prayaas/register">Individual</a>
+                    </li>
+                    <li class="text-black bg-white px-3 py-1 w-full rounded-sm text-center hover:bg-zinc-400">
+                      <a href="http://localhost:8000/prayaas/registerOrg">Organization</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- (Navigation-Bar-buttons) -->
+        </div>
+      </div>
+      <!-- Header-Nav-Bar -->
+
+      
+
+      <!-- Main-Content(Hero Area) -->
+      <div class="h-screen flex justify-center items-start pl-2 pr-2">
+        <div class="md:w-11/12 w-full h-full flex justify-between bg-white items-start ">
+          <div class="w-full">
+
+           
+
+            <div class="w-full h-auto mt-10 infomationContainer rounded-2xl  flex justify-center items-center">
+              <div class="w-12/12 pl-20 pr-20 pt-5 pb-5 rounded-lg">
+                <h1 class="font-base md:text-3xl text-black text-1xl pb-4">
+                  Prayaas
+                </h1>
+
+                <h1 class="font-semibold text-sm text-zinc-600 pl-1 pb-5">
+                  एक कोशिश अपनों के साथ अपनों के लिए
+                </h1>
+
+                <p
+                  class="text-zinc-700 font-semibold text-sm text-balance -tracking-tight"
+                >
+                  Prayaas is a non-profit organization dedicated to empowering
+                  underprivileged communities through education, healthcare, and
+                  socio-economic development initiatives. Founded with a vision
+                  to create positive change and uplift marginalized individuals,
+                  Prayaas works tirelessly to provide access to quality
+                  education, essential healthcare services, and sustainable
+                  livelihood opportunities. Through collaborative efforts with
+                  local communities, volunteers, and stakeholders, Prayaas
+                  strives to break the cycle of poverty and build a brighter
+                  future for all. With a strong commitment to transparency,
+                  integrity, and impact-driven solutions, Prayaas continues to
+                  make a meaningful difference in the lives of those in need,
+                  fostering hope, dignity, and resilience in every endeavor.
+                  Join us in our mission to transform lives and build a more
+                  equitable society for generations to come.
+                </p>
+              </div>
+            </div>
+            
+            <h1>ddd</h1>
+            <div class="w-full h-28 border border-slate-50 rounded-lg bg-slate-100 mt-10 flex justify-between items-center">
+              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
+              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
+              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
+              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
+              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
+              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Main-Content(Hero Area) -->
+
+      <!-- Hero-Image-Section -->
+      <div class="w-full h-fit flex justify-center items-center pl-2 pr-2">
+        <div class="relative md:w-11/12 h-auto bg-green-700">
+          <img
+            class="w-full"
+            src="https://static.vecteezy.com/system/resources/previews/019/636/946/non_2x/ngo-or-non-governmental-organization-to-serve-specific-social-and-political-needs-in-template-hand-drawn-cartoon-flat-illustration-vector.jpg"
+            alt=""
+          />
+
+        </div>
+      </div>
+
+      <!-- Hero-Image-Section -->
+
+      </div>
+    </div>
+    <!-- Main-Window -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const donateBtn = document.getElementById("donateBtn");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+
+        donateBtn.addEventListener("click", () => {
+          dropdownMenu.classList.toggle("hidden");
+        });
+
+        document.addEventListener("click", (event) => {
+          if (
+            !donateBtn.contains(event.target) &&
+            !dropdownMenu.contains(event.target)
+          ) {
+            dropdownMenu.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

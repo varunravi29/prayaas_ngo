@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/src/output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .container {
+            padding-top: 80px;
+        }
+        .anotherone {
+            margin-top: -130px;
+        }
+        body {
+            background-image: url("");
+            background-size: cover;
+            backdrop-filter: blur(25px);
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex justify-center items-center overflow-y-hidden">
+    <div class="fullscreen h-full w-full">
+        <!-- Header section -->
+        <div class="w-full h-60 flex justify-center items-center">
+            <div class="container ">
+                <div class="text-sm font-semibold w-full h-full flex justify-center items-center text-grey-300 text-center tracking-tighter text-slate-800 mt-1">
+                  <h1 class="text-4xl py-1 px-4 border border-gray-200 rounded-lg font-semibold text-slate-800 text-center tracking-tight">
+                    Prayaas - Non-Government Organization
+                </h1>
+                </div>
+                <div class="text-sm font-semibold w-full h-full flex justify-center items-center text-grey-300 text-center tracking-tighter text-slate-800 mt-1">
+                  <h1 class="w-fit py-1 px-4 rounded-lg">
+                    एक कोशिश अपनों के साथ अपनों के लिए
+                  </h1>
+                </div>
+            </div>
+        </div>
+        <!-- Header section -->
+        <!-- Another vertical section -->
+        <div class="anotherone w-full md:h-fit mt-10 md:flex md:justify-center md:items-center h-screen">
+            <div class="md:items-center md:h-full flex justify-right items-end shadow-sm rounded-2xl bg-slate-5 border border-1 border-slate-200">
+                <div class="flex justify-center items-center md:h-full md:w-full">
+                    <div class="w-full h-full flex justify-end items-center rounded-md p-5">
+                        <img class="w-full rounded-2xl" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbDRiv0CPX1DCC9cI9K-UNAYiozMyT-iYAArQFXGjy7Q&s" alt="">
+                    </div>
+                </div>
+                <div class="h-full flex md:justify-start justify-center md:items-center w-full md:w-8/12">
+                    <div class="p-8 rounded-lg w-96">
+                        <h2 class="text-xl font-semibold mb-6 cursor-pointer">Login</h2>
+                        <form id="loginForm" method="POST" action="/login_individual_And_organization">
+                            <!-- EMAIL-INPUT -->
+                            <div class="mb-6">
+                                <label for="email_id" class="block text-sm text-gray-700 font-bold mb-1">Email-ID</label>
+                                <input type="email" id="email_id" name="email_id" class="w-full px-4 py-1 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
+                                <span id="emailError" class="text-red-500 text-xs"></span>
+                            </div>
+                            <!-- EMAIL-INPUT -->
+
+                            <!-- PASSWORD-INPUT -->
+                            <div class="mb-6">
+                                <label for="password" class="block text-gray-700 text-sm font-bold mb-1">Password</label>
+                                <input type="password" id="password" name="password" class="w-full px-4 py-1 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
+                                <span id="passwordError" class="text-red-500 text-xs"></span>
+                            </div>
+                            <!-- PASSWORD-INPUT -->
+
+                            <!-- SUBMIT-BUTTON -->
+                            <button type="submit" class="w-full text-sm bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-300">Login</button>
+                        </form>
+                        <div class="mt-4 text-center text-slate-500">
+                            <h1 class="text-slate-900 text-sm font-semibold">
+                                No account found?
+                                <span>
+                                    <a href="http://localhost:8000/prayaas/home" class="text-blue-400 hover:text-slate-500 font-bold transition duration-300">Signup</a>
+                                </span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Another vertical section -->
+    </div>
+    <script>
+        const emailInput = document.getElementById('email_id');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        emailInput.addEventListener('input', () => {
+            const email = emailInput.value.trim();
+            if (!isValidEmail(email)) {
+                emailError.textContent = 'Invalid email format';
+            } else {
+                emailError.textContent = '';
+            }
+        });
+
+        passwordInput.addEventListener('input', () => {
+            const password = passwordInput.value.trim();
+            if (!isValidPassword(password)) {
+                passwordError.textContent = 'Password must be at least 6 characters';
+            } else {
+                passwordError.textContent = '';
+            }
+        });
+
+        function isValidEmail(email) {
+            // Regular expression for email validation
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function isValidPassword(password) {
+            // Password length validation
+            return password.length >= 6;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prayas-NGO'S</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .slider-container {
+        width: 50%;
+        overflow: hidden;
+      }
+
+      .slider {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .slide {
+        flex: 0 0 100%; /* Adjust width as needed */
+      }
+
+      .slide img {
+        width: 100%;
+        height: auto;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .divback {
+        background-image: url("https://i.pinimg.com/564x/cc/c0/93/ccc0935f46e8e3f53b2f78f4b7abe4b7.jpg");
+        background-size: cover;
+        backdrop-filter: blur(8px);
+        font-family: "Poppins", sans-serif;
+      }
+      .divback1 {
+        background-image: url("https://i.pinimg.com/564x/cc/06/6b/cc066be994dec9acab9cbf0b4c03c33f.jpg");
+        background-size: cover;
+        backdrop-filter: blur(8px);
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* Additional CSS for form */
+      .hidden {
+        display: none;
+      }
+
+      .generate-request,
+      .generate-request1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .generate-request form,
+      .generate-request1 form {
+        width: 300px;
+        margin: auto;
+      }
+
+      .generate-request form input[type="text"],
+      .generate-request form input[type="datetime-local"],
+      .generate-request form textarea,
+      .generate-request1 form input[type="text"],
+      .generate-request1 form input[type="datetime-local"],
+      .generate-request1 form textarea {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .generate-request form button,
+      .generate-request1 form button {
+        width: 100%;
+        padding: 8px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="w-screen h-screen p-0 m-0 overflow-x-hidden">
+    <!-- Main-Window -->
+    <div class="w-screen h-fit flex flex-col">
+      <!-- Header-Nav-Bar -->
+      <div
+        class="shadow-sm h-14 p-2 flex md:justify-center md:items-center w-full"
+      >
+        <div
+          class="md:w-11/12 w-full h-14 flex justify-between items-center bg-black"
+        >
+          <!-- Navigation-Bar-Site-Heading -->
+          <div>
+            <h1
+              class="text-2xl text-slate-900 font-base -tracking-tight p-4 text-white"
+            >
+              Prayaas
+            </h1>
+          </div>
+          <!-- Navigation-Bar-icon-tray-container -->
+          <div class="hidden md:block mr-10">
+            <ul class="flex gap-4 text-xs text-white font-base">
+              <li><a href="http://localhost:8000/prayaas/home">Home</a></li>
+              <li><a href="#">Dashboard</a></li>
+              <li><a href="#">Contributions</a></li>
+              <li><a href="#">Blogs</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Header-Nav-Bar -->
+    </div>
+
+    <!-- Main-content-are -->
+    <div class="w-full h-full flex justify-center pl-2 pr-2 items-start">
+      <div
+        class="w-11/12 h-full flex flex-row items-start bg-zinc-50 border border-blue-200"
+      >
+        <div
+          class="w-3/12 border-r border-gray-300 h-full flex flex-col justify-start items-start"
+        >
+          <!-- User-Card -->
+          <div class="w-full h-full flex flex-col justify-start items-center">
+            <div
+              class="w-11/12 h-fit p-2 m-2 bg-zinc-100 text-slate-800 border border-blue-200 m-2 rounded-md"
+            >
+              <h1 class="text-sm font-semibold tracking-tight">Dashboard</h1>
+            </div>
+            <div
+              class="w-11/12 p-2 h-fit bg-zinc-100 text-slate-800 border border-blue-200 m-2 rounded-md"
+            >
+              <h1 class="text-xs text-black pd-1 font-semibold cursor-pointer">
+                Donor-ID: 
+                <span class="pl-3 text-slate-600">
+                  <%=donor_id  %>
+                </span>
+              </h1>
+              <h1 class="text-xs pd-1 text-black font-semibold cursor-pointer">Name:
+                <span class="text-slate-600 pl-7">
+                  <%=name  %></h1>
+                </span> 
+              <h1 class="text-xs pd-1 text-black font-semibold cursor-pointer">
+                Email-ID:
+                <span class="pl-3 text-slate-600">
+                  <%=email_id %>
+                </span> 
+              </h1>
+              <h1 class="text-xs pd-1 text-black font-semibold cursor-pointer">
+                Contact:
+                <span class="text-slate-600 pl-4">
+                  <%=mobile_no%>
+                </span> 
+              </h1>
+            </div>
+            <!-- User-Card -->
+            <!-- Navigation Menu -->
+            <div class="w-11/12 mt-10">
+              <div
+                class="w-full hover:bg-zinc-200 mt-10 mb-2 rounded-md h-fit p-2 text-slate-800 border-b border-gray-400"
+              >
+                <a href="http://localhost:8000/prayaas/user/home">
+                  <h1 class="text-xs font-semibold cursor-pointer">Home</h1>
+                </a>
+              </div>
+              <div
+                class="w-full hover:bg-zinc-200 mb-2 rounded-md h-fit p-2 text-slate-800 border-b border-gray-400 Show-Generate-Request-Button"
+              >
+                <a href="http://localhost:8000/prayaas/user/request">
+                  <h1 class="text-xs font-semibold cursor-pointer">
+                    Generate Request
+                  </h1>
+                </a>
+              </div>
+              <div
+                class="w-full hover:bg-zinc-200 h-fit mb-2 rounded-md p-2 text-slate-800 border-b border-gray-400"
+              >
+                <a href="http://localhost:8000/prayaas/user/payment_history">
+                  <h1 class="text-xs font-semibold cursor-pointer">
+                    Payment History
+                  </h1>
+                </a>
+              </div>
+              <div
+                class="w-full bg-zinc-200 h-fit mb-2 rounded-md p-2 text-slate-800 border-b border-gray-400"
+              >
+                <a href="http://localhost:8000/prayaas/user/donate">
+                  <h1 class="text-xs font-semibold cursor-pointer">Donate</h1>
+                </a>
+              </div>
+            </div>
+            <!-- Navigation Menu -->
+            <!-- log-functions -->
+            <div class="w-11/12 mt-36">
+              <div
+                class="w-full bg-slate-700 text-white hover:bg-slate-600 mb-2 rounded-md h-fit p-2 text-slate-800 border-b border-gray-400"
+              >
+                <h1 class="text-xs font-semibold">Logout</h1>
+              </div>
+              <div
+                class="w-full bg-slate-700 text-white hover:bg-slate-600 h-fit mb-2 rounded-md p-2 text-slate-800 border-b border-gray-400"
+              >
+                <h1 class="text-xs font-semibold">Help & Support</h1>
+              </div>
+            </div>
+            <!-- log-functions -->
+          </div>
+        </div>
+        <!-- Right Section - Form -->
+        <div
+          class="w-9/12 h-full flex flex-col justify-start items-start overflow-scroll"
+        >
+          <div class="w-full h-52 mt-5">
+            <div
+              class="w-full h-full flex justify-center p-5 items-center gap-10"
+            >
+              <div class="w-full h-full">
+                <div class="block mb-10">
+                  <h1 class="font-bold px-5 mb-5">Donate as</h1>
+                  <p class="px-5 text-xs font-semibold text-slate-900">
+                    * Your Payment Status Will be Confirmed To You by our admin.
+                  </p>
+                  <p class="px-5 text-xs font-semibold text-slate-900">
+                    * Please Input the Valid Donation Amounts and Items
+                    Quantity.
+                  </p>
+                  <p class="px-5 text-xs font-semibold text-red-400">
+                    * Payment Information is secured and not shared with anyone.
+                  </p>
+                  <p class="px-5 text-xs font-semibold text-red-400">
+                    * Any fraudulent or unauthorized requests will be subject to
+                    investigation and appropriate action.
+                  </p>
+                </div>
+                <div
+                  class="w-full h-full flex gap-10 justify-center items-center"
+                >
+                  <div
+                    class="w-4/12 h-full bg-zinc-200 flex justify-center items-center p-10 rounded-lg border border-gray-400 divback font-semibold text-2xl text-slate-900 tracking-tighter cursor-pointer"
+                    id="amountDiv"
+                  >
+                    Amount
+                  </div>
+                  <div
+                    class="w-4/12 h-full bg-zinc-200 flex justify-center items-center p-10 rounded-lg border border-gray-400 divback1 font-semibold text-2xl text-slate-900 tracking-tighter cursor-pointer"
+                    id="itemsDiv"
+                  >
+                    Items
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="generate-request hidden w-full">
+            <form action="/money_donate" method="POST"
+              class="w-full h-full flex flex-col justify-center items-start text-xs"
+            >
+            <label for="donor_id" class="font-semibold"
+                >Donor-ID:
+              </label>
+              <input
+                type="text"
+                name="donor_id"
+                id="donor_id"
+                value=<%=donor_id%>
+                readonly
+                class="bg-slate-200"
+              />
+              <label for="request_type" class="font-semibold mt-1"
+                >Request Type:</label
+              >
+              <input
+                type="text"
+                name="request_type"
+                id="request_type"
+                value="Amount"
+                readonly
+                class="bg-slate-200"
+              />
+
+              <label for="name" class="font-semibold">Name:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value=<%=name%>
+                readonly
+                class="bg-slate-200 pl-2"
+              />
+
+              <label for="email_id" class="font-semibold mt-1">Email ID:</label>
+              <input
+                type="email"
+                name="email_id"
+                id="email_id"
+                placeholder="abc@gmail.com"
+                value=<%=email_id%>
+                class="px-1 py-1 rounded-md bg-slate-200 w-full"
+                readonly
+              />
+
+              <label for="contact" class="font-semibold mt-2"
+                >Contact Number:</label
+              >
+              <input
+                type="tel"
+                name="contact"
+                id="contact"
+                value=<%=mobile_no%>
+                readonly
+                class="px-1 pl-1 py-1 rounded-md bg-slate-200"
+              />
+
+              <label for="date" class="font-semibold mt-2">Date & Time:</label>
+              <input
+                type="datetime-local"
+                name="date"
+                id="date"
+                class="px-3 py-1 rounded-md bg-slate-200"
+                required
+              />
+
+              <label for="amount" class="font-semibold mt-2">Amount:</label>
+              <input
+                type="number"
+                name="amount"
+                id="amount"
+                placeholder="amount"
+                class="px-3 py-1 rounded-md bg-zinc-200"
+                required
+              />
+
+              <label for="description" class="font-semibold mt-2"
+                >Description:</label
+              >
+              <textarea
+                name="description"
+                id="description"
+                placeholder="Enter description"
+                style="width: 100%; height: 150px"
+              ></textarea>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+
+          <!-- Second Donation Form -->
+          <div class="generate-request1 hidden w-full">
+            <form  action="/items_donate" method="POST"
+              class="w-full h-full flex flex-col justify-center items-start text-xs"
+            >
+              <label for="donor_id" class="font-semibold"
+                >Donation ID:
+              </label>
+              <input
+                type="text"
+                name="donor_id"
+                id="donor_id"
+                value=<%=donor_id%>
+                readonly
+                class="bg-slate-200"
+              />
+
+              <label for="request_type" class="font-semibold mt-1"
+                >Request Type:</label
+              >
+              <input
+                type="text"
+                name="request_type"
+                id="request_type"
+                value="Items"
+                readonly
+                class="bg-slate-200"
+              />
+
+              <label for="name" class="font-semibold">Name:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value=<%=name%>
+                readonly
+                class="bg-slate-200"
+              />
+
+              <label for="email_id" class="font-semibold mt-1">Email ID:</label>
+              <input
+                type="email"
+                name="email_id"
+                id="email_id"
+                value=<%=email_id%>
+                class="w-full pl-1 py-1 rounded-md bg-slate-200"
+                readonly
+              />
+
+              <label for="contact" class="font-semibold mt-2"
+                >Contact Number:</label
+              >
+              <input
+                type="tel"
+                name="contact"
+                id="contact"
+                value=<%=mobile_no%>
+                readonly
+                class="px-1 py-1 rounded-md bg-slate-200"
+              />
+
+              <label for="date" class="font-semibold mt-2">Date & Time:</label>
+              <input
+                type="datetime-local"
+                name="date"
+                id="date"
+                class="px-3 py-1 rounded-md bg-slate-200"
+                required
+              />
+
+              <label for="donate_type" class="font-semibold mt-2">Donate as</label>
+              <select
+                name="donate_type"
+                id="donate_type"
+                class="px-2 py-1 rounded-md bg-zinc-200"
+                required
+              >
+                <option class="px-2" value="" disabled selected>Select Request Type</option>
+                <option value="Electronic Devices">Electronic Devices</option>
+                <option value="Food">Food</option>
+                <option value="Clothes">Clothes</option>
+                <option value="Books">Books</option>
+                <option value="Toys">Toys</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Medical Supplies">Medical Supplies</option>
+                <option value="Hygiene Products">Hygiene Products</option>
+                <option value="School Supplies">School Supplies</option>
+              </select>
+
+              <label for="quantity" class="font-semibold mt-2">Quantity:</label>
+              <input
+                type="tel"
+                name="quantity"
+                id="quantity"
+                value=""
+                class="px-3 py-1 rounded-md bg-slate-200"
+              />
+
+              <label for="description" class="font-semibold mt-2"
+                >Description:</label
+              >
+              <textarea
+                name="description"
+                id="description"
+                placeholder="Enter description"
+                style="width: 100%; height: 150px"
+              ></textarea>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+          <!-- Second Donation Form -->
+        </div>
+        <!-- Right Section - Form -->
+      </div>
+    </div>
+    <!-- Main-content-are -->
+
+    <!-- Footer -->
+    <div class="w-full h-fit flex justify-center items-end pl-2 pr-2">
+      <div
+        class="w-11/12 h-fit pt-10 pb-10 flex justify-center items-center bg-gray-800"
+      >
+        <div class="text-slate-200">
+          <h1 class="text-xs font-semibold cursor-pointer">
+            Prayaas@-NGO (Non-Governmental Organization)
+          </h1>
+          <h1 class="text-xs font-semibold text-center cursor-pointer">
+            Copyright@2024.prayaas
+          </h1>
+          <h1 class="text-xs font-semibold text-center cursor-pointer">
+            All Rights Reserved
+          </h1>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+
+    <!-- JavaScript to toggle form visibility -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const amountDiv = document.getElementById("amountDiv");
+        const itemsDiv = document.getElementById("itemsDiv");
+        const generateRequestForm = document.querySelector(".generate-request");
+        const generateRequestForm1 =
+          document.querySelector(".generate-request1");
+
+        amountDiv.addEventListener("click", () => {
+          generateRequestForm.classList.remove("hidden");
+          generateRequestForm1.classList.add("hidden");
+          amountDiv.classList.add("hidden");
+          itemsDiv.classList.add("hidden");
+        });
+
+        itemsDiv.addEventListener("click", () => {
+          generateRequestForm.classList.add("hidden");
+          generateRequestForm1.classList.remove("hidden");
+          amountDiv.classList.add("hidden");
+          itemsDiv.classList.add("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>

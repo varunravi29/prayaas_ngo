@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin@terminal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .cardback {
+      background-image: url("https://i.pinimg.com/564x/81/fe/76/81fe763aae39c2b18052272c529ddf62.jpg");
+      background-size: cover;
+      backdrop-filter: blur(20px);
+    }
+    .cardback1 {
+      background-image: url("https://i.pinimg.com/564x/d8/22/36/d82236f89da36e6c98b5e1c7b4139e03.jpg");
+      background-size: cover;
+      backdrop-filter: blur(20px);
+    }
+    .card3 {
+      background-image: url("https://i.pinimg.com/564x/77/a3/41/77a34122d3ca5ea339a8ca6180804c70.jpg");
+      background-size: cover;
+      backdrop-filter: blur(40px);
+    }
+    .organisation_card {
+      background-image: url("https://i.pinimg.com/564x/ee/0a/f5/ee0af5db30cdf7f9b5a6d4fc60d715ef.jpg");
+      background-size: cover;
+      backdrop-filter: blur(40px);
+    }
+    .individual_card {
+      background-image: url("https://i.pinimg.com/564x/75/a8/cb/75a8cb4db07e3e129c1f5cb9a717456f.jpg");
+      background-size: cover;
+      backdrop-filter: blur(40px);
+    }
+    .fund_card {
+      background-image: url("https://i.pinimg.com/564x/c6/46/7c/c6467c2d826acd966269cc76ff1741e8.jpg");
+      background-size: cover;
+      backdrop-filter: blur(40px);
+    }
+  </style>
+</head>
+<body class="bg-slate-100">
+  <div class="container mx-auto p-0">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-0">
+      <!-- Left Sidebar -->
+      <div class="col-span-1 md:col-span-1 h-full bg-white border border-text-slate-400 rounded-md shadow-md">
+        <!-- Left Sidebar Upper Section -->
+        <div class=" p-4 h-60 w-full">
+          <h1 class="text-slate-800 font-semibold text-xl text-center">Admin Window</h1>
+          <h1 class="text-zinc-800 md:text-md text-sm font-semibold text-md text-center">connect: prayaasngo@gmail.com</h1>
+        </div>
+        <!-- Left Sidebar Upper Section -->
+        
+        <!-- Left Sidebar Bottom Section -->
+        <div class="p-4 h-fit hidden md:block ">
+          <ul class="space-y-2 text-slate-700 text-sm">
+            <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-bold"><a href="http://127.0.0.1:5501/dist/admin.html">Dashboard</a></li>
+            <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold"><a href="http://127.0.0.1:5501/dist/admin_@userManagement.html">User Management</a></li>
+            <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold">Donation Management</li>
+            <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold">Content Management</li>
+            <li class="pb-2 font-semibold hover:rounded-lg pl-2 hover:bg-indigo-100 pt-2 cursor-pointer">Reporting and Analytics</li>
+          </ul>
+        </div>
+        <!-- Left Sidebar Bottom Section -->
+        
+        <!-- Login and Logout Section -->
+        <div class="p-4 text-sm font-bold hidden md:block">
+          <ul class="space-y-2 text-slate-700">
+            <li class="border-b border-gray-400 pl-2 pt-2 hover:rounded-lg hover:bg-indigo-100 pb-2">Logout</li>
+            <li class="pb-2  pl-2 hover:rounded-lg pt-2 hover:bg-indigo-100">Help & Support</li>
+          </ul>
+        </div>
+        <!-- Login and Logout Section -->
+      </div>
+      <!-- Left Sidebar -->
+      
+      <!-- Main Window -->
+      <div class="col-span-1 md:col-span-4 h-screen bg-white rounded-md shadow-md overflow-auto">
+        <!-- Top Navbar -->
+        <div class="bg-white h-16 flex justify-center items-center border border-b-2">
+          <h1 class="text-slate-900 font-semibold">PRAYASS-NGO-ADMIN_TERMINAL <span>&copy;</span>2024 ALL RIGHTS RESERVED</h1>
+        </div>
+        <!-- Top Navbar -->
+        
+        <!-- Right Bottom Section -->
+        <div class="bg-white p-4">
+          <div class="w-full gap-20 flex justify-center items-center">
+            <!-- Card 1 -->
+            <div class="bg-zinc-100 rounded-md shadow-md border md:w-3/12 w-3/12 border-slate-100 cardback p-4">
+              <h1 class="text-slate-700 font-bold text-left">Donations Received</h1>
+              <h1 class="text-zinc-800 text-2xl font-bold text-left mt-2">Rs. 8000 /-</h1>
+            </div>
+            <!-- Card 1 -->
+
+            <!-- Card 2 -->
+            <div class="bg-zinc-100 rounded-md shadow-md border md:w-3/12 w-3/12 border-slate-100 cardback1 p-4">
+              <h1 class="text-slate-700 font-bold text-left">Donation Paid</h1>
+              <h1 class="text-zinc-800 text-2xl font-bold text-left mt-2">Rs. 1000 /-</h1>
+            </div>
+            <!-- Card 2 -->
+
+            <!-- Card 3 -->
+            <div class="bg-zinc-100 rounded-md shadow-md border border-slate-100 md:w-3/12 w-3/12 card3 p-4">
+              <h1 class="text-slate-700 font-bold text-left">Items 
+                <span class="text-slate-700">Donated</span></h1>
+              <h1 class="text-zinc-800 font-bold text-2xl text-left mt-2">324 items</h1>
+            </div>
+            <!-- Card 3 -->
+          </div>
+        </div>
+        <!-- Right Bottom Section -->
+
+        <div class="bg-white p-4">
+          <div class="w-full gap-2 flex justify-center items-center">
+            <!-- Card 1 -->
+            <div class="bg-zinc-100 rounded-md shadow-md border md:w-3/12 h-40 w-3/12 border-slate-100 p-4 organisation_card ">
+              <h1 class="text-slate-700 font-bold text-left text-xl">Organisation</h1>
+              <h1 class="text-slate-700 font-bold text-left text-xl">Registered</h1>
+              <h1 class="text-zinc-800 font-bold text-left mt-2 text-5xl">230</h1>
+            </div>
+            <!-- Card 1 -->
+
+            <!-- Card 2 -->
+            <div class="bg-zinc-100 rounded-md shadow-md border md:w-3/12 w-3/12 h-40 border-slate-100 p-4 individual_card">
+              <h1 class="text-slate-700 font-bold text-left text-xl">Individual</h1>
+              <h1 class="text-slate-700 font-bold text-left text-xl">Registered</h1>
+              <h1 class="text-zinc-800 font-bold text-left mt-2 text-5xl">110</h1>
+            </div>
+            <!-- Card 2 -->
+
+            <!-- Card 3 -->
+            <div class="bg-zinc-100 rounded-md shadow-md border border-slate-100 h-40 md:w-3/12 w-3/12 p-4 fund_card">
+              <h1 class="text-slate-700 font-bold text-left text-xl">Organisation</h1>
+              <h1 class="text-slate-700 font-bold text-left text-xl">Funded</h1>
+              <h1 class="text-zinc-800 font-bold text-left mt-2 text-5xl">23</h1>
+            </div>
+            <!-- Card 3 -->
+          </div>
+        </div>
+
+        <!-- right section bottom area container -->
+        <div class="w-full h-20 flex justify-center items-center gap-0">
+          <div class="w-1/6 h-2/5 bg-white flex justify-center items-center ">
+            <h1 class="text-slate-900 font-semibold rounded-3xl bg-indigo-100 px-5 py-1 cursor-pointer">View Report</h1>
+          </div>
+          <div class="w-1/6 bg-white flex justify-center items-center ">
+            <h1 class="text-slate-900 font-semibold rounded-3xl bg-indigo-100 px-5 py-1 cursor-pointer">Download CSV</h1>
+          </div>
+          <div class="w-1/6 bg-white flex justify-center items-center ">
+            <h1 class="text-slate-900 font-semibold rounded-3xl px-5 py-1 bg-indigo-100 cursor-pointer">Payment-Slips</h1>
+          </div>
+        </div>
+        <!-- right section bottom area container -->
+
+        <!-- scrolable-view-area -->
+        <div class=" h-[460px] m-2 bg-blue-100 rounded-md flex justify-center items-start">
+          <div class="w-8/12 h-10 bg-white mt-2 rounded-md">
+            <input 
+            class="pl-5 font-semibold w-full border-none h-10 flex justify-center items-center"
+            type="search" 
+            name="" 
+            id=""
+            placeholder="search"
+            >
+          </div>
+        </div>
+        <!-- scrolable-view-area -->
+      </div>
+      <!-- Main Window -->
+    </div>
+  </div>
+</body>
+</html>
