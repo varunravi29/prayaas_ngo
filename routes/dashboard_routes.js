@@ -9,6 +9,12 @@ const {
   handle_request_for_money,
 } = require("../controllers.js/dashboard_controlles");
 
+const {
+  verifyToken
+}=require("../controllers.js/usercontrolles")
+
+// router.use(verifyToken);
+
 router.post("/money_donate", handle_donate_as_money_form);
 router.post("/items_donate", handle_donate_as_items_form);
 router.post("/items_request", handle_request_for_items);
@@ -37,6 +43,34 @@ router.get("/prayaas/user/payment_history", (req, res) => {
         .status(500)
         .json({ success: false, message: "Internal server error" });
     });
+});
+
+// USER/REQUEST
+router.get("/prayaas/user/request", (req, res) => {
+  res.render("generate_request", {
+    email_id: req.session.email_id,
+    donor_id: req.session.donor_id,
+    name: req.session.name,
+    mobile_no: req.session.mobile_no,
+  });
+});
+// USER/PAYMENT_HISTORY
+router.get("/prayaas/user/payment_history", (req, res) => {
+  res.render("payments", {
+    donor_id: req.session.donor_id,
+    name: req.session.name,
+    email_id: req.session.email_id,
+    mobile_no: req.session.mobile_no,
+  });
+});
+// USER/DONATE
+router.get("/prayaas/user/donate", (req, res) => {
+  res.render("donate", {
+    email_id: req.session.email_id,
+    donor_id: req.session.donor_id,
+    name: req.session.name,
+    mobile_no: req.session.mobile_no,
+  });
 });
 
 module.exports = router;
