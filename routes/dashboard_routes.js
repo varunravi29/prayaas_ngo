@@ -9,13 +9,9 @@ const {
   handle_request_for_money,
 } = require("../controllers.js/dashboard_controlles");
 
-const {
-  verifyToken
-}=require("../controllers.js/usercontrolles")
+const validateToken = require("../ErrorHandling/validateToken");
 
-// router.use(verifyToken);
-
-router.post("/money_donate", handle_donate_as_money_form);
+router.post("/money_donate", validateToken, handle_donate_as_money_form);
 router.post("/items_donate", handle_donate_as_items_form);
 router.post("/items_request", handle_request_for_items);
 router.post("/amount_request", handle_request_for_money);

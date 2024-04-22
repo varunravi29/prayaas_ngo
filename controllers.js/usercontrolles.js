@@ -11,36 +11,13 @@ const {
   random_donor_id_generator,
 } = require("../model/usermodel");
 
-
-
 // Generate the json-web-token
 const generateToken = (payload) => {
-  const token = jwt.sign(payload, "top_secret_key_is_here", { expiresIn: "15s" });
-  return `Bearer ${token}`; 
-};
-
-
-
-// Middleware to verify the JWT
-const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
-
-  if (!token) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
-
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      if (err.name === "TokenExpiredError") {
-        return res.status(401).json({ message: "Token expired" });
-      }
-      return res.status(401).json({ message: "Invalid Token" });
-    }
-    req.user = decoded;
-    next();
+  const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: "2m",
   });
+  return `Bearer ${token}`;
 };
-
 
 
 const handle_registration_individual = async (req, res) => {
@@ -161,7 +138,6 @@ const handle_login_individual_And_organization = async (req, res) => {
 
             // Generate Token
             const token = generateToken({
-              // userId and email_id is the payload for the jsonwebtoken
               userId: donor_id,
               email_id: email_id,
             });
@@ -280,5 +256,5 @@ module.exports = {
   handle_login_individual_And_organization,
   handle_otp_authenticator,
   generateToken,
-  verifyToken,
+  
 };

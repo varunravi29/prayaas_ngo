@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prayas-NGO'S</title>
-    <!-- <link rel="stylesheet" href="/src/output.css" /> -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,24 +12,22 @@
       rel="stylesheet"
     />
     <style>
-      .slider-container {
-        width: 50%;
-        overflow: hidden;
-      }
-
-      .slider {
-        display: flex;
-        transition: transform 0.5s ease;
-      }
-
-      .slide {
-        flex: 0 0 100%; /* Adjust width as needed */
-      }
-
-      .slide img {
+      .images {
         width: 100%;
         height: auto;
+        transition: transform 0.3s ease-out;
+        transform: scale(0.9);
       }
+      /*.images1 {
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease-out;
+        transform: scale(0.9);
+      }*/
+
+      /*.images:hover {
+        transform: scale(1.1);
+      }*/
 
       body {
         background-image: url("https://i.pinimg.com/564x/c2/b0/6d/c2b06d47a1a66f123f71a75c6bcfcfd0.jpg");
@@ -38,6 +35,7 @@
         backdrop-filter: blur(8px);
         font-family: "Poppins", sans-serif;
       }
+
       .infomationContainer {
         background-image: url("https://www.vecteezy.com/photo/26899960-photo-of-emotional-dynamic-pose-indian-kid-in-school-ai-generative");
         background-size: cover;
@@ -51,15 +49,15 @@
     <div class="w-screen h-screen flex flex-col">
       <!-- Header-Nav-Bar -->
       <div
-        class="shadow-sm h-14 p-2 flex md:justify-center md:items-center w-full"
+        class="h-14 p-2 flex md:justify-center md:items-center w-full bg-slate-100"
       >
         <div
-          class="md:w-11/12 w-full h-14 flex justify-between items-center bg-white"
+          class="md:w-11/12 w-full h-14 flex justify-between items-center bg-slate-100"
         >
           <!-- Navigation-Bar-Site-Heading -->
           <div>
             <h1
-              class="text-2xl text-slate-900 font-base -tracking-tight p-4 text-black"
+              class="text-2xl text-slate-900 font-semibold -tracking-tight p-4 text-black"
             >
               Prayaas
             </h1>
@@ -67,17 +65,43 @@
           <!-- Navigation-Bar-icon-tray-container -->
           <div class="hidden md:block">
             <ul class="flex gap-4 text-sm text-black font-semibold">
-              <li><a class="hover:bg-slate-100 px-1 py-1 hover:rounded-md" href="http://localhost:8000/prayaas/home">Home</a></li>
-              <li><a class="hover:bg-slate-100 px-1 py-1 hover:rounded-md" href="http://localhost:8000/prayaas/user/home">Dashboard</a></li>
-              <li><a class="hover:bg-slate-100 px-1 py-1 hover:rounded-md" href="#">Contributions</a></li>
-              <li><a class="hover:bg-slate-100 px-1 py-1 hover:rounded-md" href="#">Blogs</a></li>
+              <li>
+                <a
+                  class="hover:bg-slate-100 px-1 py-1 hover:rounded-md"
+                  href="http://localhost:8000/prayaas/home"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:bg-slate-100 px-1 py-1 hover:rounded-md"
+                  href="http://localhost:8000/prayaas/user/home"
+                  >Dashboard</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:bg-slate-100 px-1 py-1 hover:rounded-md"
+                  href="#"
+                  >Contributions</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:bg-slate-100 px-1 py-1 hover:rounded-md"
+                  href="#"
+                  >Blogs</a
+                >
+              </li>
             </ul>
           </div>
           <!-- Navigation-Bar-icon-tray-container -->
           <!-- (Navigation-Bar-buttons) -->
           <div class="pr-4">
             <a href="http://localhost:8000/prayaas/login">
-              <button class="font-semibold text-sm hover:bg-zinc-200 rounded-sm bg-zinc-100 px-3 py-0.5 mr-2">
+              <button
+                class="font-semibold text-sm hover:bg-zinc-200 rounded-sm bg-zinc-100 px-3 py-0.5 mr-2"
+              >
                 Donate
               </button>
             </a>
@@ -94,11 +118,19 @@
                   class="hidden absolute right-0 top-full mt-6 ml-3 bg-opacity-90 bg-white shadow-lg z-20"
                 >
                   <ul class="px-2 py-2 font-semibold">
-                    <li class="text-black px-3 py-1 w-full bg-slate-100 text-center mb-1 hover:bg-zinc-400">
-                      <a href="http://localhost:8000/prayaas/register">Individual</a>
+                    <li
+                      class="text-black px-3 py-1 w-full bg-slate-100 text-center mb-1 hover:bg-zinc-400"
+                    >
+                      <a href="http://localhost:8000/prayaas/register"
+                        >Individual</a
+                      >
                     </li>
-                    <li class="text-black bg-white px-3 py-1 w-full rounded-sm text-center hover:bg-zinc-400">
-                      <a href="http://localhost:8000/prayaas/registerOrg">Organization</a>
+                    <li
+                      class="text-black bg-white px-3 py-1 w-full rounded-sm text-center hover:bg-zinc-400"
+                    >
+                      <a href="http://localhost:8000/prayaas/registerOrg"
+                        >Organization</a
+                      >
                     </li>
                   </ul>
                 </div>
@@ -109,28 +141,26 @@
         </div>
       </div>
       <!-- Header-Nav-Bar -->
-
-      
-
       <!-- Main-Content(Hero Area) -->
       <div class="h-screen flex justify-center items-start pl-2 pr-2">
-        <div class="md:w-11/12 w-full h-full flex justify-between bg-white items-start ">
+        <div
+          class="md:w-11/12 w-full h-full flex justify-between bg-white items-start"
+        >
           <div class="w-full">
-
-           
-
-            <div class="w-full h-auto mt-10 infomationContainer rounded-2xl  flex justify-center items-center">
+            <div
+              class="w-full h-auto md:mt-36 infomationContainer rounded-2xl flex justify-center items-center"
+            >
               <div class="w-12/12 pl-20 pr-20 pt-5 pb-5 rounded-lg">
-                <h1 class="font-base md:text-3xl text-black text-1xl pb-4">
+                <h1
+                  class="font-semibold md:text-3xl text-slate-800 text-1xl pb-4"
+                >
                   Prayaas
                 </h1>
-
                 <h1 class="font-semibold text-sm text-zinc-600 pl-1 pb-5">
                   एक कोशिश अपनों के साथ अपनों के लिए
                 </h1>
-
                 <p
-                  class="text-zinc-700 font-semibold text-sm text-balance -tracking-tight"
+                  class="text-slate-900 font-bold text-center text-sm text-balance -tracking-tight"
                 >
                   Prayaas is a non-profit organization dedicated to empowering
                   underprivileged communities through education, healthcare, and
@@ -150,36 +180,249 @@
                 </p>
               </div>
             </div>
-            
-            <h1>ddd</h1>
-            <div class="w-full h-28 border border-slate-50 rounded-lg bg-slate-100 mt-10 flex justify-between items-center">
-              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
-              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
-              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
-              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
-              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
-              <div class=" w-2/12 h-full flex justify-center items-center">logo</div>
+            <div class="w-full h-full flex justify-center items-center">
+              <div class="w-11/12 h-full">
+                <!-- Heading -->
+                <div class="w-full h-full text-center mt-40">
+                  <h1
+                    class="font-semibold text-4xl text-slate-800 tracking-tight"
+                  >
+                    Our Mission And Vision For The Society
+                  </h1>
+                </div>
+                <!-- Heading -->
+                <!-- Card-Container -->
+                <div
+                  class="w-full h-full md:mt-20 md:p-5 rounded-md flex justify-center items-center"
+                >
+                  <!-- Card-01 -->
+                  <div class="w-3/12 h-full">
+                    <!-- Image-Container -->
+                    <div class="w-full h-3/5 flex justify-center items-center">
+                      <img
+                        class="h-64 w-80 images rounded-md"
+                        src="https://i.pinimg.com/564x/6a/2a/85/6a2a85bb2fa79c1f4914ce0dd8f2347a.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <!-- Image-Container -->
+                    <!-- Descitption -->
+                    <div
+                      class="w-full h-2/5 flex justify-center text-center items-center"
+                    >
+                      <h1 class="font-bold pt-2 text-sm">
+                        "Empowering the underserved through education:
+                        Transforming lives one lesson at a time."
+                      </h1>
+                    </div>
+                    <!-- Descitption -->
+                  </div>
+                  <!-- Card-01 -->
+                  <!-- Card-02 -->
+                  <div class="w-3/12 h-full">
+                    <!-- Image-Container -->
+                    <div class="w-full h-3/5 flex justify-center items-center">
+                      <img
+                        class="h-64 w-80 images rounded-md"
+                        src="https://i.pinimg.com/564x/8a/14/a4/8a14a453a25f64f51cb494ff0df9eff7.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <!-- Image-Container -->
+                    <!-- Descitption -->
+                    <div
+                      class="w-full h-2/5 flex justify-center text-center items-center"
+                    >
+                      <h1 class="font-bold pt-5 text-sm">
+                        "Empowering the underprivileged by offering sustenance
+                        without exploitation."
+                      </h1>
+                    </div>
+                    <!-- Descitption -->
+                  </div>
+                  <!-- Card-02 -->
+                  <!-- Card-03 -->
+                  <div class="w-3/12 h-full">
+                    <!-- Image-Container -->
+                    <div
+                      class="w-full h-3/5 md:mb-6 flex justify-center items-center"
+                    >
+                      <img
+                        class="h-64 w-80 images rounded-md"
+                        src="https://i.pinimg.com/564x/c1/14/2a/c1142a22218d7e3ad6fd6bbc40fa143e.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <!-- Image-Container -->
+                    <!-- Descitption -->
+                    <div
+                      class="w-full h-2/5 flex justify-center text-center items-center text-black"
+                    >
+                      <h1 class="font-bold pt-2 text-sm">
+                        "Bringing sustenance to those in need, one meal at a
+                        time."
+                      </h1>
+                    </div>
+                    <!-- Descitption -->
+                  </div>
+                  <!-- Card-03 -->
+                  <!-- Card-03 -->
+                  <div class="w-3/12 h-full">
+                    <!-- Image-Container -->
+                    <div
+                      class="w-full h-3/5 flex md:mb-6 justify-center items-center"
+                    >
+                      <img
+                        class="h-64 w-80 images rounded-md"
+                        src="https://i.pinimg.com/564x/d2/01/10/d20110ab89c2d66f926726c9fbfaee4c.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <!-- Image-Container -->
+                    <!-- Descitption -->
+                    <div
+                      class="w-full h-2/5 flex justify-center text-center items-center text-black"
+                    >
+                      <h1 class="font-bold pt-2 text-sm text-black">
+                        "Bringing sustenance to those in need, one meal at a
+                        time."
+                      </h1>
+                    </div>
+                    <!-- Descitption -->
+                  </div>
+                  <!-- Card-03 -->
+                </div>
+                <!-- Card-Conatainer -->
+
+                <!-- Slogan Container -->
+                <div class="h-full w-full md:mt-32">
+                  <h1
+                    class="text-center font-semibold tracking-tight text-slate-700 text-3xl italic"
+                  >
+                    "Every bit helps! Please donate and make an extra difference
+                    today."
+                  </h1>
+                </div>
+                <!-- Slogan Container -->
+                <!-- Logos-container -->
+                <div
+                  class="h-full w-full flex justify-center items-center gap-5 md:mt-10 md:mb-20"
+                >
+                  <div
+                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
+                  >
+                    <img
+                      class="w-fit h-36 images1"
+                      src="https://i.pinimg.com/564x/9c/1d/b2/9c1db2fe0c047d9c7193736714c8b50f.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
+                  >
+                    <img
+                      class="w-fit h-36"
+                      src="https://i.pinimg.com/564x/4a/51/df/4a51dfbed1b9da58e4bc1fa3bff7d893.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
+                  >
+                    <img
+                      class="w-fit h-36"
+                      src="https://i.pinimg.com/564x/06/6b/98/066b98b41e30f405ec8e044e6a9c4568.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
+                  >
+                    <img
+                      class="w-fit h-36"
+                      src="https://i.pinimg.com/564x/99/6a/f9/996af94267143f254035b0e9d0aa41d9.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
+                  >
+                    <img
+                      class="w-fit h-36"
+                      src="https://i.pinimg.com/564x/af/18/f6/af18f60d9521183066e7c1e6d4c51331.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
+                  >
+                    <img
+                      class="w-fit h-36"
+                      src="https://i.pinimg.com/564x/e3/fb/90/e3fb905b81dab1170f6b7cda040a40dc.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <!-- Logos-container -->
+
+                <!-- Stats-Container -->
+                <div
+                  class="w-full h-20 mt-40 text-center flex justify-center items-center"
+                >
+                  <h1 class="text-slate-800 font-bold text-3xl mb-20">
+                    Join With Us
+                  </h1>
+                </div>
+                <div
+                  class="w-full h-60 mb-20 rounded-lg flex justify-center items-center gap-10"
+                >
+                  <div class="w-5/12 h-full bg-slate-300 border border-slate-200 rounded-2xl flex justify-center items-center">
+                    <div class="w-full h-full flex justify-center items-center">
+                      <div class="h-full w-full">
+                        <div class="w-full h-2/5 rounded-t-lg flex justify-center items-center">
+                          <h1 class="font-bold text-2xl text-slate-900">Organization Registered</h1>
+                        </div>
+                        <div class="w-full h-3/5 bg-slate-100 rounded-b-lg"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="w-5/12 h-full bg-slate-300 border border-slate-200 rounded-2xl flex justify-center items-center">
+                    <div class="w-full h-full flex justify-center items-center">
+                      <div class="h-full w-full">
+                        <div class="w-full h-2/5 rounded-t-lg flex justify-center items-center">
+                          <h1 class="font-bold text-2xl text-slate-900">Individual Registered</h1>
+                        </div>
+                        <div class="w-full h-3/5 bg-slate-100 rounded-b-lg"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Stats-Container -->
+              </div>
             </div>
+
+            <!-- Footer -->
+            <div class="w-full h-fit p-5 bg-slate-100">
+              <h1
+                class="text-md font-bold text-center text-slate-800 cursor-pointer"
+              >
+                Copyright@2024.prayaas
+              </h1>
+              <h1
+                class="text-sm md:mt-2 font-semibold text-center cursor-pointer"
+              >
+                Prayaas@-NGO (Non-Governmental Organization)
+              </h1>
+              <h1 class="text-sm font-semibold text-center cursor-pointer">
+                All Rights Reserved
+              </h1>
+            </div>
+            <!-- Footer -->
           </div>
         </div>
       </div>
       <!-- Main-Content(Hero Area) -->
-
-      <!-- Hero-Image-Section -->
-      <div class="w-full h-fit flex justify-center items-center pl-2 pr-2">
-        <div class="relative md:w-11/12 h-auto bg-green-700">
-          <img
-            class="w-full"
-            src="https://static.vecteezy.com/system/resources/previews/019/636/946/non_2x/ngo-or-non-governmental-organization-to-serve-specific-social-and-political-needs-in-template-hand-drawn-cartoon-flat-illustration-vector.jpg"
-            alt=""
-          />
-
-        </div>
-      </div>
-
-      <!-- Hero-Image-Section -->
-
-      </div>
     </div>
     <!-- Main-Window -->
     <script>

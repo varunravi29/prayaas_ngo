@@ -12,7 +12,6 @@
 
 > Vemula (Web-Design + Resource_Gathering + Ideas )
 ---
-
 #### TECHNOLOGY USED
 
 - TAILWIND CSS
@@ -20,7 +19,6 @@
 - PASSPORT + LOCAL + JWT
 - EMBEDDED JS
 - MY-SQL
--
 ---
 #### IMPLEMENTED
 
