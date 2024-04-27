@@ -1,11 +1,11 @@
 require("dotenv").config;
 const express = require("express");
 const path = require("path");
-const jwt = require("jsonwebtoken");
 const session = require("express-session");
 
 const register_ROUTE = require("./routes/register_ROUTE");
 const dashboard_ROUTE = require("./routes/dashboard_routes");
+const admin_ROUTE = require("./routes/admin_ROUTE");
 
 const app = express();
 
@@ -26,12 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(register_ROUTE);
 app.use(dashboard_ROUTE);
-
-
-
-
-
-
+app.use(admin_ROUTE);
 
 // USER-DASHBOARD-ROUTES
 // HOME-PAGE

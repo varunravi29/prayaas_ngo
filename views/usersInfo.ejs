@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin@terminal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>  
+    .highlight {
+      background-color: rgb(255, 255, 0); /* Change this to the color you want */
+    }
+    /* CSS for the modal */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 30%;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <div class="container mx-auto p-0">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-0">
+      <!-- Left Sidebar -->
+      <div class="col-span-1 md:col-span-1 h-full bg-white border border-text-slate-400 rounded-md shadow-md">
+        <!-- Left Sidebar Upper Section -->
+        <div class="p-4 h-60 w-full">
+          <h1 class="text-slate-800 font-bold text-sm text-center">
+            Admin Window
+          </h1>
+          <h1 class="text-zinc-800 md:text-md text-sm font-bold text-md text-center">
+            domain: prayaasngo@gmail.com
+          </h1>
+        </div>
+        <!-- Left Sidebar Upper Section -->
+
+        <!-- Left Sidebar Bottom Section -->
+        <div class="p-4 h-fit hidden md:block">
+          <ul class="space-y-2 text-slate-700 text-sm">
+            <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold">
+              <a href="http://localhost:8000/prayaas/admin">Dashboard</a>
+            </li>
+            <li class="border-b rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 bg-indigo-100 font-bold">
+              <a href="http://localhost:8000/prayaas/usersInfo">User Management</a>
+            </li>
+            <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold">
+              Donation Management
+            </li>
+            <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold">
+              Request Window
+            </li>
+          </ul>
+        </div>
+        <!-- Left Sidebar Bottom Section -->
+
+        <!-- Login and Logout Section -->
+        <div class="p-4 text-sm font-bold hidden md:block">
+          <ul class="space-y-2 text-slate-700">
+            <li class="border-b border-gray-400 pl-2 pt-2 hover:rounded-lg hover:bg-indigo-100 pb-2">
+              Logout
+            </li>
+            <li class="pb-2 pl-2 hover:rounded-lg pt-2 hover:bg-indigo-100">
+              Help & Support
+            </li>
+          </ul>
+        </div>
+        <!-- Login and Logout Section -->
+      </div>
+      <!-- Left Sidebar -->
+
+      <!-- Main Window -->
+      <div class="col-span-1 md:col-span-4 w-full h-screen bg-white rounded-md shadow-md overflow-scroll">
+        <!-- Top Navbar -->
+        <div class="bg-white h-14 flex justify-center items-center border border-b-2">
+          <h1 class="text-slate-900 font-bold text-sm">
+            PRAYAAS-NGO-ADMIN_TERMINAL <span>&copy;</span>2024 ALL RIGHTS RESERVED
+          </h1>
+        </div>
+        <!-- Top Navbar -->
+
+        <!-- Right Bottom Section -->
+        <div class="bg-white p-4 row1cards w-full">
+          <!-- Heading-container -->
+          <div class="w-full h-full bg-red-100">
+            <h1 class="font-bold text-slate-800 text-md px-10 py-5">User Management</h1>
+          </div>
+          <!-- Heading-container -->
+
+          <!-- Names_Container -->
+          <div class="w-full h-full mt-10 flex gap-5 justify-center items-center ioc">
+            <div style="background-color:#dde0e6;" id="ic" class="rounded-md cursor-pointer w-36 h-9 flex justify-center items-center">
+              <h1 class="font-bold flex justify-center items-center text-md text-slate-900">Individual</h1>
+            </div>
+            <div style="background-color:#dde0e6;" id="oc" class="rounded-md cursor-pointer w-36 h-9 flex justify-center items-center">
+              <h1 class="font-bold flex justify-center items-center text-md text-slate-900 ">Organzation</h1>
+            </div>
+            <div style="background-color:#dde0e6;" id="del" class="rounded-md cursor-pointer w-36 h-9 flex justify-center items-center">
+              <h1 class="font-bold flex justify-center items-center text-md text-slate-900">Delete</h1>
+            </div>
+            <div style="background-color:#dde0e6;" id="upd" class="rounded-md cursor-pointer w-36 h-9 flex justify-center items-center">
+              <h1 class="font-bold flex justify-center items-center text-md text-slate-900 ">Update</h1>
+            </div>
+          </div>
+          <!-- Names_Container -->
+
+          <!-- Operation_Container -->
+          <div class="w-full h-full mt-5 flex gap-5 justify-center items-center pt-2 pb-2">
+          </div>
+          <!-- Operation_Container -->
+
+          <!-- Search Bar -->
+          <div id="searchbar" class="w-full h-full mt-10 hidden justify-center items-center">
+            <input type="search" name="" id="searchInput" placeholder="Search.." class="w-4/5 bg-slate-200 py-1 rounded-md pl-5">
+          </div>
+          <!-- Search Bar -->
+
+          <!-- Image Area -->
+          <div class="w-full flex justify-center items-center" id="imageContainer">
+            <img class="w-fit h-[450px]" src="https://i.pinimg.com/564x/cb/ef/f9/cbeff9d518a4c9e6f5c2334f08bf1898.jpg" alt="">
+          </div>
+          <!-- Image Area -->
+
+            <!-- Show-Area -->
+            <div id="orgShow" class="hidden w-full h-full mt-10 sa flex justify-center items-center gap-5 flex-wrap px-10 ml-5">
+              <% organizations.forEach((organization) => { %>
+                <!-- Card-Model -->
+                <div class="w-5/12 h-fit shadow-md bg-gray-50 rounded-md flex flex-col justify-start items-start px-5 py-5 text-slate-900 font-bold">
+                  <h1 class="text-md text-slate-800 font-bold mb-5 text-left w-full"><%= organization.name %></h1>
+                  <h1 class="text-xs text-slate-800">Organisation ID <span class="pl-2">:</span>
+                    <span class="font-bold text-green-700">
+                      <%= organization.donor_id %>
+                    </span>
+                  </h1>
+                  <h1 class="text-xs ">Email_id <span class="pl-14">:</span><span class="text-slate-600">
+                    <%= organization.email_id %> </h1>
+                  </span>
+                  <h1 class="text-xs ">Contact <span class="pl-[60px]">:</span><span class="text-slate-600">
+                    <%= organization.mobile_no %> </h1>
+                  </span>
+                  <h1 class="mt-2 text-md text-slate-500">Donation Information</h1>
+                  <h1 class="text-xs">Total Donation: Rs <%= totalDonation || 0 %> </h1>
+
+                  <h1 class="text-xs ">Total Requests<span class="pl-2">:</span><%= organization.donation_rs %> </h1>
+                </div>
+                <!-- Card-Model -->
+              <% }); %>
+            </div>
+            <!-- Show-Area -->
+            <!-- Show-Area -->
+            <div id="indShow" class="hidden w-full h-full mt-10 sa flex justify-center items-center gap-10 flex-wrap px-10 ml-5">
+              <% individuals.forEach((individual) => { %>
+                <!-- Card-Model -->
+                <div class="w-5/12 h-fit shadow-md bg-gray-50 border border-gray-200 rounded-xl flex flex-col justify-start items-start px-5 py-5 text-slate-900 font-bold">
+                  <h1 class="text-md text-slate-800 font-bold mb-5 text-left w-full"><%= individual.name %></h1>
+                  <h1 class="text-xs text-slate-800">UID <span class="pl-10">:</span>
+                    <span class="font-bold text-green-700">
+                      <%= individual.donor_id %>
+                    </span>
+                  </h1>
+                  <h1 class="text-xs ">Email_id <span class="pl-3">:</span><span class="text-slate-600">
+                    <%= individual.email_id %> </h1>
+                  </span>
+                  <h1 class="text-xs ">Contact <span class="pl-[12px]">:</span><span class="text-slate-600">
+                    <%= individual.mobile_no %> </h1>
+                  </span>
+                  <h1 class="mt-2 text-md text-gray-500">Donation Information</h1>
+                  <h1 class="text-xs ">Total Donation<span class="pl-2">: Rs</span> <%= individual.donation_rs %> </h1>
+                  <h1 class="text-xs ">Total Requests<span class="pl-2">:</span><%= individual.donation_rs %> </h1>
+                </div>
+                <!-- Card-Model -->
+              <% }); %>
+            </div>
+            <!-- Show-Area -->
+        </div>
+        <!-- Right Bottom Section -->
+      </div>
+      <!-- Main Window -->
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content rounded-lg h-36">
+      <span class="close">&times;</span>
+      <p class="font-semibold text-center">Delete Window</p>
+      <h1 class="text-center text-xs font-bold text-red-600">Once Deleted Information Will Be Permanently Deleted</h1>
+      <div class="w-full flex justify-center items-center mt-3">
+        <form action="/delete" method="GET">
+          <input class="bg-slate-200 text-sm pl-3 py-0.5 rounded-md" placeholder="donor_id" type="number" name="donor_id" id="donor_id">
+          <button type="submit" class="text-sm bg-red-500 text-white px-1 py-1 rounded-md">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const individualContainer = document.getElementById("ic");
+      const organizationContainer = document.getElementById("oc");
+      const organizationShow = document.getElementById("orgShow");
+      const individualShow = document.getElementById("indShow");
+      const imageContainer = document.getElementById("imageContainer");
+      const searchInput = document.getElementById("searchInput");
+      const searchbar = document.getElementById("searchbar");
+      const del = document.getElementById("del");
+      const modal = document.getElementById("myModal");
+
+      individualContainer.addEventListener("click", () => {
+        organizationShow.style.display = "none";
+        individualShow.style.display = "block"; 
+        individualShow.style.display = "flex"; 
+        individualContainer.style.backgroundColor = "#8d99ae";
+        organizationContainer.style.backgroundColor = "#dde0e6";
+        imageContainer.style.display = "none";
+        searchbar.style.display = "flex";
+      });
+
+      organizationContainer.addEventListener("click", () => {
+        organizationShow.style.display = "block"; 
+        organizationShow.style.display = "flex"; 
+        individualShow.style.display = "none";
+        organizationContainer.style.backgroundColor = "#8d99ae";
+        individualContainer.style.backgroundColor = "#dde0e6";
+        imageContainer.style.display = "none";
+        searchbar.style.display = "flex";
+      });
+
+      del.addEventListener("click", () => {
+        modal.style.display = "block";
+      });
+
+      // When the user clicks on <span> (x), close the modal
+      modal.getElementsByClassName("close")[0].onclick = function() {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      function filterContent(query) {
+        const cards = document.querySelectorAll('.sa > div');
+        cards.forEach(card => {
+          let matchFound = false; 
+          const elements = card.querySelectorAll('h1, p');
+          elements.forEach(element => {
+            const text = element.innerText.toLowerCase();
+            if (text.includes(query.toLowerCase())) {
+              matchFound = true; 
+              element.innerHTML = text.replace(new RegExp(query.toLowerCase(), 'gi'), '<span class="highlight">$&</span>');
+            }
+          });
+
+          // Show or hide the card based on whether a match is found
+          card.style.display = matchFound ? 'flex' : 'none';
+        });
+      }
+
+      // Event listener for search input
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.trim(); // Get the search query
+        filterContent(query); // Call the filter function with the query
+      });
+    });
+  </script>
+</body>
+</html>

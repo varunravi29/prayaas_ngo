@@ -50,6 +50,13 @@ const handle_request_for_money = async (req, res) => {
   }
 };
 
+function getPaymentDateTime() {
+  const now = new Date();
+  const date = now.toLocaleDateString('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+  const time = now.toLocaleTimeString('en-IN', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  return `${date} ${time}`;
+}
+
 const handle_request_for_items = async (req, res) => {
   let request_id = await random_request_id_generator();
   const {
@@ -210,5 +217,6 @@ module.exports = {
   fetchMoneyDonations,
   fetchItemDonations,
   handle_request_for_items,
-  handle_request_for_money
+  handle_request_for_money,
+  getPaymentDateTime,
 };

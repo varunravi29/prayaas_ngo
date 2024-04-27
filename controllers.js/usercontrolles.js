@@ -19,7 +19,6 @@ const generateToken = (payload) => {
   return `Bearer ${token}`;
 };
 
-
 const handle_registration_individual = async (req, res) => {
   const { name, email_id, mobile_no, dob, address, gender, password } =
     req.body;
@@ -62,7 +61,8 @@ const handle_registration_individual = async (req, res) => {
 };
 
 const handle_registration_organisation = async (req, res) => {
-  const { type, name, email_id, mobile_no, address, password } = req.body;
+  const { type, organization_name, email_id, contact_no, address, password } =
+    req.body;
 
   const donor_id = await random_donor_id_generator();
   try {
@@ -71,15 +71,15 @@ const handle_registration_organisation = async (req, res) => {
     const isValid = await registerUserOrganisation(
       donor_id,
       type,
-      name,
+      organization_name,
       email_id,
-      mobile_no,
+      contact_no,
       address,
       hashPassword
     );
 
     if (isValid) {
-      console.log("New organization registered:", name);
+      console.log("New organization registered:", organization_name);
       req.session.email_id = email_id;
       req.session.donor_id = donor_id;
       res.redirect("http://localhost:8000/prayaas/otpauthOrg");
@@ -256,5 +256,4 @@ module.exports = {
   handle_login_individual_And_organization,
   handle_otp_authenticator,
   generateToken,
-  
 };

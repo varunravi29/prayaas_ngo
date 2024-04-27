@@ -1,448 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prayas-NGO'S</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Convent Foundation
+    </title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="shortcut icon" href="img/don/salary.png" type="image/x-icon">
     <style>
-      .images {
-        width: 100%;
-        height: auto;
-        transition: transform 0.3s ease-out;
-        transform: scale(0.9);
-      }
-      /*.images1 {
-        width: 100%;
-        height: auto;
-        transition: transform 0.3s ease-out;
-        transform: scale(0.9);
-      }*/
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
-      /*.images:hover {
-        transform: scale(1.1);
-      }*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
 
-      body {
-        background-image: url("https://i.pinimg.com/564x/c2/b0/6d/c2b06d47a1a66f123f71a75c6bcfcfd0.jpg");
-        background-size: cover;
-        backdrop-filter: blur(8px);
-        font-family: "Poppins", sans-serif;
-      }
+body{
+    margin: 0;
+}
 
-      .infomationContainer {
-        background-image: url("https://www.vecteezy.com/photo/26899960-photo-of-emotional-dynamic-pose-indian-kid-in-school-ai-generative");
-        background-size: cover;
-        backdrop-filter: blur(8px);
-        font-family: "Poppins", sans-serif;
-      }
+/* Heading */
+.heading h2{
+    font-size: 28px;
+    font-weight: 500;
+    border-left: 8px solid #303054;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+}
+.heading p{
+    font-size: 18px;
+}
+.heading p span{
+    font-weight: 600;
+    color: #303054;
+}
+
+/* Buttons */
+.btn1{
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: #303054;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none !important;
+    transition: all 0.5s;
+}
+.btn1:hover{
+    background-color: #e6edff;
+    color: #303054;
+}
+
+/* Header */
+header{
+    background-color: #ffffff;
+    width: 100%;
+    
+}
+
+header .navbar-brand{
+    font-size: 22px;
+    font-weight: 600;
+    color: #000000;
+}
+
+nav{
+    padding: 8px 0px !important;
+}
+
+.cont-sec{
+    padding: 8px;
+    background-color: #e6edff;
+    width: 100%;
+}
+
+.cont-sec .contact-cont{
+    display: flex;
+    flex-wrap: wrap;
+}
+.cont-sec p{
+    margin: 0;
+}
+
+.cont-sec p a{
+    text-decoration: none;
+    color: #303054;
+}
+
+.cont-sec .social{
+    text-align: right
+}
+
+.cont-sec .social a img{
+    width: 20px;
+    margin-left: 15px;
+}
+
+.home-sec{
+    /* height: 100vh; */
+    padding: 100px 0;
+}
+
+.home-sec .home-content {
+    align-items: center;
+}
+
+.home-sec .home-content h1{
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+
+} 
+.home-sec .home-content h2 span{
+    color: #14e20d;
+}
+
+.home-sec .home-content h2{
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.home-sec .home-content p{
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+}
+
+.home-sec .img-sec{
+    display: flex;
+    justify-content: center;
+}
+
+.home-sec .img-sec img{
+    width: 400px;
+}
+
+.home-sec .home-content{
+    align-items: center;
+    padding: 150px 0;
+}
+
+/* About section */
+.about-sec{
+    padding: 150px 0;
+    background-color: #e6edff;
+}
+
+.about-sec img{
+    width: 350px;
+    border: 5px solid #303054;
+    border-radius: 5px;
+}
+
+.about-sec .about-txt p{
+    font-size: 18px;
+}
+
+/* Donation Section */
+.don-sec{
+    background-color: #e6edff;
+    padding: 150px 0;
+}
+
+.don-sec .don-box{
+    margin: 50px 0;
+    background-color: #fff;
+    padding: 50px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 15px #b4afaf;
+    transition: all 1s;
+}
+
+.don-sec .don-box img{
+    width: 70px;
+    transition: all 1s;
+}
+
+.don-sec .don-box h3{
+    margin: 15px 0 10px;
+}
+
+.don-sec .don-box p{
+    margin-bottom: 25px;
+}
+
+.don-sec .don-box:hover img{
+    transform: scale(1.1);
+}
+
+/* Missions */
+.mission{
+    padding: 150px 0;
+}
+
+
+.gallery-sec{
+	position: relative;
+	padding: 50px 0;
+}
+
+.gallery-sec .image-container{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	justify-content: center;
+	padding: 10px;
+}
+
+.gallery-sec .image-container .image{
+	height: 200px;
+	width: 300px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.gallery-sec .image-container .image img{
+	height: 100%;
+	width: 100%;
+	border: 5px solid #d4d4d4;
+	object-fit: cover;
+	transition: 0.2s linear;
+}
+
+.gallery-sec .image-container .image:hover img{
+	transform: scale(1.1);
+}
+
+.gallery-sec .pop-image{
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: rgba(0, 0, 0, 0.8);
+	height: 100%;
+	width: 100%;
+	z-index: 100;
+	display: none;
+}
+
+.gallery-sec .pop-image span{
+	position: absolute;
+	top: 120px;
+	right: 50px;
+	font-size: 60px;
+	font-weight: bolder;
+	color: #ffffff;
+	cursor: pointer;
+	z-index: 100;
+}
+
+.gallery-sec .pop-image img{
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 3px solid #ffffff;
+	width: 750px;
+	object-fit: cover;
+}
+
+/* Conatact Us */
+.contact-section {
+    padding: 150px 0 80px;
+}
+
+.contact-section .contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-section .contact-form .form-control {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.contact-section .contact-form textarea.form-control {
+    height: 122px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.contact-section .contact-form .form-control:focus {
+    box-shadow: none;
+}
+
+
+
+
+/* Footer */
+footer{
+    background-color: #303054;
+    color: #e6edff;
+    padding: 50px 0;
+}
+footer h4{
+    margin-bottom: 20px;
+}
+footer p a{
+    text-decoration: none;
+    color: #e6edff;
+}
+footer p a:hover{
+    text-decoration: none;
+    color: #e6edff;
+}
+
+
+footer .col-two ul li{
+    list-style: none;
+}
+
+footer .col-two ul li a{
+    color: #e6edff;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+footer .col-two ul li a:hover{
+    margin-left: 5px;
+}
+footer .social{
+    margin-bottom: 30px;
+}
+footer .social a img{
+    width: 20px;
+    margin-right: 15px;
+}
+
+/* Scroll Bar */
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-track{
+    border: 7px solid transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #303054;
+}
+
+
+
+#donation{
+    height: 50px;
+    width: 100%;
+    padding: 0px 5px;
+    border: none;
+    outline: none;
+    border: 1px solid rgb(206, 212, 218);
+    border-radius: 5px;
+    color: rgb(73, 80, 87);
+    font-weight: 400;
+}
     </style>
-  </head>
-  <body class="w-screen h-screen p-0 m-0 overflow-x-hidden">
-    <!-- Main-Window -->
-    <div class="w-screen h-screen flex flex-col">
-      <!-- Header-Nav-Bar -->
-      <div
-        class="h-14 p-2 flex md:justify-center md:items-center w-full bg-slate-100"
-      >
-        <div
-          class="md:w-11/12 w-full h-14 flex justify-between items-center bg-slate-100"
-        >
-          <!-- Navigation-Bar-Site-Heading -->
-          <div>
-            <h1
-              class="text-2xl text-slate-900 font-semibold -tracking-tight p-4 text-black"
-            >
-              Prayaas
-            </h1>
-          </div>
-          <!-- Navigation-Bar-icon-tray-container -->
-          <div class="hidden md:block">
-            <ul class="flex gap-4 text-sm text-black font-semibold">
-              <li>
-                <a
-                  class="hover:bg-slate-100 px-1 py-1 hover:rounded-md"
-                  href="http://localhost:8000/prayaas/home"
-                  >Home</a
-                >
-              </li>
-              <li>
-                <a
-                  class="hover:bg-slate-100 px-1 py-1 hover:rounded-md"
-                  href="http://localhost:8000/prayaas/user/home"
-                  >Dashboard</a
-                >
-              </li>
-              <li>
-                <a
-                  class="hover:bg-slate-100 px-1 py-1 hover:rounded-md"
-                  href="#"
-                  >Contributions</a
-                >
-              </li>
-              <li>
-                <a
-                  class="hover:bg-slate-100 px-1 py-1 hover:rounded-md"
-                  href="#"
-                  >Blogs</a
-                >
-              </li>
-            </ul>
-          </div>
-          <!-- Navigation-Bar-icon-tray-container -->
-          <!-- (Navigation-Bar-buttons) -->
-          <div class="pr-4">
-            <a href="http://localhost:8000/prayaas/login">
-              <button
-                class="font-semibold text-sm hover:bg-zinc-200 rounded-sm bg-zinc-100 px-3 py-0.5 mr-2"
-              >
-                Donate
-              </button>
-            </a>
-            <div class="pr-4 inline-block">
-              <div class="relative">
-                <button
-                  id="donateBtn"
-                  class="font-semibold text-sm bg-zinc-100 rounded-sm hover:bg-zinc-200 px-3 py-0.5 mr-2 relative z-10"
-                >
-                  Register
-                </button>
-                <div
-                  id="dropdownMenu"
-                  class="hidden absolute right-0 top-full mt-6 ml-3 bg-opacity-90 bg-white shadow-lg z-20"
-                >
-                  <ul class="px-2 py-2 font-semibold">
-                    <li
-                      class="text-black px-3 py-1 w-full bg-slate-100 text-center mb-1 hover:bg-zinc-400"
-                    >
-                      <a href="http://localhost:8000/prayaas/register"
-                        >Individual</a
-                      >
-                    </li>
-                    <li
-                      class="text-black bg-white px-3 py-1 w-full rounded-sm text-center hover:bg-zinc-400"
-                    >
-                      <a href="http://localhost:8000/prayaas/registerOrg"
-                        >Organization</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- (Navigation-Bar-buttons) -->
-        </div>
-      </div>
-      <!-- Header-Nav-Bar -->
-      <!-- Main-Content(Hero Area) -->
-      <div class="h-screen flex justify-center items-start pl-2 pr-2">
-        <div
-          class="md:w-11/12 w-full h-full flex justify-between bg-white items-start"
-        >
-          <div class="w-full">
-            <div
-              class="w-full h-auto md:mt-36 infomationContainer rounded-2xl flex justify-center items-center"
-            >
-              <div class="w-12/12 pl-20 pr-20 pt-5 pb-5 rounded-lg">
-                <h1
-                  class="font-semibold md:text-3xl text-slate-800 text-1xl pb-4"
-                >
-                  Prayaas
-                </h1>
-                <h1 class="font-semibold text-sm text-zinc-600 pl-1 pb-5">
-                  एक कोशिश अपनों के साथ अपनों के लिए
-                </h1>
-                <p
-                  class="text-slate-900 font-bold text-center text-sm text-balance -tracking-tight"
-                >
-                  Prayaas is a non-profit organization dedicated to empowering
-                  underprivileged communities through education, healthcare, and
-                  socio-economic development initiatives. Founded with a vision
-                  to create positive change and uplift marginalized individuals,
-                  Prayaas works tirelessly to provide access to quality
-                  education, essential healthcare services, and sustainable
-                  livelihood opportunities. Through collaborative efforts with
-                  local communities, volunteers, and stakeholders, Prayaas
-                  strives to break the cycle of poverty and build a brighter
-                  future for all. With a strong commitment to transparency,
-                  integrity, and impact-driven solutions, Prayaas continues to
-                  make a meaningful difference in the lives of those in need,
-                  fostering hope, dignity, and resilience in every endeavor.
-                  Join us in our mission to transform lives and build a more
-                  equitable society for generations to come.
-                </p>
-              </div>
-            </div>
-            <div class="w-full h-full flex justify-center items-center">
-              <div class="w-11/12 h-full">
-                <!-- Heading -->
-                <div class="w-full h-full text-center mt-40">
-                  <h1
-                    class="font-semibold text-4xl text-slate-800 tracking-tight"
-                  >
-                    Our Mission And Vision For The Society
-                  </h1>
-                </div>
-                <!-- Heading -->
-                <!-- Card-Container -->
-                <div
-                  class="w-full h-full md:mt-20 md:p-5 rounded-md flex justify-center items-center"
-                >
-                  <!-- Card-01 -->
-                  <div class="w-3/12 h-full">
-                    <!-- Image-Container -->
-                    <div class="w-full h-3/5 flex justify-center items-center">
-                      <img
-                        class="h-64 w-80 images rounded-md"
-                        src="https://i.pinimg.com/564x/6a/2a/85/6a2a85bb2fa79c1f4914ce0dd8f2347a.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <!-- Image-Container -->
-                    <!-- Descitption -->
-                    <div
-                      class="w-full h-2/5 flex justify-center text-center items-center"
-                    >
-                      <h1 class="font-bold pt-2 text-sm">
-                        "Empowering the underserved through education:
-                        Transforming lives one lesson at a time."
-                      </h1>
-                    </div>
-                    <!-- Descitption -->
-                  </div>
-                  <!-- Card-01 -->
-                  <!-- Card-02 -->
-                  <div class="w-3/12 h-full">
-                    <!-- Image-Container -->
-                    <div class="w-full h-3/5 flex justify-center items-center">
-                      <img
-                        class="h-64 w-80 images rounded-md"
-                        src="https://i.pinimg.com/564x/8a/14/a4/8a14a453a25f64f51cb494ff0df9eff7.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <!-- Image-Container -->
-                    <!-- Descitption -->
-                    <div
-                      class="w-full h-2/5 flex justify-center text-center items-center"
-                    >
-                      <h1 class="font-bold pt-5 text-sm">
-                        "Empowering the underprivileged by offering sustenance
-                        without exploitation."
-                      </h1>
-                    </div>
-                    <!-- Descitption -->
-                  </div>
-                  <!-- Card-02 -->
-                  <!-- Card-03 -->
-                  <div class="w-3/12 h-full">
-                    <!-- Image-Container -->
-                    <div
-                      class="w-full h-3/5 md:mb-6 flex justify-center items-center"
-                    >
-                      <img
-                        class="h-64 w-80 images rounded-md"
-                        src="https://i.pinimg.com/564x/c1/14/2a/c1142a22218d7e3ad6fd6bbc40fa143e.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <!-- Image-Container -->
-                    <!-- Descitption -->
-                    <div
-                      class="w-full h-2/5 flex justify-center text-center items-center text-black"
-                    >
-                      <h1 class="font-bold pt-2 text-sm">
-                        "Bringing sustenance to those in need, one meal at a
-                        time."
-                      </h1>
-                    </div>
-                    <!-- Descitption -->
-                  </div>
-                  <!-- Card-03 -->
-                  <!-- Card-03 -->
-                  <div class="w-3/12 h-full">
-                    <!-- Image-Container -->
-                    <div
-                      class="w-full h-3/5 flex md:mb-6 justify-center items-center"
-                    >
-                      <img
-                        class="h-64 w-80 images rounded-md"
-                        src="https://i.pinimg.com/564x/d2/01/10/d20110ab89c2d66f926726c9fbfaee4c.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <!-- Image-Container -->
-                    <!-- Descitption -->
-                    <div
-                      class="w-full h-2/5 flex justify-center text-center items-center text-black"
-                    >
-                      <h1 class="font-bold pt-2 text-sm text-black">
-                        "Bringing sustenance to those in need, one meal at a
-                        time."
-                      </h1>
-                    </div>
-                    <!-- Descitption -->
-                  </div>
-                  <!-- Card-03 -->
-                </div>
-                <!-- Card-Conatainer -->
+</head>
+<body>
+    <div class="fixed-top">
 
-                <!-- Slogan Container -->
-                <div class="h-full w-full md:mt-32">
-                  <h1
-                    class="text-center font-semibold tracking-tight text-slate-700 text-3xl italic"
-                  >
-                    "Every bit helps! Please donate and make an extra difference
-                    today."
-                  </h1>
-                </div>
-                <!-- Slogan Container -->
-                <!-- Logos-container -->
-                <div
-                  class="h-full w-full flex justify-center items-center gap-5 md:mt-10 md:mb-20"
-                >
-                  <div
-                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
-                  >
-                    <img
-                      class="w-fit h-36 images1"
-                      src="https://i.pinimg.com/564x/9c/1d/b2/9c1db2fe0c047d9c7193736714c8b50f.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
-                  >
-                    <img
-                      class="w-fit h-36"
-                      src="https://i.pinimg.com/564x/4a/51/df/4a51dfbed1b9da58e4bc1fa3bff7d893.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
-                  >
-                    <img
-                      class="w-fit h-36"
-                      src="https://i.pinimg.com/564x/06/6b/98/066b98b41e30f405ec8e044e6a9c4568.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
-                  >
-                    <img
-                      class="w-fit h-36"
-                      src="https://i.pinimg.com/564x/99/6a/f9/996af94267143f254035b0e9d0aa41d9.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
-                  >
-                    <img
-                      class="w-fit h-36"
-                      src="https://i.pinimg.com/564x/af/18/f6/af18f60d9521183066e7c1e6d4c51331.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    class="w-2/12 h-36 rounded-md flex justify-center items-center"
-                  >
-                    <img
-                      class="w-fit h-36"
-                      src="https://i.pinimg.com/564x/e3/fb/90/e3fb905b81dab1170f6b7cda040a40dc.jpg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <!-- Logos-container -->
+        <header>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <a class="navbar-brand" style="color: #000000;" href="#home">Prayaas Foundation</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <!-- Stats-Container -->
-                <div
-                  class="w-full h-20 mt-40 text-center flex justify-center items-center"
-                >
-                  <h1 class="text-slate-800 font-bold text-3xl mb-20">
-                    Join With Us
-                  </h1>
-                </div>
-                <div
-                  class="w-full h-60 mb-20 rounded-lg flex justify-center items-center gap-10"
-                >
-                  <div class="w-5/12 h-full bg-slate-300 border border-slate-200 rounded-2xl flex justify-center items-center">
-                    <div class="w-full h-full flex justify-center items-center">
-                      <div class="h-full w-full">
-                        <div class="w-full h-2/5 rounded-t-lg flex justify-center items-center">
-                          <h1 class="font-bold text-2xl text-slate-900">Organization Registered</h1>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto" >
+                            <li class="nav-item active" >
+                                <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#donation">Donations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#mission-id">Missions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div class="cont-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Contact No : <a href="tel: +918329940919">+91 8329940919</a></p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="social">
+                            <a href="#"><img src="/views/img/icons/facebook.png" alt="facebook"></a>
+                            <a href="#"><img src="/img/icons/instagram.png" alt="inatagram"></a>
+                            <a href="#"><img src="/img/icons/youtube.png" alt="youtube"></a>
+                            <a href="#"><img src="/img/icons/linkedin.png" alt="linkedin"></a>
+                            <a href="#"><img src="/img/icons/gmail.png" alt="gnail"></a>
                         </div>
-                        <div class="w-full h-3/5 bg-slate-100 rounded-b-lg"></div>
-                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="w-5/12 h-full bg-slate-300 border border-slate-200 rounded-2xl flex justify-center items-center">
-                    <div class="w-full h-full flex justify-center items-center">
-                      <div class="h-full w-full">
-                        <div class="w-full h-2/5 rounded-t-lg flex justify-center items-center">
-                          <h1 class="font-bold text-2xl text-slate-900">Individual Registered</h1>
-                        </div>
-                        <div class="w-full h-3/5 bg-slate-100 rounded-b-lg"></div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-                <!-- Stats-Container -->
-              </div>
             </div>
-
-            <!-- Footer -->
-            <div class="w-full h-fit p-5 bg-slate-100">
-              <h1
-                class="text-md font-bold text-center text-slate-800 cursor-pointer"
-              >
-                Copyright@2024.prayaas
-              </h1>
-              <h1
-                class="text-sm md:mt-2 font-semibold text-center cursor-pointer"
-              >
-                Prayaas@-NGO (Non-Governmental Organization)
-              </h1>
-              <h1 class="text-sm font-semibold text-center cursor-pointer">
-                All Rights Reserved
-              </h1>
-            </div>
-            <!-- Footer -->
-          </div>
         </div>
-      </div>
-      <!-- Main-Content(Hero Area) -->
+
     </div>
-    <!-- Main-Window -->
+    <section class="home-sec" id="home">
+        <div class="container">
+            <div class="home-content">
+                <div class="row">
+                    <div class="col-lg-6 align-item-center">
+                        <div class="home-info">
+                            <h1>Alone we can do little, together we can do so much</h1>
+                            <h2>We <span>MAB CORP foundation</span> manage wastage for needy peoples</h2>
+                            <p>Make a difference today: donate to MAB CORP and help improve lives.</p>
+                            <div class="buttons">
+                                <a href="#contact" class="btn1">Donate now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-first order-lg-last">
+                        <div class="img-sec">
+                            <img src="./vecteezy_photo-of-emotional-dynamic-pose-indian-kid-in-school-ai_26899960.jpg" alt="home-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="don-sec" id="donation">
+        <div class="container">
+            <div class="heading">
+                <h2>We Manage Wastage or Donation like..</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="img/don/clothing.png" alt="img">
+                        <h3>Clothes</h3>
+                        <p>Give your clothes a second chance: donate them today and help make a difference.</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="img/don/sneakers.png" alt="img">
+                        <h3>Footware</h3>
+                        <p>Step up and make a difference: donate your footwear today and help those in need.</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="img/don/salary.png" alt="img">
+                        <h3>Fund</h3>
+                        <p>Your donation can make a world of difference: give today to support our cause and help those in need.</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="img/don/gadgets.png" alt="img">
+                        <h3>Gadgets</h3>
+                        <p>Unlock the power of giving: donate your gadgets today and help bridge the digital divide for those in need.</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="img/don/book.png" alt="img">
+                        <h3>Stationary</h3>
+                        <p>Make a mark in someone's life: donate your stationery today and help provide educational resources for those in need.</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="img/don/shopping-bag.png" alt="img">
+                        <h3>Food</h3>
+                        <p>Feed a hungry mouth today: donate food and help fight hunger in your community.</p>
+                        <a href="#contact" class="btn1">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission" id="mission-id">
+        <div class="container">
+            <div class="heading">
+                <h2>Our Missions</h2>
+                <p>We have delivered <span>Wastage</span> or <span>Donations</span> to needy Peoples</p>
+            </div>
+            <div class="gallery-sec">
+                <div class="container">
+                    <div class="image-container">
+                        <div class="image"><img src="img/miss/1.jpg" alt="img"></div>
+                        <div class="image"><img src="img/miss/2.jpg" alt="img"></div>
+                        <div class="image"><img src="img/miss/3.jpg" alt="img"></div>
+                        <div class="image"><img src="img/miss/4.jpg" alt="img"></div>
+                        <div class="image"><img src="img/miss/5.jpg" alt="img"></div>
+                        <div class="image"><img src="img/miss/6.jpg" alt="img"></div>
+                    </div>
+                </div>
+                <div class="pop-image">
+                    <span>&times;</span>
+                    <img src="img/gallery/1.jpg" alt="gallery-img">
+                </div>
+                </di v>
+            </div>
+    </section>
+
+    <section class="about-sec" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 about-img">
+                    <img src="img/img-2.jpeg" alt="about">
+                </div>
+                <div class="col-lg-8 order-first order-lg-last">
+                    <div class="heading">
+                        <h2>What We Do & Why We Do</h2>
+                    </div>
+                    <p>At [Welfare Foundation Name], we believe that everyone deserves the chance to live a healthy and fulfilling life. Our mission is to improve the lives of people in need by providing access to basic necessities such as food, shelter, education, and healthcare. We work tirelessly to identify the most pressing needs in our community and develop programs and initiatives to address those needs. </p>
+                    <p>Through our fundraising efforts and the generous support of our donors, we are able to make a positive impact on the lives of thousands of people every year. Whether it's providing a warm meal to someone in need or helping a child receive an education, we are dedicated to making a difference in our community and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="heading">
+                    <h2>Connect With Us</h2>
+                    <p>Fill this form, our team will collect your <span>Donation</span> or <span>Wastage</span> from your place.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mt-5">
+                        <form class="contact-form">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Your Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Mobile No.">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <select name="donation" id="donation">
+                                                        <option value="">Choose Donation or Wastage</option>
+                                                        <option value="food">Food</option>
+                                                        <option value="clothes">Clothes</option>
+                                                        <option value="footware">Footware</option>
+                                                        <option value="books">Books</option>
+                                                        <option value="fund">Fund</option>
+                                                        <option value="gadget">Ele. Gadgets</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Address">
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="text" id="" cols="90" rows="1" placeholder="Message"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mt-3">
+                                            <a href="#" class="btn1 mt-5">Submit Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="col-one">
+                        <h4>MAB CORP foundation</h4>
+                        <p>Address : 3, Near IT Park, GT Road, Lahore 440000 </p>
+                        <p>Contact No : <a href="tel: +92 30059****59">+92 30059****59</a></p>
+                        <p>Email : <a href="mailto:foundation@mabcorp.com">foundation@mabcorp.com</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="col-two">
+                        <h4>Important Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#donation">Donations</a></li>
+                            <li><a href="#mission-id">Missions</a></li>
+                            <li><a href="#about">About us</a></li>
+                            <li><a href="#contact">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="col-one">
+                        <h4>Social Media</h4>
+                        <div class="social">
+                            <a href="#"><img src="img/icons/facebook.png" alt="facebook"></a>
+                            <a href="#"><img src="img/icons/instagram.png" alt="inatagram"></a>
+                            <a href="#"><img src="img/icons/youtube.png" alt="youtube"></a>
+                            <a href="#"><img src="img/icons/linkedin.png" alt="linkedin"></a>
+                            <a href="#"><img src="img/icons/gmail.png" alt="gnail"></a>
+                        </div>
+                        <p>Copyright &copy; 2023 | All Right Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const donateBtn = document.getElementById("donateBtn");
-        const dropdownMenu = document.getElementById("dropdownMenu");
+      document.querySelectorAll('.image-container img').forEach(image => {
+    image.onclick = () => {
+        document.querySelector('.pop-image').style.display = 'block';
+        document.querySelector('.pop-image img').src = image.getAttribute('src');
+    }
+});
 
-        donateBtn.addEventListener("click", () => {
-          dropdownMenu.classList.toggle("hidden");
-        });
-
-        document.addEventListener("click", (event) => {
-          if (
-            !donateBtn.contains(event.target) &&
-            !dropdownMenu.contains(event.target)
-          ) {
-            dropdownMenu.classList.add("hidden");
-          }
-        });
-      });
+document.querySelector('.pop-image span').onclick = () => {
+    document.querySelector('.pop-image').style.display = 'none';
+}
     </script>
-  </body>
+</body>
+
 </html>

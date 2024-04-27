@@ -7,17 +7,27 @@
     <link rel="stylesheet" href="/src/output.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        body {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy2g-L6Pe8cTPeOrpC2g_xrBwouMAG-5Rmsr_Rp1-9hv2yQwTVJEgfOzYLDUZ8DbrFmcA&usqp=CAU");
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(2px);
+            background-attachment: fixed;
+        }
         .container {
             padding-top: 80px;
         }
-        .anotherone {
-            margin-top: -130px;
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); */
         }
-        body {
-            background-image: url("");
-            background-size: cover;
-            backdrop-filter: blur(25px);
-            background-attachment: fixed;
+        .form-container:hover {
+            /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); */
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -27,57 +37,45 @@
         <div class="w-full h-60 flex justify-center items-center">
             <div class="container ">
                 <div class="text-sm font-semibold w-full h-full flex justify-center items-center text-grey-300 text-center tracking-tighter text-slate-800 mt-1">
-                  <h1 class="text-4xl py-1 px-4 border border-gray-200 rounded-lg font-semibold text-slate-800 text-center tracking-tight">
+                  <h1 class="md:text-4xl text-xl py-1 px-4 rounded-lg font-bold text-white text-center tracking-tight">
                     Prayaas - Non-Government Organization
                 </h1>
-                </div>
-                <div class="text-sm font-semibold w-full h-full flex justify-center items-center text-grey-300 text-center tracking-tighter text-slate-800 mt-1">
-                  <h1 class="w-fit py-1 px-4 rounded-lg">
-                    एक कोशिश अपनों के साथ अपनों के लिए
-                  </h1>
                 </div>
             </div>
         </div>
         <!-- Header section -->
         <!-- Another vertical section -->
         <div class="anotherone w-full md:h-fit mt-10 md:flex md:justify-center md:items-center h-screen">
-            <div class="md:items-center md:h-full flex justify-right items-end shadow-sm rounded-2xl bg-slate-5 border border-1 border-slate-200">
-                <div class="flex justify-center items-center md:h-full md:w-full">
-                    <div class="w-full h-full flex justify-end items-center rounded-md p-5">
-                        <img class="w-full rounded-2xl" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbDRiv0CPX1DCC9cI9K-UNAYiozMyT-iYAArQFXGjy7Q&s" alt="">
-                    </div>
-                </div>
-                <div class="h-full flex md:justify-start justify-center md:items-center w-full md:w-8/12">
-                    <div class="p-8 rounded-lg w-96">
-                        <h2 class="text-xl font-semibold mb-6 cursor-pointer">Login</h2>
-                        <form id="loginForm" method="POST" action="/login_individual_And_organization">
-                            <!-- EMAIL-INPUT -->
-                            <div class="mb-6">
-                                <label for="email_id" class="block text-sm text-gray-700 font-bold mb-1">Email-ID</label>
-                                <input type="email" id="email_id" name="email_id" class="w-full px-4 py-1 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
-                                <span id="emailError" class="text-red-500 text-xs"></span>
-                            </div>
-                            <!-- EMAIL-INPUT -->
-
-                            <!-- PASSWORD-INPUT -->
-                            <div class="mb-6">
-                                <label for="password" class="block text-gray-700 text-sm font-bold mb-1">Password</label>
-                                <input type="password" id="password" name="password" class="w-full px-4 py-1 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
-                                <span id="passwordError" class="text-red-500 text-xs"></span>
-                            </div>
-                            <!-- PASSWORD-INPUT -->
-
-                            <!-- SUBMIT-BUTTON -->
-                            <button type="submit" class="w-full text-sm bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-300">Login</button>
-                        </form>
-                        <div class="mt-4 text-center text-slate-500">
-                            <h1 class="text-slate-900 text-sm font-semibold">
-                                No account found?
-                                <span>
-                                    <a href="http://localhost:8000/prayaas/home" class="text-blue-400 hover:text-slate-500 font-bold transition duration-300">Signup</a>
-                                </span>
-                            </h1>
+            <div class="md:items-center md:h-full flex justify-center items-center shadow-sm rounded-2xl">
+                <div class="form-container p-4 md:p-8 rounded-lg w-8/12 md:w-96 bg-white">
+                    <h2 class="text-2xl font-semibold mb-6 text-center cursor-pointer">Login</h2>
+                    <form id="loginForm" method="POST" action="/login_individual_And_organization">
+                        <!-- EMAIL-INPUT -->
+                        <div class="mb-4">
+                            <label for="email_id" class="block text-sm text-gray-700 font-bold mb-1">Email-ID</label>
+                            <input type="email" id="email_id" name="email_id" class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
+                            <span id="emailError" class="error-message"></span>
                         </div>
+                        <!-- EMAIL-INPUT -->
+
+                        <!-- PASSWORD-INPUT -->
+                        <div class="mb-4">
+                            <label for="password" class="block text-gray-700 text-sm font-bold mb-1">Password</label>
+                            <input type="password" id="password" name="password" class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
+                            <span id="passwordError" class="error-message"></span>
+                        </div>
+                        <!-- PASSWORD-INPUT -->
+
+                        <!-- SUBMIT-BUTTON -->
+                        <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-300">Login</button>
+                    </form>
+                    <div class="mt-4 text-center text-gray-700">
+                        <h1 class="text-sm font-semibold">
+                            No account found?
+                            <span>
+                                <a href="http://localhost:8000/prayaas/home" class="text-blue-400 hover:text-blue-500 font-bold transition duration-300">Signup</a>
+                            </span>
+                        </h1>
                     </div>
                 </div>
             </div>

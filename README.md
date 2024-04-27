@@ -36,3 +36,8 @@
 - Main-Website
 - ADMIN PAYMENT ? (NEED TO TALK ON THIS WITH MAM)
 ---
+
+### ADMIN ROUTES URL
+
+http://localhost:8000/prayaas/admin
+http://localhost:8000/prayaas/usersInfo

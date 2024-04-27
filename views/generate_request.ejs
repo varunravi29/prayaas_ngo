@@ -284,14 +284,15 @@
                     class="px-3 py-1 rounded-md bg-slate-200"
                   />
                   <label for="date" class="font-semibold mt-1"
-                    >Date & Time:</label
+                    >Date And Time</label
                   >
                   <input
-                    type="datetime-local"
+                    type="text"
                     name="date"
                     id="date"
+                    value=<%= getTime() %>
                     class="px-3 py-1 rounded-md bg-slate-200"
-                    required
+                    readonly
                   />
                   <label for="request_type" class="font-semibold mt-1"
                     >Request Type:</label
@@ -381,11 +382,12 @@
                     >Date & Time:</label
                   >
                   <input
-                    type="datetime-local"
+                    type="text"
                     name="date"
                     id="date"
+                    value=<%= getTime() %>
                     class="px-3 py-1 rounded-md bg-slate-200"
-                    required
+                    readonly
                   />
                   <label for="request_type" class="font-semibold mt-1"
                     >Request Type:</label

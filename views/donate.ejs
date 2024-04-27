@@ -325,11 +325,12 @@
 
               <label for="date" class="font-semibold mt-2">Date & Time:</label>
               <input
-                type="datetime-local"
+                type="text"
                 name="date"
                 id="date"
+                value=<%= getTime()%>
                 class="px-3 py-1 rounded-md bg-slate-200"
-                required
+                readonly
               />
 
               <label for="amount" class="font-semibold mt-2">Amount:</label>
@@ -418,11 +419,12 @@
 
               <label for="date" class="font-semibold mt-2">Date & Time:</label>
               <input
-                type="datetime-local"
+                type="text"
                 name="date"
                 id="date"
+                value=<%= getTime()%>
                 class="px-3 py-1 rounded-md bg-slate-200"
-                required
+                readonly
               />
 
               <label for="donate_type" class="font-semibold mt-2">Donate as</label>
