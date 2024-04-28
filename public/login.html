@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy2g-L6Pe8cTPeOrpC2g_xrBwouMAG-5Rmsr_Rp1-9hv2yQwTVJEgfOzYLDUZ8DbrFmcA&usqp=CAU");
+            /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy2g-L6Pe8cTPeOrpC2g_xrBwouMAG-5Rmsr_Rp1-9hv2yQwTVJEgfOzYLDUZ8DbrFmcA&usqp=CAU"); */
             background-size: cover;
             background-position: center;
             backdrop-filter: blur(2px);
@@ -22,9 +22,6 @@
             border-radius: 10px;
             /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); */
         }
-        .form-container:hover {
-            /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); */
-        }
         .error-message {
             color: red;
             font-size: 12px;
@@ -32,28 +29,29 @@
     </style>
 </head>
 <body class="h-screen w-screen flex justify-center items-center overflow-y-hidden">
-    <div class="fullscreen h-full w-full">
+    <div class="fullscreen h-full w-full flex justify-center items-center">
         <!-- Header section -->
-        <div class="w-full h-60 flex justify-center items-center">
-            <div class="container ">
-                <div class="text-sm font-semibold w-full h-full flex justify-center items-center text-grey-300 text-center tracking-tighter text-slate-800 mt-1">
-                  <h1 class="md:text-4xl text-xl py-1 px-4 rounded-lg font-bold text-white text-center tracking-tight">
-                    Prayaas - Non-Government Organization
-                </h1>
-                </div>
-            </div>
-        </div>
         <!-- Header section -->
         <!-- Another vertical section -->
-        <div class="anotherone w-full md:h-fit mt-10 md:flex md:justify-center md:items-center h-screen">
+        <div class="anotherone w-full md:h-fit md:flex md:justify-center md:items-center h-screen">
             <div class="md:items-center md:h-full flex justify-center items-center shadow-sm rounded-2xl">
+                <div class="w-full h-full flex flex-col justify-center items-center">
+                <div class="w-full h-full flex flex-col justify-center items-center">
+                    <h1 class="font-bold text-4xl text-slate-800">Prayaas Foundation
+                    <h1 class="font-bold text-md text-slate-600">Alone we can do little, together we can do so much
+                    </h1>
+                </div>
+                <div class="w-full h-full flex justify-center items-center">
+                <div>
+                    <img src="https://i.pinimg.com/564x/e3/7a/fc/e37afc6d035bc072d7b6cbf84c295375.jpg" alt="">
+                </div>
                 <div class="form-container p-4 md:p-8 rounded-lg w-8/12 md:w-96 bg-white">
-                    <h2 class="text-2xl font-semibold mb-6 text-center cursor-pointer">Login</h2>
+                    <h2 class="text-2xl font-bold mb-6 text-left cursor-pointer">Login</h2>
                     <form id="loginForm" method="POST" action="/login_individual_And_organization">
                         <!-- EMAIL-INPUT -->
                         <div class="mb-4">
                             <label for="email_id" class="block text-sm text-gray-700 font-bold mb-1">Email-ID</label>
-                            <input type="email" id="email_id" name="email_id" class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
+                            <input type="email" id="email_id" name="email_id" class="w-full px-4 py-2 bg-indigo-50 rounded-md focus:outline-none focus:border-blue-500" required>
                             <span id="emailError" class="error-message"></span>
                         </div>
                         <!-- EMAIL-INPUT -->
@@ -61,7 +59,7 @@
                         <!-- PASSWORD-INPUT -->
                         <div class="mb-4">
                             <label for="password" class="block text-gray-700 text-sm font-bold mb-1">Password</label>
-                            <input type="password" id="password" name="password" class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
+                            <input type="password" id="password" name="password" class="w-full px-4 py-2 bg-indigo-50 rounded-md focus:outline-none focus:border-blue-500" required>
                             <span id="passwordError" class="error-message"></span>
                         </div>
                         <!-- PASSWORD-INPUT -->
@@ -70,14 +68,16 @@
                         <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-300">Login</button>
                     </form>
                     <div class="mt-4 text-center text-gray-700">
-                        <h1 class="text-sm font-semibold">
+                        <h1 class="text-sm font-bold">
                             No account found?
                             <span>
-                                <a href="http://localhost:8000/prayaas/home" class="text-blue-400 hover:text-blue-500 font-bold transition duration-300">Signup</a>
+                                <a href="http://localhost:8000/prayaas/home" class="text-red-500 hover:text-blue-500 font-bold transition duration-300">Signup</a>
                             </span>
                         </h1>
                     </div>
                 </div>
+            </div>
+        </div>
             </div>
         </div>
         <!-- Another vertical section -->
