@@ -31,7 +31,7 @@ router.get("/prayaas/user/payment_history", (req, res) => {
         email_id: req.session.email_id,
         mobile_no: req.session.mobile_no,
         donate_money: donate_money,
-        donate_items: donate_items, // Pass the fetched donate_items array to the view
+        donate_items: donate_items, 
         getTime: getPaymentDateTime,
       });
     })
