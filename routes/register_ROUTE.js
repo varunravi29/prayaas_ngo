@@ -51,10 +51,6 @@ router.get("/prayaas/otpauthOrg", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "otp_window _org.html"));
 });
 
-// ADMIN_TERMINAL_DETAILS
-router.get("/prayaas/admin", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "admin.html"));
-});
 
 
 

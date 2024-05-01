@@ -25,16 +25,15 @@
 - Bcrypt Password Hashing
 - USER Dashboard
 - EJS Information Viewing
+- ADMIN-Dashboard
+- Main-Website
+- JSON-WEB-TOKEN
+- LOCAL-SESSIONS
 ---
 #### TO IMPLEMENT
 
-- HASHED-URL(COMBINATION OF THE HASHED{EMAIL_ID + DONOR_ID}) 
-- JSON-WEB-TOKEN
-- PASSPORT
-- LOCAL-SESSIONS
-- ADMIN-Dashboard
-- Main-Website
-- ADMIN PAYMENT ? (NEED TO TALK ON THIS WITH MAM)
+- PASSPORT {May be we can do but not required}
+- ADMIN PAYMENT ? (NEED TO TALK ON THIS WITH MAM) {Important}
 ---
 
 ### ADMIN ROUTES URL
@@ -44,8 +43,6 @@ http://localhost:8000/prayaas/usersInfo
 
 
 ### Issues
-> one emailid is both accepted in organization and individual 
+> web  code is not responsive { dashboard + site + admin }
 
-> {so first we need to check the email ids before making the user registration as a individual or organization}
 
->web  code is not responsive { dashboard + site + admin }

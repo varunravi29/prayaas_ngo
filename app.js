@@ -28,22 +28,12 @@ app.use(register_ROUTE);
 app.use(dashboard_ROUTE);
 app.use(admin_ROUTE);
 
-// USER-DASHBOARD-ROUTES
-// HOME-PAGE
-app.get("/prayaas/user/home", async (req, res) => {
-  res.render("home", {
-    email_id: req.session.email_id,
-    donor_id: req.session.donor_id,
-    name: req.session.name,
-    mobile_no: req.session.mobile_no,
-  });
-});
-
 const connection = async () => {
   try {
     await app.listen(8000, () =>
       console.log("Sever is listening on Sever : 8000")
     );
+    console.log(`http://localhost:8000/prayaas/home`)
   } catch (error) {
     console.log(error);
   }

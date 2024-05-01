@@ -8,6 +8,7 @@ const {
   handle_request_for_items,
   handle_request_for_money,
   getPaymentDateTime,
+  amountDonatedByDonor_Id,
 } = require("../controllers.js/dashboard_controlles");
 
 const validateToken = require("../ErrorHandling/validateToken");
@@ -31,7 +32,7 @@ router.get("/prayaas/user/payment_history", (req, res) => {
         email_id: req.session.email_id,
         mobile_no: req.session.mobile_no,
         donate_money: donate_money,
-        donate_items: donate_items, 
+        donate_items: donate_items,
         getTime: getPaymentDateTime,
       });
     })
@@ -43,16 +44,41 @@ router.get("/prayaas/user/payment_history", (req, res) => {
     });
 });
 
-// USER/REQUEST
-router.get("/prayaas/user/request", (req, res) => {
-  res.render("generate_request", {
-    email_id: req.session.email_id,
-    donor_id: req.session.donor_id,
-    name: req.session.name,
-    mobile_no: req.session.mobile_no,
-    getTime: getPaymentDateTime,
-  });
+router.get("/prayaas/user/home", async (req, res) => {
+  try {
+    const donatedAmount = await amountDonatedByDonor_Id(
+      req.session.donor_id
+    );
+    res.render("home", {
+      email_id: req.session.email_id,
+      donor_id: req.session.donor_id,
+      name: req.session.name,
+      mobile_no: req.session.mobile_no,
+      amountDonatedByDonor_Id: donatedAmount,
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
 });
+
+// USER/REQUEST
+router.get("/prayaas/user/request", async (req, res) => {
+  try {
+    res.render("generate_request", {
+      email_id: req.session.email_id,
+      donor_id: req.session.donor_id,
+      name: req.session.name,
+      mobile_no: req.session.mobile_no,
+      amountDonatedByDonor_Id: amountDonatedByDonor_Id,
+      getTime: getPaymentDateTime,
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
 // USER/PAYMENT_HISTORY
 router.get("/prayaas/user/payment_history", (req, res) => {
   res.render("payments", {

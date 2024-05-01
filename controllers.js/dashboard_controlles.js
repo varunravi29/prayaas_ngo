@@ -52,8 +52,17 @@ const handle_request_for_money = async (req, res) => {
 
 function getPaymentDateTime() {
   const now = new Date();
-  const date = now.toLocaleDateString('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit' });
-  const time = now.toLocaleTimeString('en-IN', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const date = now.toLocaleDateString("en-IN", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+  const time = now.toLocaleTimeString("en-IN", {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
   return `${date} ${time}`;
 }
 
@@ -211,6 +220,26 @@ const fetchItemDonations = () => {
   });
 };
 
+const amountDonatedByDonor_Id = async (donor_id) => {
+  const sql =
+    "SELECT SUM(amount) AS amountDonatedByDonor_Id FROM money_donate WHERE donor_id = ?";
+  try {
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, [donor_id], (error, results) => {
+        if (error) {
+          console.log("Error Counting the totalItemsDonated:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+    return results[0].amountDonatedByDonor_Id;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   handle_donate_as_money_form,
   handle_donate_as_items_form,
@@ -219,4 +248,5 @@ module.exports = {
   handle_request_for_items,
   handle_request_for_money,
   getPaymentDateTime,
+  amountDonatedByDonor_Id,
 };
