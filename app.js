@@ -44,6 +44,7 @@ const connection = async () => {
     await app.listen(8000, () =>
       console.log("Sever is listening on Sever : 8000")
     );
+    console.log(`http://localhost:8000/prayaas/home`)
   } catch (error) {
     console.log(error);
   }
