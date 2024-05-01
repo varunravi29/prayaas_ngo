@@ -9,6 +9,8 @@ const {
   registerUserOrganisation,
   otpAuthenticator,
   random_donor_id_generator,
+  MobileAndEmailInIndividualTable,
+  MobileAndEmailInOrganizationTable,
 } = require("../model/usermodel");
 
 // Generate the json-web-token
@@ -24,31 +26,43 @@ const handle_registration_individual = async (req, res) => {
     req.body;
 
   try {
-    const hashPassword = await bcrypt.hash(password, 5);
-    const donor_id = await random_donor_id_generator();
-    const isValid = await registerUserIndividual(
-      donor_id,
-      name,
+    const emailExists = await MobileAndEmailInOrganizationTable(
       email_id,
-      mobile_no,
-      dob,
-      address,
-      gender,
-      hashPassword
+      mobile_no
     );
 
-    if (isValid) {
-      console.log("New user registered:", name);
-      req.session.email_id = email_id;
-      req.session.donor_id = donor_id;
-      req.session.mobile_no = mobile_no;
-      res.redirect(
-        `http://localhost:8000/prayaas/otpauth?email=${req.session.token}`
+    if (!emailExists) {
+      const hashPassword = await bcrypt.hash(password, 5);
+      const donor_id = await random_donor_id_generator();
+      const isValid = await registerUserIndividual(
+        donor_id,
+        name,
+        email_id,
+        mobile_no,
+        dob,
+        address,
+        gender,
+        hashPassword
       );
+
+      if (isValid) {
+        console.log("New user registered:", name);
+        req.session.email_id = email_id;
+        req.session.donor_id = donor_id;
+        req.session.mobile_no = mobile_no;
+        res.redirect(
+          `http://localhost:8000/prayaas/otpauth?email=${req.session.token}`
+        );
+      } else {
+        res.status(409).json({
+          success: false,
+          message: "Username or email already exists",
+        });
+      }
     } else {
       res.status(409).json({
         success: false,
-        message: "Username or email already exists",
+        message: "Email or mobile number already exists",
       });
     }
   } catch (error) {
@@ -61,32 +75,41 @@ const handle_registration_individual = async (req, res) => {
 };
 
 const handle_registration_organisation = async (req, res) => {
-  const { type, organization_name, email_id, contact_no, address, password } =
-    req.body;
+  const { type, name, email_id, mobile_no, address, password } = req.body;
 
-  const donor_id = await random_donor_id_generator();
   try {
-    // We will Hash the Password
-    const hashPassword = await bcrypt.hash(password, 5);
-    const isValid = await registerUserOrganisation(
-      donor_id,
-      type,
-      organization_name,
-      email_id,
-      contact_no,
-      address,
-      hashPassword
-    );
+    const emailExists = await MobileAndEmailInIndividualTable(
+      email_id, // viseriousplay@gmail.com
+      mobile_no
+    ); // it will return the 1
 
-    if (isValid) {
-      console.log("New organization registered:", organization_name);
-      req.session.email_id = email_id;
-      req.session.donor_id = donor_id;
-      res.redirect("http://localhost:8000/prayaas/otpauthOrg");
+    if (!emailExists) {
+      const hashPassword = await bcrypt.hash(password, 5);
+      const donor_id = await random_donor_id_generator();
+      const isValid = await registerUserOrganisation(
+        donor_id,
+        type,
+        name,
+        email_id,
+        mobile_no,
+        address,
+        hashPassword
+      );
+      if (isValid) {
+        console.log("New organization registered:", name);
+        req.session.email_id = email_id;
+        req.session.donor_id = donor_id;
+        res.redirect("http://localhost:8000/prayaas/otpauthOrg");
+      } else {
+        res.status(409).json({
+          success: false,
+          message: "Organization name or email already exists",
+        });
+      }
     } else {
       res.status(409).json({
         success: false,
-        message: "Organization name or email already exists",
+        message: "Email or mobile number already exists",
       });
     }
   } catch (error) {

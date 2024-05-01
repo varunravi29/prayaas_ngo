@@ -9,6 +9,45 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+const MobileAndEmailInIndividualTable = async (email_id, mobile_no) => {
+  try {
+    const sql = `
+      SELECT email_id, mobile_no FROM signupdb_individual 
+      WHERE email_id = ? OR mobile_no = ?
+    `;
+    const results = await connection.query(sql, [email_id, mobile_no]);
+    console.log(`this is the result_set: ${results._resultSet}`);
+    if (results.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error("Error querying tables:", error.message);
+    throw error;
+  }
+};
+
+const MobileAndEmailInOrganizationTable = async (email_id, mobile_no) => {
+  try {
+    const sql = `
+      SELECT email_id, mobile_no FROM signupdb_organization 
+      WHERE email_id = ? OR mobile_no = ?
+    `;
+    const results = await connection.query(sql, [email_id, mobile_no]);
+    console.log("Results:", results);
+
+    if (results.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error("Error querying tables:", error.message);
+    throw error;
+  }
+};
+
 const registerUserIndividual = async (
   donor_id,
   name,
@@ -25,16 +64,7 @@ const registerUserIndividual = async (
 
       connection.query(
         sql,
-        [
-          donor_id,
-          name,
-          email_id,
-          mobile_no,
-          dob,
-          gender,
-          address,
-          password,
-        ],
+        [donor_id, name, email_id, mobile_no, dob, gender, address, password],
         async (error, results) => {
           if (error) {
             console.error(
@@ -107,15 +137,7 @@ const registerUserOrganisation = async (
 
       connection.query(
         sql,
-        [
-          donor_id,
-          type,
-          name,
-          email_id,
-          mobile_no,
-          address,
-          password,
-        ],
+        [donor_id, type, name, email_id, mobile_no, address, password],
         async (error, results) => {
           if (error) {
             console.error(
@@ -199,8 +221,7 @@ const loginUserAndOrganization = async (email_id, password) => {
               } else {
                 if (orgResults.length > 0) {
                   // Extract donor_id, name, and contact from organization table
-                  const { donor_id, mobile_no, name } =
-                    orgResults[0];
+                  const { donor_id, mobile_no, name } = orgResults[0];
                   resolve({
                     type: "organization",
                     donor_id,
@@ -271,7 +292,6 @@ const updateOtp = async (email_id, otp, password) => {
   });
 };
 
-
 // const accessTokenFromSessions = async(req,res)=>{
 //   const sql = `INSERT INTO {}`;
 // }
@@ -306,7 +326,8 @@ const otpAuthenticator = async (email_id, otp, res) => {
 
         if (results.length > 0) {
           console.log("OTP verified successfully for:", email_id);
-          res.status(200).json({ message: "OTP verified successfully" });
+          res.redirect("http://localhost:8000/prayaas/login");
+          // res.status(200).json({ message: "OTP verified successfully" });
         } else {
           console.log("Invalid OTP for:", email_id);
           res.status(400).json({ message: "Invalid OTP" });
@@ -325,4 +346,6 @@ module.exports = {
   loginUserAndOrganization,
   otpAuthenticator,
   random_donor_id_generator,
+  MobileAndEmailInIndividualTable,
+  MobileAndEmailInOrganizationTable,
 };
