@@ -41,3 +41,11 @@
 
 http://localhost:8000/prayaas/admin
 http://localhost:8000/prayaas/usersInfo
+
+
+### Issues
+> one emailid is both accepted in organization and individual 
+
+> {so first we need to check the email ids before making the user registration as a individual or organization}
+
+>web  code is not responsive { dashboard + site + admin }
