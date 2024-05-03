@@ -74,7 +74,7 @@
 
         <!-- Navigation-Bar-Site-Heading -->
         <div>
-          <h1 class="text-2xl text-slate-900 font-base -tracking-tight p-4 text-black">
+          <h1 class="text-2xl font-semibold -tracking-tight p-4 text-slate-800">
             Prayaas
           </h1>
         </div>
@@ -82,13 +82,13 @@
 
         <!-- Navigation-Bar-icon-tray-container -->
         <div class="hidden md:block mr-10">
-          <ul class="flex gap-4 text-xs text-black font-base">
+          <ul class="flex gap-4 text-xs text-slate-800 font-base">
             <li><a href="http://localhost:8000/prayaas/home">
-                <h1 class="text-xs font-semibold cursor-pointer">Home</h1>
+                <h1 class="text-sm font-bold cursor-pointer">Home</h1>
               </a></li>
-            <li><a class="text-xs font-semibold cursor-pointer" href="#">Dashboard</a></li>
-            <li><a class="text-xs font-semibold cursor-pointer" href="#">Contributions</a></li>
-            <li><a class="text-xs font-semibold cursor-pointer" href="#">Blogs</a></li>
+            <li><a class="text-sm font-bold cursor-pointer" href="#">Dashboard</a></li>
+            <li><a class="text-sm font-bold cursor-pointer" href="#">Contributions</a></li>
+            <li><a class="text-sm font-bold cursor-pointer" href="#">Blogs</a></li>
           </ul>
         </div>
         <!-- Navigation-Bar-icon-tray-container -->
@@ -203,20 +203,25 @@
         <div class="w-full h-full md:mb-0 mt-20 md:mt-5">
           <h1 class="px-10 py-5 font-semibold text-md font-semibold ">Donations Statistics</h1>
           <div class="w-full h-36 flex flex-wrap p-2 justify-center gap-10 items-center">
-            <div class="w-4/12 rounded-md h-full border border-slate-300">
+            <div class="w-4/12 rounded-md h-full shadow-sm border border-slate-300">
               <h1 class="text-sm font-bold text-center py-4 text-slate-700 bg-zinc-200">Amount Donated</h1>
               <h1 class="text-3xl text-center font-semibold px-3 py-3 text-slate-700">Rs <%= amountDonatedByDonor_Id || 0 %> /-</h1>
             </div>
-            <div class="w-4/12 rounded-md h-full border border-slate-300">
+            <div class="w-4/12 rounded-md h-full shadow-sm border border-slate-300">
               <h1 class="text-sm font-bold text-center py-4 text-slate-700 bg-zinc-200">Amount Received</h1>
               <h1 class="text-3xl text-center font-semibold px-3 py-3 text-slate-700">Rs <%= "0" || 0 %> /-</h1>
             </div>
-            <div class="w-4/12 rounded-md h-full border border-slate-300">
-              <h1 class="text-sm font-bold text-center py-4 text-slate-700 bg-zinc-200">Items Donated</h1>
-              <h1 class="text-xs font-semibold pb-1 px-3 pt-2 text-slate-700">1. Food <span class="pl-5">: 9</span></h1>
-              <h1 class="text-xs font-semibold pb-1 px-3 pb-1 text-slate-700">2. Clothes <span class="pl-0">: 20</span></h1>
-              <h1 class="text-xs font-semibold pb-1 px-3 pb-1 text-slate-700">3. Books <span class="pl-3">: 25</span></h1>
-
+            <div class="w-4/12 rounded-md h-fit border border-slate-300">
+              <h1 class="text-sm font-bold text-center py-4 text-slate-700 bg-white">Items Donated</h1>
+              <h1 class="text-xs font-semibold px-3 pt-2 pb-2 text-slate-700 bg-gray-200">Food <span class="pl-5">: <%= Food || 0 %></span></h1>
+              <h1 class="text-xs font-semibold px-3 pb-2 pt-1 text-slate-700 ">Clothes <span class="pl-0">: <%= Clothes || 0 %></span></h1>
+              <h1 class="text-xs font-semibold px-3 pb-2 pt-1 text-slate-700 bg-gray-200">Electronic Devices <span class="pl-3">: <%= ElectronicDevices || 0 %></span></h1>
+              <h1 class="text-xs font-semibold px-3 pb-2 pt-1 text-slate-700 ">Books <span class="pl-0">: <%= Books || 0 %></span></h1>
+              <h1 class="text-xs font-semibold px-3 pb-2 pt-1 text-slate-700 bg-gray-200">Toys <span class="pl-3">: <%= Toys || 0 %></span></h1>
+              <h1 class="text-xs font-semibold px-3 pb-2 pt-1 text-slate-700 ">Furniture <span class="pl-0">: <%= Furniture || 0 %></span></h1>
+              <h1 class="text-xs font-semibold px-3 pb-2 pt-1 text-slate-700 bg-gray-200">Medical Supplies <span class="pl-3">: <%= MedicalSupplies || 0 %></span></h1>
+              <h1 class="text-xs font-semibold px-3 pb-2 pt-1 text-slate-700 ">Hygiene Products <span class="pl-0">: <%= HygieneProducts || 0 %> </span></h1>
+              <h1 class="text-xs font-semibold px-3 pb-2 pt-1 text-slate-700 ">School Supplies <span class="pl-0">: <%= SchoolSupplies || 0 %> </span></h1>
           </div>
         </div>
         <!-- Data-Analytics -->

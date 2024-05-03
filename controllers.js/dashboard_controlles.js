@@ -240,6 +240,26 @@ const amountDonatedByDonor_Id = async (donor_id) => {
   }
 };
 
+const ItemsCount = async (donor_id, item) => {
+  const sql = `SELECT SUM(quantity) AS ItemCount FROM items_donate WHERE donor_id = ? AND donate_type = ?`;
+  try {
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, [donor_id, item], (error, results) => {
+        if (error) {
+          console.log("Error Counting the Items: ", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+    return results[0].ItemCount;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 module.exports = {
   handle_donate_as_money_form,
   handle_donate_as_items_form,
@@ -249,4 +269,5 @@ module.exports = {
   handle_request_for_money,
   getPaymentDateTime,
   amountDonatedByDonor_Id,
+  ItemsCount
 };

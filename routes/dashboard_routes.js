@@ -9,6 +9,7 @@ const {
   handle_request_for_money,
   getPaymentDateTime,
   amountDonatedByDonor_Id,
+  ItemsCount,
 } = require("../controllers.js/dashboard_controlles");
 
 const validateToken = require("../ErrorHandling/validateToken");
@@ -46,15 +47,31 @@ router.get("/prayaas/user/payment_history", (req, res) => {
 
 router.get("/prayaas/user/home", async (req, res) => {
   try {
-    const donatedAmount = await amountDonatedByDonor_Id(
-      req.session.donor_id
-    );
+    const donatedAmount = await amountDonatedByDonor_Id(req.session.donor_id);
+    const ElectronicDevices = await ItemsCount(req.session.donor_id, "Electronic Devices");
+    const Clothes = await ItemsCount(req.session.donor_id, "Clothes");
+    const Food = await ItemsCount(req.session.donor_id, "Food");
+    const Books = await ItemsCount(req.session.donor_id, "Books");
+    const Toys = await ItemsCount(req.session.donor_id, "Toys");
+    const Furniture = await ItemsCount(req.session.donor_id, "Furniture");
+    const MedicalSupplies = await ItemsCount(req.session.donor_id, "Medical Supplies");
+    const HygieneProducts = await ItemsCount(req.session.donor_id, "Hygiene Products");
+    const SchoolSupplies = await ItemsCount(req.session.donor_id, "School Supplies");
     res.render("home", {
       email_id: req.session.email_id,
       donor_id: req.session.donor_id,
       name: req.session.name,
       mobile_no: req.session.mobile_no,
       amountDonatedByDonor_Id: donatedAmount,
+      ElectronicDevices:ElectronicDevices,
+      Clothes:Clothes,
+      Food:Food,
+      Books:Books,
+      Toys:Toys,
+      Furniture:Furniture,
+      MedicalSupplies:MedicalSupplies,
+      HygieneProducts:HygieneProducts,
+      SchoolSupplies:SchoolSupplies,
     });
   } catch (error) {
     console.error("Error fetching data:", error);

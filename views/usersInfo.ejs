@@ -196,6 +196,14 @@
               <% }); %>
             </div>
             <!-- Show-Area -->
+            <!-- Update-window -->
+            <div class="w-full h-full hidden justify-center items-center updWindow">
+              <form action="" method="post">
+                <label for="test"></label>
+                <input type="text" name="test" id="test">
+              </form>
+            </div>
+            <!-- Update-window -->
         </div>
         <!-- Right Bottom Section -->
       </div>
@@ -217,6 +225,8 @@
       </div>
     </div>
   </div>
+
+
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -249,6 +259,16 @@
         imageContainer.style.display = "none";
         searchbar.style.display = "flex";
       });
+
+      upd.addEventListener("click",()=>{
+        individualShow.style.display="none"
+        imageContainer.style.display = "none";
+        updWindow.style.display = "flex"
+        updWindow.style.backgroundColor = "#8d99ae"
+        organizationContainer.style.backgroundColor = "#8d99ae";
+        individualContainer.style.backgroundColor = "#dde0e6";
+
+      })
 
       del.addEventListener("click", () => {
         modal.style.display = "block";
