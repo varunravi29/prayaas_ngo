@@ -171,13 +171,115 @@ const sumOfDonationByIndividual = async () => {
   }
 };
 
+const requested_amount = async () => {
+  const sql = `SELECT * FROM amount_request`;
+  return new Promise((resolve, reject) => {
+    connection.query(sql, (error, results) => {
+      if (error) {
+        console.log("Error fetching the requested Amount data");
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
+const requested_Items = async () => {
+  const sql = `SELECT * FROM items_request`;
+  return new Promise((resolve, reject) => {
+    connection.query(sql, (error, results) => {
+      if (error) {
+        console.log("Error fetching the requested items data");
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
+const deleteRequests = (req, res) => {
+  const { request_id } = req.body;
+  const sql1 = `DELETE FROM amount_request WHERE request_id = ? `;
+  const sql2 = `DELETE FROM items_request WHERE request_id = ? `;
+
+  connection.query(sql1, [request_id], (error1, results1) => {
+    if (error1) {
+      console.error("Error deleting amount_request:", error1);
+      res.status(500).json({ error: "Failed to delete requests" });
+    } else {
+      if (results1.affectedRows === 0) {
+        connection.query(sql2, [request_id], (error2, results2) => {
+          if (error2) {
+            console.error("Error deleting items_request:", error2);
+            res.status(500).json({ error: "Failed to delete requests" });
+          } else {
+            if (results2.affectedRows === 0) {
+              res.status(404).json({ error: "Request ID not found" });
+            } else {
+              res.redirect("http://localhost:8000/prayaas/request_window");
+            }
+          }
+        });
+      } else {
+        res.redirect("http://localhost:8000/prayaas/request_window");
+      }
+    }
+  });
+};
+
+const updateStatus = (req, res) => {
+  const { request_id, status } = req.body;
+  const sql1 = `UPDATE amount_request SET status = ? WHERE request_id = ?`;
+  const sql2 = `UPDATE items_request SET status = ? WHERE request_id = ?`;
+
+  connection.query(sql1, [status, request_id], (error1, results1) => {
+    if (error1) {
+      console.error("Error updating amount_request:", error1);
+      res.status(500).json({ error: "Failed to update status" });
+    } else {
+      if (results1.affectedRows === 0) {
+        connection.query(sql2, [status, request_id], (error2, results2) => {
+          if (error2) {
+            console.error("Error updating items_request:", error2);
+            res.status(500).json({ error: "Failed to update status" });
+          } else {
+            if (results2.affectedRows === 0) {
+              res.status(404).json({ error: "Request ID not found" });
+            } else {
+              res.redirect("http://localhost:8000/prayaas/request_window");
+            }
+          }
+        });
+      } else {
+        res.redirect("http://localhost:8000/prayaas/request_window");
+      }
+    }
+  });
+};
+
+const login_4_admin = async (req, res) => {
+  const { email_id, password } = req.body;
+  if (email_id == "prayaas@gmail.com" && password == "admin@123") {
+    res.redirect("http://localhost:8000/prayaas/admin");
+  } else {
+    res.redirect("http://localhost:8000/prayaas/admin/login");
+  }
+};
+
 module.exports = {
   ADMIN__fetchOrganizationData,
   ADMIN__fetchIndividualData,
   ADMIN__fetchTotalDonationData,
   totalFundedReceived,
   totalItemsDonated,
-  deleteByDonorId,
   totalOrganization,
+  requested_amount,
+  deleteByDonorId,
+  requested_Items,
   totalIndividual,
+  deleteRequests,
+  login_4_admin,
+  updateStatus,
 };

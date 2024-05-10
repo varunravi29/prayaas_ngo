@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin@terminal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+  <style>  
+   body {
+            font-family: 'Poppins', sans-serif;
+        }
+    .highlight {
+      background-color: rgb(255, 255, 0); /* Change this to the color you want */
+    }
+    /* CSS for the modal */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 30%;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <div class="container mx-auto p-0">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-0">
+      <!-- Left Sidebar -->
+      <div class="col-span-1 md:col-span-1 h-full bg-white border border-text-slate-400 rounded-md shadow-md">
+        <!-- Left Sidebar Upper Section -->
+        <div class="p-4 h-60 w-full">
+          <h1 class="text-slate-800 font-bold text-sm text-center">
+            Admin Window
+          </h1>
+          <h1 class="text-zinc-800 md:text-md text-sm font-bold text-md text-center">
+            domain: prayaasngo@gmail.com
+          </h1>
+        </div>
+        <!-- Left Sidebar Upper Section -->
+
+        <!-- Left Sidebar Bottom Section -->
+        <div class="p-4 h-fit hidden md:block mb-20">
+          <ul class="space-y-2 text-slate-700 text-sm">
+            <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold">
+              <a href="http://localhost:8000/prayaas/admin">Dashboard</a>
+            </li>
+            <li class="border-b rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold">
+              <a href="http://localhost:8000/prayaas/usersInfo">User Management</a>
+            </li>
+            <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold">
+              Donation Management
+            </li>
+            <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 bg-indigo-100 font-bold">
+              Request Window
+            </li>
+          </ul>
+        </div>
+        <!-- Left Sidebar Bottom Section -->
+
+        <!-- Login and Logout Section -->
+        <div class="p-4 text-sm font-bold hidden md:block">
+          <ul class="space-y-2 text-slate-700">
+            <li class="border-b border-gray-400 pl-2 pt-2 hover:rounded-lg hover:bg-indigo-100 pb-2">
+              <a href="http://localhost:8000/prayaas/home">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Login and Logout Section -->
+      </div>
+      <!-- Left Sidebar -->
+
+      <!-- Main Window -->
+      <div class="col-span-1 md:col-span-4 w-full h-screen bg-white rounded-md shadow-md overflow-scroll">
+         <!-- Top Navbar -->
+         <div class="bg-white h-14 flex justify-center items-center border border-b-2">
+            <h1 class="text-slate-900 font-bold text-sm">
+              PRAYAAS-NGO-ADMIN_TERMINAL <span>&copy;</span>2024 ALL RIGHTS RESERVED
+            </h1>
+          </div>
+          <!-- Top Navbar -->
+
+          <!-- Heading -->
+          <div class="w-full h-fit bg-red-100">
+            <h1 class="font-bold text-slate-800 text-md px-10 py-5">User Management</h1>
+          </div>
+          <!-- Heading -->
+
+          <!-- Delete and Update Card -->
+          <div class="w-full h-fit flex justify-center items-center gap-10 mt-20">
+            <div class="w-5/12 h-full bg-gray-100 rounded-3xl border border-gray-300">
+              <h1 class="ml-10 pt-5 font-semibold text-md text-red-500">Update Status</h1>
+              <form class="w-full h-full ml-10 mt-5" action="/updateStatus" method="POST">
+                <input class="pl-5 w-1/2 py-1 bg-white-200 border border-gray-300 rounded-md mb-5" type="text" name="request_id" id="request_id" placeholder="Enter Request ID">                
+                <label class="block text-gray-700 font-bold mb-2" for="accepted">
+                    <input class="mr-2 leading-tight" type="radio" name="status" id="status_accepted" value="Accepted">
+                    Accepted
+                </label>
+                
+                <label class="block text-gray-700 font-bold mb-2" for="rejected">
+                    <input class="mr-2 leading-tight" type="radio" name="status" id="status_rejected" value="Rejected">
+                    Rejected
+                </label>
+                
+                <button class="mb-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Submit</button>
+            </form>
+            
+            
+            </div>
+            <div class="w-5/12 h-full bg-slate-100 rounded-3xl border border-gray-300">
+              <h1 class="ml-10 mt-5 w-fit font-semibold text-md text-red-500">Delete Window</h1>
+              <form class="w-full ml-10 mt-5" action="/deleteRequest" method="POST">
+                <input placeholder="Enter Request-ID" class="pl-5 mb-5 w-1/2 py-1 bg-white-200 border border-gray-300 rounded-md" maxlength="15" type="text" name="request_id" id="request_id">
+                <button class="block mb-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Submit</button>
+              </form>
+            </div>
+            
+          </div>
+          <!-- Delete and Update Card -->
+
+           <!-- Heading -->
+           <div class="w-full h-20 flex justify-start items-center ml-10 mt-10">
+            <h1 class="font-bold text-lg text-slate-800">Amount Window</h1>
+          </div>
+          <!-- Heading -->
+
+<!-- Request-Container -->
+<div class="w-full h-fit flex flex-wrap justify-center items-start mt-10">
+  <% amounts.forEach(function(amount){ %>
+    <div class="w-5/12 h-fit p-2 bg-zinc-50 border border-gray-300 rounded-xl mx-5 my-5" >
+      <h1 class="pl-5 font-semibold text-lg text-slate-800 mb-2 mt-2"
+      <% if (amount.status==='Accepted') { %>
+        style ="background-color: #C6EFCE; border-radius:5px"
+        <% }else if(amount.status==='Rejected') {%>
+          style ="background-color: #FFCCCC; border-radius:5px"
+      <% } %>
+      ><%= amount.name %></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Request Id<span class="pl-3 text-slate-600">: <%= amount.request_id %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">donor_id<span class="pl-6 text-slate-600">: <%= amount.donor_id %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Email Id <span class="pl-6 text-slate-600">: <%= amount.email_id %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Contact <span class="pl-6 text-slate-600">: <%= amount.contact %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Amount <span class="pl-5 text-red-500">: <%= amount.amount %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Date <span class="pl-11 text-slate-600">: <%= amount.date %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Status <span class="ml-8 text-black p-0.5"
+        <% if (amount.status==='Accepted') { %>
+          style ="color: #00ae00;"
+          <% }else if(amount.status==='Rejected') {%>
+            style ="color: #CD0000;"
+        <% } %> 
+        >: <%= amount.status %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800 mt-5">Description <span class="pl-0 text-slate-600 flex-wrap">: <%= amount.description %></span></h1>
+    </div>
+  <% }); %>
+</div>
+<!-- Request-Container -->
+
+
+          <!-- Heading -->
+          <div class="w-full h-20 flex justify-start items-center pl-10 ">
+            <h1 class="font-bold text-lg text-slate-800">Items Window</h1>
+          </div>
+          <!-- Heading -->
+         
+          <!-- Request-Container -->
+<div class="w-full h-fit flex flex-wrap justify-center items-start mt-20">
+  <% items.forEach(function(item){ %>
+    <div class="w-5/12 h-fit p-2 bg-zinc-50 border border-gray-300 rounded-xl mx-5 my-5" >
+      <h1 class="pl-5 font-semibold text-lg text-slate-800 mb-2 mt-2"
+      <% if (item.status==='Accepted') { %>
+        style ="background-color: #C6EFCE; border-radius:5px"
+        <% }else if(item.status==='Rejected') {%>
+          style ="background-color: #FFCCCC; border-radius:5px"
+      <% } %>
+      ><%= item.name %></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Request Id<span class="pl-5 text-slate-600">: <%= item.request_id %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">donor_id<span class="pl-6 text-slate-600">: <%= item.donor_id %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Email Id <span class="pl-8 text-slate-600">: <%= item.email_id %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Request <span class="pl-8 text-slate-600">: <%= item.request_type %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Quantity <span class="pl-7 text-slate-600">: <%= item.quantity %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Contact <span class="pl-8 text-slate-600">: <%= item.contact %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Date <span class="pl-14 text-slate-600">: <%= item.date %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Status <span class="ml-10 py-0.5 text-black"
+        <% if (item.status==='Accepted') { %>
+          style ="color: #00ae00;"
+          <% }else if(item.status==='Rejected') {%>
+            style ="color: #CD0000;"
+        <% } %> 
+        >: <%= item.status %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800 mt-5">Description <span class="pl-0 text-slate-600 flex-wrap">: <%= item.description %></span></h1>
+    </div>
+  <% }); %>
+</div>
+<!-- Request-Container -->
+
+
+    </div>
+  </div>
+
+  <script>
+    const statustag=document.getElementById("statustag");
+    if(amount.status==='Accepted')
+    {
+      statustag.style.color("green");
+    }
+  </script>
+</body>
+</html>

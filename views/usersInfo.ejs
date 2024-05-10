@@ -4,8 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin@terminal</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>  
+   body {
+            font-family: 'Poppins', sans-serif;
+        }
     .highlight {
       background-color: rgb(255, 255, 0); /* Change this to the color you want */
     }
@@ -71,7 +75,9 @@
               Donation Management
             </li>
             <li class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold">
-              Request Window
+              <a href="http://localhost:8000/prayaas/request_window">
+                Request Window
+              </a>
             </li>
           </ul>
         </div>
@@ -81,10 +87,7 @@
         <div class="p-4 text-sm font-bold hidden md:block">
           <ul class="space-y-2 text-slate-700">
             <li class="border-b border-gray-400 pl-2 pt-2 hover:rounded-lg hover:bg-indigo-100 pb-2">
-              Logout
-            </li>
-            <li class="pb-2 pl-2 hover:rounded-lg pt-2 hover:bg-indigo-100">
-              Help & Support
+              <a href="http://localhost:8000/prayaas/home">Logout</a>
             </li>
           </ul>
         </div>

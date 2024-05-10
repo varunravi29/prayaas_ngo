@@ -7,10 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+
     <style>
       .backimage {
         background-image: url("https://i.pinimg.com/564x/b4/d7/c7/b4d7c745521e0469de2fe08e902e0965.jpg");
@@ -41,22 +39,22 @@
         </div>
         <!-- INPUT FIELDS-CONTAINER -->
         <div class="w-2/5 h-full bg-white rounded-r-lg">
-          <form class="w-full flex flex-col justify-center text-black items-center" action="/register_individual" method="POST" id="registrationForm">
+          <form class="w-full flex flex-col text-slate-800 justify-center text-black items-center" action="/register_individual" method="POST" id="registrationForm">
             <div class="pl-5 pt-5 pr-5 w-full">
-              <label for="name" class="block font-bold text-md text-xs">Donor Name</label>
+              <label for="name" class="block font-bold text-md text-sm">Donor Name</label>
               <input type="text" id="name" name="name" class="w-full px-4 py-0.2 bg-indigo-100 rounded-md focus:outline-none" required />
             </div>
             <div class="pl-5 pr-5 pt-4 w-full">
-              <label for="email_id" class="block font-bold text-xs">Email ID</label>
+              <label for="email_id" class="block font-bold text-sm">Email ID</label>
               <input type="email" id="email_id" name="email_id" class="w-full px-4 py-0.2 bg-indigo-100 rounded-md focus:outline-none" required />
             </div>
             <div class="pl-5 pr-5 pt-4 w-full">
-              <label for="mobile_no" class="block text-xs font-bold">Contact</label>
+              <label for="mobile_no" class="block text-sm font-bold">Contact</label>
               <input type="tel" id="mobile_no" name="mobile_no" class="w-full px-4 py-0.2 bg-indigo-100 rounded-md focus:outline-none" required />
             </div>
             <div class="flex w-full">
               <div class="pl-5 pr-5 pt-4 w-full">
-                <label for="dob" class="block font-bold text-xs">Date of birth</label>
+                <label for="dob" class="block font-bold text-sm">Date of birth</label>
                 <input type="date" id="dob" name="dob" class="w-full px-4 py-0.5 bg-indigo-100 rounded-md focus:outline-none text-xs font-semibold" required />
               </div>
               <div class="w-full mt-9">
@@ -67,11 +65,11 @@
               </div>
             </div>
             <div class="pl-5 pr-5 pt-4 w-full">
-              <label for="address" class="block font-bold text-xs ">Address</label>
+              <label for="address" class="block font-bold text-sm ">Address</label>
               <input type="text" id="address" name="address" class="w-full px-4 py-0.2 bg-indigo-100 rounded-md focus:outline-none" required />
             </div>
             <div class="pl-5 pt-4 pb-2 pr-5 w-full">
-              <label for="password" class="block  font-bold text-xs">Password</label>
+              <label for="password" class="block  font-bold text-sm">Password</label>
               <input type="password" id="password" name="password" class="w-full px-4 py-0.2 bg-indigo-100 rounded-md focus:outline-none" required />
             </div>
             <button type="submit" class="mt-2 w-fit bg-indigo-500 py-0.5 px-2 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300">Register</button>

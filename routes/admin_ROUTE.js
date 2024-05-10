@@ -1,16 +1,22 @@
 // routes/admin_routes.js
 
+const path = require("path");
 const express = require("express");
 const router = express.Router();
 const {
   ADMIN__fetchOrganizationData,
-  ADMIN__fetchIndividualData,
   ADMIN__fetchTotalDonationData,
+  ADMIN__fetchIndividualData,
   totalFundedReceived,
   totalItemsDonated,
   totalOrganization,
+  requested_amount,
   deleteByDonorId,
   totalIndividual,
+  requested_Items,
+  deleteRequests,
+  login_4_admin,
+  updateStatus,
 } = require("../controllers.js/admin_controlles");
 
 router.get("/delete", deleteByDonorId);
@@ -48,5 +54,23 @@ router.get("/prayaas/admin", async (req, res) => {
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 });
+router.get("/prayaas/request_window", async (req, res) => {
+  try {
+    const amounts = await requested_amount();
+    const items = await requested_Items();
+    res.render("request_window", {
+      amounts: amounts,
+      items: items,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+router.get("/prayaas/admin/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "admin.login.html"));
+});
+router.post("/updateStatus", updateStatus);
+router.post("/login_4_admin", login_4_admin);
+router.post("/deleteRequest", deleteRequests);
 
 module.exports = router;
