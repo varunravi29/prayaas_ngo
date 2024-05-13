@@ -3,14 +3,21 @@ const router = express.Router();
 const {
   handle_donate_as_money_form,
   handle_donate_as_items_form,
-  fetchItemDonations, // Import fetchItemDonations function
-  fetchMoneyDonations,
-  handle_request_for_items,
   handle_request_for_money,
-  getPaymentDateTime,
+  handle_request_for_items,
   amountDonatedByDonor_Id,
+  fetchMoneyDonations,
+  fetchItemDonations, // Import fetchItemDonations function
+  getPaymentDateTime,
+  amount_received,
   ItemsCount,
 } = require("../controllers.js/dashboard_controlles");
+
+// some controllers from the admin
+const {
+  requested_amount,
+  requested_Items,
+} = require("../controllers.js/admin_controlles");
 
 const validateToken = require("../ErrorHandling/validateToken");
 
@@ -22,7 +29,6 @@ router.post("/amount_request", handle_request_for_money);
 // HOME-PAGE
 router.get("/prayaas/user/payment_history", (req, res) => {
   const donor_id = req.session.donor_id;
-
   // Fetch both money and item donations for the logged-in donor
   Promise.all([fetchMoneyDonations(donor_id), fetchItemDonations(donor_id)])
     .then(([donate_money, donate_items]) => {
@@ -49,6 +55,7 @@ router.get("/prayaas/user/home", async (req, res) => {
   if (req.session.donor_id) {
     try {
       const donatedAmount = await amountDonatedByDonor_Id(req.session.donor_id);
+      const amountReceived = await amount_received(req.session.donor_id);
       const ElectronicDevices = await ItemsCount(
         req.session.donor_id,
         "Electronic Devices"
@@ -76,10 +83,12 @@ router.get("/prayaas/user/home", async (req, res) => {
         name: req.session.name,
         mobile_no: req.session.mobile_no,
         amountDonatedByDonor_Id: donatedAmount,
-        ElectronicDevices: ElectronicDevices,
-        Clothes: Clothes,
+        amountReceived: amountReceived,
+
         Food: Food,
         Books: Books,
+        Clothes: Clothes,
+        ElectronicDevices: ElectronicDevices,
         Toys: Toys,
         Furniture: Furniture,
         MedicalSupplies: MedicalSupplies,
@@ -101,11 +110,15 @@ router.get("/prayaas/user/home", async (req, res) => {
 router.get("/prayaas/user/request", async (req, res) => {
   if (req.session.donor_id) {
     try {
+      const amountReqs = await requested_amount();
+      const itemsReqs = await requested_Items();
       res.render("generate_request", {
         email_id: req.session.email_id,
         donor_id: req.session.donor_id,
         name: req.session.name,
         mobile_no: req.session.mobile_no,
+        amountReqs: amountReqs,
+        itemsReqs: itemsReqs,
         amountDonatedByDonor_Id: amountDonatedByDonor_Id,
         getTime: getPaymentDateTime,
       });

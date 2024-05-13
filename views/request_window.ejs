@@ -111,8 +111,8 @@
 
           <!-- Delete and Update Card -->
           <div class="w-full h-fit flex justify-center items-center gap-10 mt-20">
-            <div class="w-5/12 h-full bg-gray-100 rounded-3xl border border-gray-300">
-              <h1 class="ml-10 pt-5 font-semibold text-md text-red-500">Update Status</h1>
+            <div class="w-5/12 h-60 bg-zinc-50 rounded-md shadow-lg">
+              <h1 class="ml-10 pt-5 font-semibold text-md text-red-500">Update Payment Requests </h1>
               <form class="w-full h-full ml-10 mt-5" action="/updateStatus" method="POST">
                 <input class="pl-5 w-1/2 py-1 bg-white-200 border border-gray-300 rounded-md mb-5" type="text" name="request_id" id="request_id" placeholder="Enter Request ID">                
                 <label class="block text-gray-700 font-bold mb-2" for="accepted">
@@ -130,7 +130,7 @@
             
             
             </div>
-            <div class="w-5/12 h-full bg-slate-100 rounded-3xl border border-gray-300">
+            <div class="w-5/12 h-60 bg-zinc-50 rounded-md shadow-lg">
               <h1 class="ml-10 mt-5 w-fit font-semibold text-md text-red-500">Delete Window</h1>
               <form class="w-full ml-10 mt-5" action="/deleteRequest" method="POST">
                 <input placeholder="Enter Request-ID" class="pl-5 mb-5 w-1/2 py-1 bg-white-200 border border-gray-300 rounded-md" maxlength="15" type="text" name="request_id" id="request_id">
@@ -141,16 +141,22 @@
           </div>
           <!-- Delete and Update Card -->
 
+          <!-- Search Bar -->
+          <div class="w-full h-fit mt-10 flex justify-center items-center">
+            <input type="search" id="searchInput" placeholder="Search.." class="w-4/5 bg-slate-200 py-1 rounded-md pl-5">
+          </div>
+          <!-- Search Bar -->
+
            <!-- Heading -->
            <div class="w-full h-20 flex justify-start items-center ml-10 mt-10">
-            <h1 class="font-bold text-lg text-slate-800">Amount Window</h1>
+            <h1 class="font-bold bg-zinc-300 px-2 rounded-md text-lg text-slate-800">Amount Window</h1>
           </div>
           <!-- Heading -->
 
 <!-- Request-Container -->
-<div class="w-full h-fit flex flex-wrap justify-center items-start mt-10">
+<div class="w-full h-fit flex flex-wrap justify-center items-start">
   <% amounts.forEach(function(amount){ %>
-    <div class="w-5/12 h-fit p-2 bg-zinc-50 border border-gray-300 rounded-xl mx-5 my-5" >
+    <div class="w-5/12 h-fit p-2 bg-zinc-50 shadow-lg rounded-xl mx-5 my-5" >
       <h1 class="pl-5 font-semibold text-lg text-slate-800 mb-2 mt-2"
       <% if (amount.status==='Accepted') { %>
         style ="background-color: #C6EFCE; border-radius:5px"
@@ -161,7 +167,7 @@
       <h1 class="pl-5 font-bold text-sm text-slate-800">Request Id<span class="pl-3 text-slate-600">: <%= amount.request_id %></span></h1>
       <h1 class="pl-5 font-bold text-sm text-slate-800">donor_id<span class="pl-6 text-slate-600">: <%= amount.donor_id %></span></h1>
       <h1 class="pl-5 font-bold text-sm text-slate-800">Email Id <span class="pl-6 text-slate-600">: <%= amount.email_id %></span></h1>
-      <h1 class="pl-5 font-bold text-sm text-slate-800">Contact <span class="pl-6 text-slate-600">: <%= amount.contact %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Contact <span class="pl-6 text-slate-600">: <%= amount.mobile_no %></span></h1>
       <h1 class="pl-5 font-bold text-sm text-slate-800">Amount <span class="pl-5 text-red-500">: <%= amount.amount %></span></h1>
       <h1 class="pl-5 font-bold text-sm text-slate-800">Date <span class="pl-11 text-slate-600">: <%= amount.date %></span></h1>
       <h1 class="pl-5 font-bold text-sm text-slate-800">Status <span class="ml-8 text-black p-0.5"
@@ -180,14 +186,14 @@
 
           <!-- Heading -->
           <div class="w-full h-20 flex justify-start items-center pl-10 ">
-            <h1 class="font-bold text-lg text-slate-800">Items Window</h1>
+            <h1 class="font-bold  bg-zinc-300 px-2 rounded-md text-lg text-slate-800">Items Window</h1>
           </div>
           <!-- Heading -->
          
           <!-- Request-Container -->
-<div class="w-full h-fit flex flex-wrap justify-center items-start mt-20">
+<div class="w-full h-fit flex flex-wrap justify-center items-start">
   <% items.forEach(function(item){ %>
-    <div class="w-5/12 h-fit p-2 bg-zinc-50 border border-gray-300 rounded-xl mx-5 my-5" >
+    <div class="w-5/12 h-fit p-2 bg-zinc-50 shadow-lg rounded-xl mx-5 my-5 card" >
       <h1 class="pl-5 font-semibold text-lg text-slate-800 mb-2 mt-2"
       <% if (item.status==='Accepted') { %>
         style ="background-color: #C6EFCE; border-radius:5px"
@@ -200,7 +206,7 @@
       <h1 class="pl-5 font-bold text-sm text-slate-800">Email Id <span class="pl-8 text-slate-600">: <%= item.email_id %></span></h1>
       <h1 class="pl-5 font-bold text-sm text-slate-800">Request <span class="pl-8 text-slate-600">: <%= item.request_type %></span></h1>
       <h1 class="pl-5 font-bold text-sm text-slate-800">Quantity <span class="pl-7 text-slate-600">: <%= item.quantity %></span></h1>
-      <h1 class="pl-5 font-bold text-sm text-slate-800">Contact <span class="pl-8 text-slate-600">: <%= item.contact %></span></h1>
+      <h1 class="pl-5 font-bold text-sm text-slate-800">Contact <span class="pl-8 text-slate-600">: <%= item.mobile_no %></span></h1>
       <h1 class="pl-5 font-bold text-sm text-slate-800">Date <span class="pl-14 text-slate-600">: <%= item.date %></span></h1>
       <h1 class="pl-5 font-bold text-sm text-slate-800">Status <span class="ml-10 py-0.5 text-black"
         <% if (item.status==='Accepted') { %>
@@ -220,11 +226,34 @@
   </div>
 
   <script>
-    const statustag=document.getElementById("statustag");
-    if(amount.status==='Accepted')
-    {
-      statustag.style.color("green");
+      document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const cards = document.querySelectorAll('.card');
+
+    function filterContent(query) {
+      cards.forEach(card => {
+        const content = card.querySelector('.w-5/12.h-fit.p-2.bg-zinc-50.shadow-lg.rounded-xl.mx-5.my-5'); // Adjust this selector to target the content within each card
+        if (content) {
+          const text = content.innerText.toLowerCase();
+          const hasMatch = text.includes(query.toLowerCase());
+          card.classList.toggle('hidden', !hasMatch);
+          if (hasMatch) {
+            const regex = new RegExp(query.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'), 'gi');
+            content.innerHTML = text.replace(regex, match => `<span class="highlight">${match}</span>`);
+          } else {
+            content.innerHTML = text;
+          }
+        }
+      });
     }
+
+    // Event listener for search input
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim(); // Get the search query
+      filterContent(query); // Call the filter function with the query
+    });
+  });
+
   </script>
 </body>
 </html>

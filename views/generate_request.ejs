@@ -438,8 +438,59 @@
               </div>
               <!-- Image- Container -->
             </div>
-            <div class="w-full h-full bg-red-700">
+            <!-- heading -->
+            <div class="w-fit h-fit ml-10 ">
+              <h1 class="text-xl font-semibold mt-10 text-slate-800">Amount Requests</h1>
+              <h1 class="text-sm font-semibold text-red-500">It consists of the Amount request made by you</h1>
+            </div>
+            <!-- heading -->
 
+
+            <div class="w-full h-fit flex flex-wrap justify-center items-start">
+              <% amountReqs.forEach(function(ar){ %>
+                <% if (ar.donor_id === donor_id) { %>
+                <div class="w-11/12 h-full">
+                  <!-- amount request container -->
+                  <div class="w-full h-fit mb-10 bg-zinc-50 shadow-md p-5 flex flex-col flex-wrap justify-center items-start">
+                    <h1 class="pl-5 font-bold text-sm text-slate-800">Request Id<span class="pl-3 text-slate-600">: <%= ar.request_id %></span></h1>
+                    <h1 class="pl-5 font-bold text-sm text-slate-800">Amount <span class="pl-5 text-red-500">: <%= ar.amount %></span></h1>
+                    <h1 class="pl-5 font-bold text-sm text-slate-800">Status <span class="ml-8 text-black p-0.5"><%= ar.status %></span>
+                      <h1 class="pl-5 font-bold text-sm text-slate-800">Date <span class="pl-11 text-slate-600">: <%= ar.date %></span></h1>
+                    <h1 class="pl-5 font-bold text-sm text-slate-800 mt-5">Description <span class="pl-0 text-slate-600 flex-wrap">: <%= ar.description %></span></h1>
+                  </div>
+                  <!-- amount request container -->
+                </div>
+                <% } %>
+              <% }); %>
+            </div>
+          
+            <!-- heading -->
+            <div class="w-fit h-fit ml-10 mb-5">
+              <h1 class="text-xl font-semibold mt-10 text-slate-900">Items Requests</h1>
+              <h1 class="text-sm font-semibold text-red-500">It consists of the items request made by you</h1>
+            </div>
+            <!-- heading -->
+
+
+            <div class="w-full h-fit flex flex-wrap justify-center items-start">
+              <% itemsReqs.forEach(function(ir){ %>
+                <% if (ir.donor_id === donor_id) { %>
+                <div class="w-11/12 h-full">
+                  <!-- amount request container -->
+                  <div class="w-full h-fit mb-10 bg-zinc-50 shadow-md p-5 flex flex-col flex-wrap justify-center items-start">
+                    <h1 class="pl-5 font-bold text-sm text-slate-800">Request Id<span class="pl-3 text-slate-600">: <%= ir.request_id %></span></h1>
+                    <h1 class="pl-5 font-bold text-sm text-slate-800">Type <span class="pl-12">: <%= ir.request_type %></span></h1>
+                    <h1 class="pl-5 font-bold text-sm text-slate-800">Quantity <span class="pl-5">: <%= ir.quantity %></span></h1>
+                    <h1 class="pl-5 font-bold text-sm text-slate-800">Status <span class="ml-8 text-black p-0.5"><%= ir.status %></span>
+                      <h1 class="pl-5 font-bold text-sm text-slate-800">Date <span class="pl-11 text-slate-600">: <%= ir.date %></span></h1>
+                    <h1 class="pl-5 font-bold text-sm text-slate-800 mt-5">Description <span class="pl-0 text-slate-600 flex-wrap">: <%= ir.description %></span></h1>
+                  </div>
+                  <!-- amount request container -->
+                </div>
+                <% } %>
+              <% }); %>
+            </div>
+            
             </div>
           </div>
         </div>

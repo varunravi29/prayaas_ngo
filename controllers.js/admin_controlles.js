@@ -170,34 +170,98 @@ const sumOfDonationByIndividual = async () => {
     console.log(error);
   }
 };
-
 const requested_amount = async () => {
-  const sql = `SELECT * FROM amount_request`;
-  return new Promise((resolve, reject) => {
-    connection.query(sql, (error, results) => {
-      if (error) {
-        console.log("Error fetching the requested Amount data");
-        reject(error);
-      } else {
-        resolve(results);
-      }
+  const sql = `SELECT
+    si.name, 
+    ar.donor_id, 
+    ar.request_id, 
+    si.email_id,  
+    si.mobile_no,  
+    ar.amount,
+    ar.date,  
+    ar.status,
+    ar.description
+  FROM amount_request ar 
+  JOIN signupdb_individual si ON ar.donor_id = si.donor_id
+  UNION ALL
+  SELECT
+    so.name, 
+    ar.donor_id, 
+    ar.request_id, 
+    so.email_id,  
+    so.mobile_no,  
+    ar.amount,
+    ar.date,  
+    ar.status,
+    ar.description
+  FROM amount_request ar 
+  JOIN signupdb_organization so ON ar.donor_id = so.donor_id`;
+
+  try {
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, (error, results) => {
+        if (error) {
+          console.log("Error fetching the requested Amount data:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
     });
-  });
+    return results;
+  } catch (error) {
+    console.error("Unexpected error in requested_amount:", error);
+    throw error; // Rethrow the error for the caller to handle
+  }
 };
+
 
 const requested_Items = async () => {
-  const sql = `SELECT * FROM items_request`;
-  return new Promise((resolve, reject) => {
-    connection.query(sql, (error, results) => {
-      if (error) {
-        console.log("Error fetching the requested items data");
-        reject(error);
-      } else {
-        resolve(results);
-      }
+  const sql = `SELECT
+    si.name, 
+    ar.donor_id, 
+    ar.request_id, 
+    si.email_id,  
+    si.mobile_no,  
+    ar.date,
+    ar.quantity,  
+    ar.status,
+    ar.description
+  FROM items_request ar 
+  JOIN signupdb_individual si ON ar.donor_id = si.donor_id
+  UNION ALL
+  SELECT
+    so.name, 
+    ar.donor_id, 
+    ar.request_id, 
+    so.email_id,  
+    so.mobile_no,  
+    ar.date,
+    ar.quantity,  
+    ar.status,
+    ar.description
+  FROM items_request ar 
+  JOIN signupdb_organization so ON ar.donor_id = so.donor_id`;
+
+  try {
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, (error, results) => {
+        if (error) {
+          console.log("Error fetching the requested Items data:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
     });
-  });
+    return results;
+  } catch (error) {
+    console.error("Unexpected error in requested_Items:", error);
+    throw error; // Rethrow the error for the caller to handle
+  }
 };
+
+
 
 const deleteRequests = (req, res) => {
   const { request_id } = req.body;
@@ -268,7 +332,76 @@ const login_4_admin = async (req, res) => {
   }
 };
 
+const totalDonationAmountForIndividual = async () => {
+  try {
+    const sql = `SELECT donor_id, SUM(amount) AS totalDonation FROM money_donate GROUP BY donor_id`;
+    return new Promise((resolve, reject) => {
+      connection.query(sql, (error, results) => {
+        if (error) {
+          console.log(
+            "Error fetching data from totalDonationAmountForIndividual:",
+            error
+          );
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+const updateForm = async (req, res) => {
+  try {
+    const { donor_id, mobile_no, address, password } = req.body;
+    const sql1 = `UPDATE signupdb_individual SET mobile_no = ?, address = ?, password = ? WHERE donor_id = ?`;
+    const sql2 = `UPDATE signupdb_organization SET mobile_no = ?, address = ?, password = ? WHERE donor_id = ?`;
+
+    // Update individual's data
+    const updateIndividual = await new Promise((resolve, reject) => {
+      connection.query(
+        sql1,
+        [mobile_no, address, password, donor_id],
+        (error, results) => {
+          if (error) {
+            console.log("Error updating individual data:", error);
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        }
+      );
+    });
+
+    const updateOrganization = await new Promise((resolve, reject) => {
+      connection.query(
+        sql2,
+        [mobile_no, address, password, donor_id],
+        (error, results) => {
+          if (error) {
+            console.log("Error updating organization data:", error);
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        }
+      );
+    });
+    res.redirect("http://localhost:8000/prayaas/usersInfo");
+  } catch (error) {
+    console.log("Unexpected error in updateForm:", error);
+    // Handle error response here
+    res.status(500).send("Internal Server Error");
+    throw error;
+  }
+};
+
+
 module.exports = {
+  totalDonationAmountForIndividual,
   ADMIN__fetchOrganizationData,
   ADMIN__fetchIndividualData,
   ADMIN__fetchTotalDonationData,
@@ -282,4 +415,5 @@ module.exports = {
   deleteRequests,
   login_4_admin,
   updateStatus,
+  updateForm,
 };

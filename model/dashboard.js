@@ -3,10 +3,6 @@ const connection = require("../config/database");
 const donate_By_Money = async (
   donation_id,
   donor_id,
-  request_type,
-  name,
-  email_id,
-  contact,
   date,
   amount,
   description
@@ -16,27 +12,13 @@ const donate_By_Money = async (
       const sql = `INSERT INTO money_donate (
         donation_id,  
         donor_id,
-        request_type,
-        name,
-        email_id,
-        contact,
         date,
         amount,
-        description) VALUES(?,?,?,?,?,?,?,?,?)`;
+        description) VALUES(?,?,?,?,?)`;
 
       connection.query(
         sql,
-        [
-          donation_id,
-          donor_id,
-          request_type,
-          name,
-          email_id,
-          contact,
-          date,
-          amount,
-          description,
-        ],
+        [donation_id, donor_id, date, amount, description],
         async (error, results) => {
           if (error) {
             console.error(
@@ -80,10 +62,6 @@ const random_request_id_generator = async () => {
 const donate_By_Items = async (
   donation_id,
   donor_id,
-  request_type,
-  name,
-  email_id,
-  contact,
   date,
   donate_type,
   quantity,
@@ -94,30 +72,15 @@ const donate_By_Items = async (
       const sql = `INSERT INTO items_donate (
         donation_id,
         donor_id,
-        request_type,
-        name,
-        email_id,
-        contact,
         date,
         donate_type,
         quantity,
         description
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      ) VALUES (?, ?, ?, ?, ?, ?)`;
 
       connection.query(
         sql,
-        [
-          donation_id,
-          donor_id,
-          request_type,
-          name,
-          email_id,
-          contact,
-          date,
-          donate_type,
-          quantity,
-          description,
-        ],
+        [donation_id, donor_id, date, donate_type, quantity, description],
         (error, results) => {
           if (error) {
             console.error("Error inserting into items_donate table:", error);
@@ -136,12 +99,8 @@ const donate_By_Items = async (
 };
 const request_for_Amount = async (
   request_id,
-  name,
   donor_id,
-  email_id,
-  contact,
   date,
-  request_type,
   amount,
   description
 ) => {
@@ -149,29 +108,15 @@ const request_for_Amount = async (
     try {
       const sql = `INSERT INTO amount_request (
         request_id,
-        name,
         donor_id,
-        email_id,
-        contact,
         date,
-        request_type,
         amount,
         description
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      ) VALUES (?, ?, ?, ?, ?)`;
 
       connection.query(
         sql,
-        [
-          request_id,
-          name,
-          donor_id,
-          email_id,
-          contact,
-          date,
-          request_type,
-          amount,
-          description,
-        ],
+        [request_id, donor_id, date, amount, description],
         (error, results) => {
           if (error) {
             console.error("Error inserting into request amount table:", error);
@@ -204,8 +149,8 @@ const request_for_Items = async (
       const sql = `INSERT INTO items_request (
         request_id,
         name,
-        donor_id,
         email_id,
+        donor_id,
         contact,
         date,
         request_type,
@@ -218,8 +163,8 @@ const request_for_Items = async (
         [
           request_id,
           name,
-          donor_id,
           email_id,
+          donor_id,
           contact,
           date,
           request_type,

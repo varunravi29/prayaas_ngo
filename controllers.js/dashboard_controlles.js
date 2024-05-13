@@ -10,25 +10,12 @@ const {
 
 const handle_request_for_money = async (req, res) => {
   let request_id = await random_request_id_generator();
-  const {
-    name,
-    donor_id,
-    email_id,
-    contact,
-    date,
-    request_type,
-    amount,
-    description,
-  } = req.body;
+  const { donor_id, date, amount, description } = req.body;
   try {
     const isValid = await request_for_Amount(
       request_id,
-      name,
       donor_id,
-      email_id,
-      contact,
       date,
-      request_type,
       amount,
       description
     );
@@ -70,8 +57,8 @@ const handle_request_for_items = async (req, res) => {
   let request_id = await random_request_id_generator();
   const {
     name,
-    donor_id,
     email_id,
+    donor_id,
     contact,
     date,
     request_type,
@@ -82,8 +69,8 @@ const handle_request_for_items = async (req, res) => {
     const isValid = await request_for_Items(
       request_id,
       name,
-      donor_id,
       email_id,
+      donor_id,
       contact,
       date,
       request_type,
@@ -110,24 +97,11 @@ const handle_request_for_items = async (req, res) => {
 
 const handle_donate_as_money_form = async (req, res) => {
   let donation_id = await random_donation_id_generator();
-  const {
-    donor_id,
-    request_type,
-    name,
-    email_id,
-    contact,
-    date,
-    amount,
-    description,
-  } = req.body;
+  const { donor_id, date, amount, description } = req.body;
   try {
     const isValid = await donate_By_Money(
       donation_id,
       donor_id,
-      request_type,
-      name,
-      email_id,
-      contact,
       date,
       amount,
       description
@@ -152,25 +126,11 @@ const handle_donate_as_money_form = async (req, res) => {
 
 const handle_donate_as_items_form = async (req, res) => {
   let donation_id = await random_donation_id_generator();
-  const {
-    donor_id,
-    request_type,
-    name,
-    email_id,
-    contact,
-    date,
-    donate_type,
-    quantity,
-    description,
-  } = req.body;
+  const { donor_id, date, donate_type, quantity, description } = req.body;
   try {
     const isValid = await donate_By_Items(
       donation_id,
       donor_id,
-      request_type,
-      name,
-      email_id,
-      contact,
       date,
       donate_type,
       quantity,
@@ -259,6 +219,25 @@ const ItemsCount = async (donor_id, item) => {
   }
 };
 
+const amount_received = async (donor_id) => {
+  try {
+    const sql = await "SELECT SUM(amount) AS amountReceived FROM amount_request WHERE donor_id = ?";
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, [donor_id], (error, results) => {
+        if (error) {
+          console.log("Error Counting the totalItemsDonated:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+    // console.log(results[0].amountDonatedByDonor_Id)
+    return results[0].amountReceived;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 module.exports = {
   handle_donate_as_money_form,
@@ -269,5 +248,6 @@ module.exports = {
   handle_request_for_money,
   getPaymentDateTime,
   amountDonatedByDonor_Id,
-  ItemsCount
+  ItemsCount,
+  amount_received,
 };

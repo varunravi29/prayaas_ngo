@@ -4,8 +4,9 @@ const path = require("path");
 const express = require("express");
 const router = express.Router();
 const {
-  ADMIN__fetchOrganizationData,
+  totalDonationAmountForIndividual,
   ADMIN__fetchTotalDonationData,
+  ADMIN__fetchOrganizationData,
   ADMIN__fetchIndividualData,
   totalFundedReceived,
   totalItemsDonated,
@@ -13,16 +14,18 @@ const {
   requested_amount,
   deleteByDonorId,
   totalIndividual,
-  requested_Items,
+  requested_Items, //this one
   deleteRequests,
   login_4_admin,
   updateStatus,
+  updateForm,
 } = require("../controllers.js/admin_controlles");
 
 router.get("/delete", deleteByDonorId);
-
+router.post("/updateForm", updateForm);
 router.get("/prayaas/usersInfo", async (req, res) => {
   try {
+    const totalDonaForIndiv = await totalDonationAmountForIndividual();
     const organizations = await ADMIN__fetchOrganizationData();
     const individuals = await ADMIN__fetchIndividualData();
     const totalDonation = await ADMIN__fetchTotalDonationData();
@@ -30,6 +33,7 @@ router.get("/prayaas/usersInfo", async (req, res) => {
       organizations: organizations,
       individuals: individuals,
       totalDonation: totalDonation[0]["COUNT(*)"],
+      totalDonaForIndiv: totalDonaForIndiv,
     });
   } catch (error) {
     console.error("Error fetching Organization Data: ", error);

@@ -54,17 +54,17 @@ const registerUserIndividual = async (
   email_id,
   mobile_no,
   dob,
-  gender,
   address,
+  gender,
   password
 ) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const sql = `INSERT INTO signupdb_individual (donor_id, name, email_id, mobile_no, dob, gender, address, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+      const sql = `INSERT INTO signupdb_individual (donor_id, name, email_id, mobile_no, dob, address, gender, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
       connection.query(
         sql,
-        [donor_id, name, email_id, mobile_no, dob, gender, address, password],
+        [donor_id, name, email_id, mobile_no, dob, address, gender, password],
         async (error, results) => {
           if (error) {
             console.error(
