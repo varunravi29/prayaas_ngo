@@ -221,7 +221,7 @@ const ItemsCount = async (donor_id, item) => {
 
 const amount_received = async (donor_id) => {
   try {
-    const sql = await "SELECT SUM(amount) AS amountReceived FROM amount_request WHERE donor_id = ?";
+    const sql = await "SELECT SUM(amount) AS amountReceived FROM amount_request WHERE donor_id = ? AND status = 'Accepted' ";
     const results = await new Promise((resolve, reject) => {
       connection.query(sql, [donor_id], (error, results) => {
         if (error) {
