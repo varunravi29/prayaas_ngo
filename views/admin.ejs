@@ -4,12 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin@terminal</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script type="text/javascript" src="http://www.chartjs.org/assets/Chart.js"> -->
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <style>
-       body {
-            font-family: 'Poppins', sans-serif;
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
     </style>
   </head>
   <body class="bg-white">
@@ -55,9 +62,9 @@
               <li
                 class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold"
               >
-              <a href="http://localhost:8000/prayaas/request_window">
-                Request Window
-              </a>
+                <a href="http://localhost:8000/prayaas/request_window"
+                  >Request Window</a
+                >
               </li>
             </ul>
           </div>
@@ -66,7 +73,9 @@
           <!-- Login and Logout Section -->
           <div class="p-4 text-sm font-bold hidden md:block">
             <ul class="space-y-2 text-slate-700">
-              <li class="border-b border-gray-400 pl-2 pt-2 hover:rounded-lg hover:bg-indigo-100 pb-2">
+              <li
+                class="border-b border-gray-400 pl-2 pt-2 hover:rounded-lg hover:bg-indigo-100 pb-2"
+              >
                 <a href="http://localhost:8000/prayaas/home">Logout</a>
               </li>
             </ul>
@@ -110,20 +119,20 @@
 
               <!-- Card 2 -->
               <div
-                class="bg-slate-100 rounded-md shadow-md border md:w-2/12 w-3/12 border-slate-100 cardback1 p-4"
+                class="bg-slate-100 rounded-md shadow-md border md:w-3/12 w-3/12 border-slate-100 cardback1 p-4"
               >
                 <h1 class="text-slate-700 font-bold text-left">
                   Donation Paid
                 </h1>
                 <h1 class="text-zinc-800 text-2xl font-bold text-left mt-2">
-                  Rs. 0
+                  Rs. <span class="text-red-500"><%= tdm || 0 %></span>
                 </h1>
               </div>
               <!-- Card 2 -->
 
               <!-- Card 3 -->
               <div
-                class="bg-slate-100 rounded-md shadow-md border border-slate-100 md:w-2/12 w-3/12 card3 p-4"
+                class="bg-slate-100 rounded-md shadow-md border border-slate-100 md:w-3/12 w-3/12 card3 p-4"
               >
                 <h1 class="text-slate-700 font-bold text-left">
                   Items <span class="text-slate-700">Received</span>
@@ -133,18 +142,8 @@
                 </h1>
               </div>
               <!-- Card 3 -->
-              <!-- Card 7 -->
-              <div
-                class="bg-slate-100 rounded-md shadow-md border border-slate-100 md:w-3/12 w-3/12 card3 p-4"
-              >
-                <h1 class="text-slate-700 font-bold text-left">
-                  xxxxxxxxx <span class="text-slate-700">xxxxxxxxx</span>
-                </h1>
-                <h1 class="text-red-500 font-bold text-3xl text-left mt-2">
-                  <span class="text-slate-800"></span><%= "0" || 0 %>
-                </h1>
-              </div>
-              <!-- Card 7 -->
+
+
               <!-- Card 4 -->
               <div
                 class="bg-slate-100 rounded-md shadow-md border border-slate-100 md:w-3/12 w-3/12 card3 p-4"
@@ -157,6 +156,7 @@
                 </h1>
               </div>
               <!-- Card 4 -->
+
               <!-- Card 5 -->
               <div
                 class="bg-slate-100 rounded-md shadow-md border border-slate-100 md:w-3/12 w-3/12 card3 p-4"
@@ -169,19 +169,6 @@
                 </h1>
               </div>
               <!-- Card 5 -->
-              <!-- Card 6 -->
-              <div
-                class="bg-slate-100 rounded-md shadow-md border border-slate-100 md:w-3/12 w-3/12 card3 p-4"
-              >
-                <h1 class="text-slate-700 font-bold text-left">
-                  xxxxxxxxx <span class="text-slate-700">xxxxxxxxx</span>
-                </h1>
-                <h1 class="text-red-500 font-bold text-3xl text-left mt-2">
-                  <span class="text-slate-800"></span><%= "Value" || 0 %>
-                </h1>
-              </div>
-              <!-- Card 6 -->
-              
             </div>
           </div>
           <div class="w-full h-full">
@@ -191,13 +178,29 @@
             </div>
             <!-- heading -->
             <!-- Graph-Window -->
-            <div class="w-full h-fit flex flex-col gap-5 justify-center items-center">
-              <div class="w-11/12 h-96 bg-zinc-100 border border-400 rounded-lg"></div>
-              <div class="w-11/12 h-96 flex justify-center gap-10 items-center">
-                <div class="w-4/5 h-full bg-zinc-100 border border-400 rounded-lg">ss</div>
-                <div class="w-4/5 h-full bg-zinc-100 border border-400 rounded-lg">ss</div>
+            <div
+              class="w-full h-fit flex flex-col gap-5 justify-center items-center">
+              
+              <div class="w-11/12 h-full flex justify-center gap-10 items-center">
+                <div class="w-4/12 h-full shadow-md bg-slate-100 border border-400 rounded-lg">
+                <canvas id="pieChart1" width="400" height="400"></canvas>
+                </div>
+                <div class="w-4/12 h-full border shadow-md bg-slate-100 border-400 rounded-lg">
+                <canvas id="barChart" width="400" height="400"></canvas>
+                </div>
+                <div class="w-4/12 h-full border shadow-md bg-slate-100 border-400 rounded-lg">
+                <canvas id="pieChart" width="400" height="400"></canvas>
+                </div>
               </div>
-              <div class="w-11/12 h-96 bg-zinc-100 border border-400 rounded-lg"></div>
+              <div class="w-full h-full flex justify-center items-center gap-10">
+                <div class="w-5/12 h-full bg-slate-100 mt-10 border border-400 rounded-lg">
+                  <canvas id="lineChart" width="fit-content" height="300"></canvas>
+                </div>
+                
+                <div class="w-5/12 h-full bg-slate-100 mt-10 border border-400 rounded-lg"> 
+                  <canvas id="barChart1" width="400" height="400"></canvas>
+                </div>
+              </div>
             </div>
             <!-- Graph-Window -->
           </div>
@@ -206,21 +209,11 @@
         <!-- Main Window -->
       </div>
     </div>
-
-    <script>
-      const row1cards = document.querySelector(".row1cards");
-      const row2cards = document.querySelector(".row2cards");
-      const row3cards = document.querySelector(".row3cards");
-      const individual = document.querySelector(".individual");
-      const organisation = document.querySelector(".organisation");
-      const org_funded = document.querySelector(".org_funded");
-
-      individual.addEventListener("click", () => {
-        row1cards.setAttribute("hidden", "true");
-        row3cards.setAttribute("hidden", "true");
-        organisation.setAttribute("hidden", "true");
-        org_funded.setAttribute("hidden", "true");
-      });
-    </script>
+    <script src="/graph1.js" ></script>
+    <script src="/graph2.js" ></script>
+    <script src="/graph3.js" ></script>
+    <script src="/graph4.js" ></script>
+    <script src="/graph5.js" ></script>
+    <!-- <script src="/graph2.js"></script> -->
   </body>
 </html>

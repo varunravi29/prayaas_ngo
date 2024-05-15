@@ -42,20 +42,18 @@
               method="POST"
               id="registrationForm"
             >
-              <div class="pl-5 pt-5 pr-5 w-full">
-                <label
-                  for="type"
-                  class="block text-slate-800 font-semibold text-md mb-1 text-sm"
-                  >Organization Type</label
-                >
-                <input
-                  type="text"
-                  id="type"
-                  name="type"
-                  class="w-full px-4 py-0.5 bg-indigo-100 rounded-md focus:outline-none"
-                  required
-                />
-              </div>
+            <div class="pl-5 pt-5 pr-5 w-full">
+              <label for="type" class="block text-slate-800 font-semibold text-md mb-1 text-sm">Organization Type</label>
+              <select id="type" name="type" class="w-full px-4 py-0.5 bg-indigo-100 rounded-md focus:outline-none" required>
+                <option value="private">Private</option>
+                <option value="community">Community-Based Organizations</option>
+                <option value="Government-Initiated">Government-Initiated</option>
+                <option value="International">International</option>
+                <option value="Advocacy">Advocacy</option>
+              </select>
+            </div>
+            
+
               <div class="pl-5 pt-5 pr-5 w-full">
                 <label
                   for="name"

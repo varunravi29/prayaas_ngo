@@ -92,6 +92,28 @@ const totalOrganization = async () => {
   }
 };
 
+const totalOrganizationGraph = async () => {
+  const sql = `SELECT COUNT(donor_id) AS totalOrganization FROM signupdb_organization`;
+  try {
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, (error, results) => {
+        if (error) {
+          console.error("Error counting the organization:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+    // Return the total organization count
+    return { totalOrganization: results[0].totalOrganization }; // Adjusted this line
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
 const totalIndividual = async () => {
   const sql = `SELECT COUNT(donor_id) AS totalIndividual FROM signupdb_individual`;
   try {
@@ -108,6 +130,50 @@ const totalIndividual = async () => {
 
     // Return the total organization count
     return results[0].totalIndividual;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+const totalIndividualGraph = async () => {
+  const sql = `SELECT COUNT(donor_id) AS totalIndividual FROM signupdb_individual`;
+  try {
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, (error, results) => {
+        if (error) {
+          console.error("Error counting the individual:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+    // Return the total individual count in an object
+    return { totalIndividual: results[0].totalIndividual };
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+const totalDonatedMoney = async () => {
+  const sql = `SELECT SUM(amount) AS donatedMoney FROM amount_request where status = 'Accepted'`;
+  try {
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, (error, results) => {
+        if (error) {
+          console.error("Error counting the individual:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+    // Return the total individual count in an object
+    return results[0].donatedMoney;
   } catch (error) {
     console.log(error);
     return null;
@@ -215,7 +281,6 @@ const requested_amount = async () => {
   }
 };
 
-
 const requested_Items = async () => {
   const sql = `SELECT
     si.name, 
@@ -260,8 +325,6 @@ const requested_Items = async () => {
     throw error; // Rethrow the error for the caller to handle
   }
 };
-
-
 
 const deleteRequests = (req, res) => {
   const { request_id } = req.body;
@@ -399,12 +462,14 @@ const updateForm = async (req, res) => {
   }
 };
 
-
 module.exports = {
   totalDonationAmountForIndividual,
   ADMIN__fetchOrganizationData,
   ADMIN__fetchIndividualData,
   ADMIN__fetchTotalDonationData,
+  totalOrganizationGraph,
+  totalIndividualGraph,
+  totalDonatedMoney,
   totalFundedReceived,
   totalItemsDonated,
   totalOrganization,

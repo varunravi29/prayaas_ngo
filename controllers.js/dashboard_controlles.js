@@ -219,9 +219,29 @@ const ItemsCount = async (donor_id, item) => {
   }
 };
 
+const ItemsCounts = async (item) => {
+  const sql = `SELECT SUM(quantity) AS ItemCount FROM items_donate where donate_type = ?`;
+  try {
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, [ item], (error, results) => {
+        if (error) {
+          console.log("Error Counting the Items: ", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+    return results[0].ItemCount;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const amount_received = async (donor_id) => {
   try {
-    const sql = await "SELECT SUM(amount) AS amountReceived FROM amount_request WHERE donor_id = ? AND status = 'Accepted' ";
+    const sql =
+      await "SELECT SUM(amount) AS amountReceived FROM amount_request WHERE donor_id = ? AND status = 'Accepted' ";
     const results = await new Promise((resolve, reject) => {
       connection.query(sql, [donor_id], (error, results) => {
         if (error) {
@@ -239,15 +259,126 @@ const amount_received = async (donor_id) => {
   }
 };
 
+const totalItemReceivedCount = async (item) => {
+  try {
+    const sql =
+      await "SELECT count(quantity) as itemCount from items_donate where donate_type = ? ";
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, [item], (error, results) => {
+        if (error) {
+          console.log("Error Counting the totalItemsDonated:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+    // console.log(results[0].amountDonatedByDonor_Id)
+    return results[0].itemCount;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const totalUsersDonateMoney = async () => {
+  try {
+    const sql =
+      await "SELECT count(donor_id) as totalUsersDonateMoney from money_donate";
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, (error, results) => {
+        if (error) {
+          console.log("Error Counting the totalItemsDonated:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+    // console.log(results[0].amountDonatedByDonor_Id)
+    return results[0].totalUsersDonateMoney;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const amountDonatedDate = async () => {
+  try {
+    const sql = "SELECT YEAR(STR_TO_DATE(date, '%d/%m/%Y')) AS year, SUM(amount) AS total_amount FROM money_donate GROUP BY year";
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, (error, results) => {
+        if (error) {
+          console.log("Error fetching year and total amount:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+    return results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+const amountRequestedDate = async () => {
+  try {
+    const sql = "SELECT YEAR(STR_TO_DATE(date, '%d/%m/%Y')) AS year, SUM(amount) AS total_amount FROM amount_request WHERE status = 'Accepted' GROUP BY year ";
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql, (error, results) => {
+        if (error) {
+          console.log("Error fetching year and total amount:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+    return results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+const organizationType = async (type) => {
+  try {
+    const sql = await "SELECT Count(type) as typeCount from signupdb_organization where type = ?";
+    const results = await new Promise((resolve, reject) => {
+      connection.query(sql,[type] ,(error, results) => {
+        if (error) {
+          console.log("Error Counting the totalItemsDonated:", error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+    // console.log(results[0].amountDonatedByDonor_Id)
+    return results[0].typeCount;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
 module.exports = {
+  organizationType,
+  totalItemReceivedCount,
+  amountRequestedDate,
   handle_donate_as_money_form,
   handle_donate_as_items_form,
+  totalUsersDonateMoney,
   fetchMoneyDonations,
   fetchItemDonations,
   handle_request_for_items,
   handle_request_for_money,
   getPaymentDateTime,
   amountDonatedByDonor_Id,
+  amountDonatedDate,
   ItemsCount,
   amount_received,
+  amountDonatedDate,
+  ItemsCounts
 };
